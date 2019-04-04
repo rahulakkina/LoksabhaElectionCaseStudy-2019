@@ -1,31 +1,31 @@
-import pandas as pd
 import logging
+
+import pandas as pd
 
 logging.basicConfig(format='%(asctime)s - %(message)s', level=logging.INFO)
 
-class ElectionUtils(object):
 
+class ElectionUtils(object):
     def create_df(self, file_name):
         return pd.read_csv(file_name, header='infer')
 
     def age_earning_df(self, age_idx_df, candidates_data_df):
-            for index, row in age_idx_df.iterrows():
-                cd_df = candidates_data_df[
-                    (candidates_data_df['AGE'] >= row['FROM']) & (candidates_data_df['AGE'] <= row['TO'])]
-                mean_earnings = ((cd_df['MOVABLE_ASSETS'] + cd_df['IMMOVABLE_ASSETS']) - cd_df['LIABLITIES']).mean()
-                age_idx_df.loc[index, 'AVERAGE_EARNINGS'] = mean_earnings
-                age_idx_df.loc[index, 'MINIMUM_EARNINGS'] = mean_earnings - (mean_earnings * 0.5)
-                age_idx_df.loc[index, 'MAXIMUM_EARNINGS'] = mean_earnings + (mean_earnings * 0.5)
-            return age_idx_df
-
+        for index, row in age_idx_df.iterrows():
+            cd_df = candidates_data_df[
+                (candidates_data_df['AGE'] >= row['FROM']) & (candidates_data_df['AGE'] <= row['TO'])]
+            mean_earnings = ((cd_df['MOVABLE_ASSETS'] + cd_df['IMMOVABLE_ASSETS']) - cd_df['LIABLITIES']).mean()
+            age_idx_df.loc[index, 'AVERAGE_EARNINGS'] = mean_earnings
+            age_idx_df.loc[index, 'MINIMUM_EARNINGS'] = mean_earnings - (mean_earnings * 0.5)
+            age_idx_df.loc[index, 'MAXIMUM_EARNINGS'] = mean_earnings + (mean_earnings * 0.5)
+        return age_idx_df
 
 
 class CandidateDataTransformation(object):
-
     utils = ElectionUtils()
-    [candidates_data_df, education_idx_df, weights_df] = [utils.create_df("datasets/CANDIDATES_LIST.csv"), utils.create_df("datasets/EDUCATION_INDEX.csv"), utils.create_df("datasets/WEIGHTAGE.csv")]
+    [candidates_data_df, education_idx_df, weights_df] = [utils.create_df("datasets/CANDIDATES_LIST.csv"),
+                                                          utils.create_df("datasets/EDUCATION_INDEX.csv"),
+                                                          utils.create_df("datasets/WEIGHTAGE.csv")]
     age_idx_df = utils.age_earning_df(utils.create_df("datasets/AGE_INDEX.csv"), candidates_data_df)
-
 
     def get_age_related_points(self, age):
         for index, row in self.age_idx_df.iterrows():
@@ -70,16 +70,23 @@ class CandidateDataTransformation(object):
     def evaluate(self):
 
         for index, row in self.candidates_data_df.iterrows():
+            [age_related_points, criminal_case_points, edu_points, tax_compliance_points, govt_due_points,
+             local_residency_points, earnings_points] = \
+                [self.get_age_related_points(row['AGE']),
+                 self.get_criminal_case_points(row['PENDING_CRIMINAL_CASES'], row['CONVICTED_CRIMINAL_CASES']),
+                 self.get_edu_points(row['EDUCATION']), self.get_tax_compliance_points(row['INCOME_TAX_COMPLIANCE']),
+                 self.get_govt_due_points(row['GOVERNMENT_DUES']),
+                 self.get_local_residency_points(row['LOCAL_RESIDENT']),
+                 self.get_earnings_points(row['AGE'],
+                                          ((row['MOVABLE_ASSETS'] + row['IMMOVABLE_ASSETS']) - row['LIABLITIES']))]
 
-            [age_related_points, criminal_case_points, edu_points, tax_compliance_points, govt_due_points, local_residency_points, earnings_points] = \
-                                                        [self.get_age_related_points(row['AGE']),
-                                                         self.get_criminal_case_points(row['PENDING_CRIMINAL_CASES'],  row['CONVICTED_CRIMINAL_CASES']),
-                                                         self.get_edu_points(row['EDUCATION']), self.get_tax_compliance_points(row['INCOME_TAX_COMPLIANCE']),
-                                                         self.get_govt_due_points(row['GOVERNMENT_DUES']), self.get_local_residency_points(row['LOCAL_RESIDENT']),
-                                                         self.get_earnings_points(row['AGE'], ((row['MOVABLE_ASSETS'] + row['IMMOVABLE_ASSETS']) - row['LIABLITIES']))]
-
-
-            points_earned = (self.get_weight("AGE") *  age_related_points) + (self.get_weight("CRIMINAL_CASES") *  criminal_case_points) + (self.get_weight("EDUCATION") *  edu_points) + (self.get_weight("INCOME_TAX_COMPLIANCE") *  tax_compliance_points) + (self.get_weight("GOVERNMENT_DUES") *  govt_due_points) + (self.get_weight("LOCAL_RESIDENT") *  local_residency_points) + (self.get_weight("EARNINGS") *  earnings_points)
+            points_earned = (self.get_weight("AGE") * age_related_points) + (
+                self.get_weight("CRIMINAL_CASES") * criminal_case_points) + (
+                                self.get_weight("EDUCATION") * edu_points) + (
+                                self.get_weight("INCOME_TAX_COMPLIANCE") * tax_compliance_points) + (
+                                self.get_weight("GOVERNMENT_DUES") * govt_due_points) + (
+                                self.get_weight("LOCAL_RESIDENT") * local_residency_points) + (
+                                self.get_weight("EARNINGS") * earnings_points)
 
             self.candidates_data_df.loc[index, 'POINTS_FROM_AGE'] = age_related_points
             self.candidates_data_df.loc[index, 'POINTS_FROM_CRIMINAL_CASES'] = criminal_case_points
@@ -90,13 +97,14 @@ class CandidateDataTransformation(object):
             self.candidates_data_df.loc[index, 'POINTS_FROM_EARNINGS'] = earnings_points
             self.candidates_data_df.loc[index, 'POINTS_EARNED'] = points_earned
 
-            logging.debug("%s, %d, %d, %d, %d, %d, %d, %d, %d"%(row['NAME'], age_related_points, criminal_case_points, edu_points, tax_compliance_points, govt_due_points, local_residency_points, earnings_points, points_earned))
+            logging.debug("%s, %d, %d, %d, %d, %d, %d, %d, %d" % (
+                row['NAME'], age_related_points, criminal_case_points, edu_points, tax_compliance_points,
+                govt_due_points,
+                local_residency_points, earnings_points, points_earned))
 
         return self.candidates_data_df
 
 
-
-
 export_df = CandidateDataTransformation().evaluate()
 export_df.to_csv("datasets/CONTESTANT_LIST.csv", index=False, header=True)
-logging.info("Exported %d rows to %s file"%(len(export_df), "datasets/CONTESTANT_LIST.csv"))
+logging.info("Exported %d rows to %s file" % (len(export_df), "datasets/CONTESTANT_LIST.csv"))
