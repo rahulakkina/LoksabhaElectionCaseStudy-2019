@@ -129,4 +129,12 @@ class CandidateDataTransformation(object):
 
 export_df = CandidateDataTransformation().evaluate()
 export_df.to_csv("datasets/CONTESTANT_LIST.csv", index=False, header=True)
+
+json_content = export_df.to_json('datasets/CONTESTANT_LIST.json', orient='records')
+
+
 logging.info("Exported %d rows to %s file" % (len(export_df), "datasets/CONTESTANT_LIST.csv"))
+
+
+
+
