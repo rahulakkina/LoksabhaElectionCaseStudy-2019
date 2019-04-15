@@ -29,12 +29,13 @@ class ElectionUtils(object):
         return age_idx_df
 
 
+
 class CandidateDataTransformation(object):
     #Initilization
     utils = ElectionUtils()
-    [candidates_data_df, education_idx_df, weights_df] = [utils.create_df("datasets/CANDIDATES_LIST.csv"),
+    [candidates_data_df, education_idx_df, weights_df, candidate_analysis_df] = [utils.create_df("datasets/CANDIDATES_LIST.csv"),
                                                           utils.create_df("datasets/EDUCATION_INDEX.csv"),
-                                                          utils.create_df("datasets/WEIGHTAGE.csv")]
+                                                          utils.create_df("datasets/WEIGHTAGE.csv"), utils.create_df("datasets/CANDIDATE_ANALYSED_LIST.csv")]
     age_idx_df = utils.age_earning_df(utils.create_df("datasets/AGE_INDEX.csv"), candidates_data_df)
 
     '''Returns points which can be earned given the age bracket (Please note older people score less through this system)'''
@@ -126,14 +127,28 @@ class CandidateDataTransformation(object):
 
         return self.candidates_data_df
 
+    def get_party_criminal_history(self):
+        ca_df = self.candidate_analysis_df.groupby(['PARTY']).agg({'CANDIDATE_NAME' : 'count', 'NO_PENDING_CRIMINAL_CASES' : 'sum'}).reset_index().rename(columns={'CANDIDATE_NAME':'NO_CONTESTING_CANDIDATES'})
+        ca_df['PENDING_CRIMINAL_CASES_PER_CANDIDATE'] = round((ca_df['NO_PENDING_CRIMINAL_CASES'] / ca_df['NO_CONTESTING_CANDIDATES']),2)
+        return ca_df
+
+
+
+
+
 
 export_df = CandidateDataTransformation().evaluate()
 export_df.to_csv("datasets/CONTESTANT_LIST.csv", index=False, header=True)
 
 json_content = export_df.to_json('datasets/CONTESTANT_LIST.json', orient='records')
 
+cc_df = CandidateDataTransformation().get_party_criminal_history()
+
+cc_df.to_csv("datasets/PENDING_CRIMINAL_CASES_BY_PARTY.csv", index=False, header=True)
 
 logging.info("Exported %d rows to %s file" % (len(export_df), "datasets/CONTESTANT_LIST.csv"))
+
+
 
 
 
