@@ -134,10 +134,8 @@ class CandidateDataTransformation(object):
 
 
 
-
-
-
 export_df = CandidateDataTransformation().evaluate()
+
 export_df.to_csv("datasets/CONTESTANT_LIST.csv", index=False, header=True)
 
 json_content = export_df.to_json('datasets/CONTESTANT_LIST.json', orient='records')
@@ -147,6 +145,7 @@ cc_df = CandidateDataTransformation().get_party_criminal_history()
 cc_df.to_csv("datasets/PENDING_CRIMINAL_CASES_BY_PARTY.csv", index=False, header=True)
 
 logging.info("Exported %d rows to %s file" % (len(export_df), "datasets/CONTESTANT_LIST.csv"))
+
 
 
 
