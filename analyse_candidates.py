@@ -151,6 +151,7 @@ class CandidateDataTransformation(object):
         edu_df['EDUCATION_INDEX'] = round(edu_df['EDUCATION_INDEX'])
         return edu_df
 
+# Main Section
 cdt = CandidateDataTransformation()
 
 export_df = cdt.evaluate()
