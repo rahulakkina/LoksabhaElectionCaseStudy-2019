@@ -63,7 +63,7 @@ class CandidateDataTransformation(object):
 
     def get_edu_from_points(self, points):
         for index, row in self.education_idx_df.iterrows():
-            if row['FROM'] == int(points):
+            if row['POINTS'] == int(points):
                 return row['EDUCATION']
         return 'Literate'
 
@@ -149,6 +149,10 @@ class CandidateDataTransformation(object):
         edu_df = self.build_candidate_analysis_df(self.candidate_analysis_df)
         edu_df = edu_df.groupby(['PARTY']).agg({'CANDIDATE_NAME': 'count', 'POINTS_FOR_EDUCATION': 'mean'}).reset_index().rename(columns={'CANDIDATE_NAME': 'NO_CONTESTING_CANDIDATES', 'POINTS_FOR_EDUCATION':'EDUCATION_INDEX'})
         edu_df['EDUCATION_INDEX'] = round(edu_df['EDUCATION_INDEX'])
+
+        for index, row in edu_df.iterrows():
+            edu_df.loc[index, 'STANDARD_EDUCATION_LEVEL'] = self.get_edu_from_points(row['EDUCATION_INDEX'])
+
         return edu_df
 
 # Main Section
