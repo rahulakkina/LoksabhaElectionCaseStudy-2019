@@ -1,0 +1,1788 @@
+[{
+	"PARTY": "AAP",
+	"NO_CONTESTING_CANDIDATES": 6,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "AIADMK",
+	"NO_CONTESTING_CANDIDATES": 22,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "AIFB",
+	"NO_CONTESTING_CANDIDATES": 11,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "AITC",
+	"NO_CONTESTING_CANDIDATES": 13,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "AIUDF",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Aam Janta Party (India)",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 4.0,
+	"STANDARD_EDUCATION_LEVEL": "Post Graduate"
+},
+{
+	"PARTY": "Aam Janta Party Rashtriya",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 1.0,
+	"STANDARD_EDUCATION_LEVEL": "10th Pass"
+},
+{
+	"PARTY": "Aapki Apni Party (Peoples)",
+	"NO_CONTESTING_CANDIDATES": 5,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Adarsh Samaj Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 0.0,
+	"STANDARD_EDUCATION_LEVEL": "Literate"
+},
+{
+	"PARTY": "Agila India Makkal Kazhagam",
+	"NO_CONTESTING_CANDIDATES": 3,
+	"EDUCATION_INDEX": 0.0,
+	"STANDARD_EDUCATION_LEVEL": "Literate"
+},
+{
+	"PARTY": "Ahimsa Socialist Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 1.0,
+	"STANDARD_EDUCATION_LEVEL": "10th Pass"
+},
+{
+	"PARTY": "Aihra National Party",
+	"NO_CONTESTING_CANDIDATES": 2,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Akhand Hind Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 0.0,
+	"STANDARD_EDUCATION_LEVEL": "Literate"
+},
+{
+	"PARTY": "Akhil Bharatiya Manavata Paksha",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 0.0,
+	"STANDARD_EDUCATION_LEVEL": "Literate"
+},
+{
+	"PARTY": "Akhil Bharatiya Muslim League (Secular)",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 1.0,
+	"STANDARD_EDUCATION_LEVEL": "10th Pass"
+},
+{
+	"PARTY": "Akhil Bhartiya Lok Dal",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 1.0,
+	"STANDARD_EDUCATION_LEVEL": "10th Pass"
+},
+{
+	"PARTY": "Akhil Bhartiya Sarvadharma Samaj Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 4.0,
+	"STANDARD_EDUCATION_LEVEL": "Post Graduate"
+},
+{
+	"PARTY": "Akhil Hind Forward Bloc (Krantikari)",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "Akila India Vallalar Peravai",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 0.0,
+	"STANDARD_EDUCATION_LEVEL": "Literate"
+},
+{
+	"PARTY": "All India Hindustan Congress Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "All India Jana Andolan Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 5.0,
+	"STANDARD_EDUCATION_LEVEL": "Doctorate"
+},
+{
+	"PARTY": "All India Majlis-E-Ittehadul Muslimeen",
+	"NO_CONTESTING_CANDIDATES": 2,
+	"EDUCATION_INDEX": 4.0,
+	"STANDARD_EDUCATION_LEVEL": "Post Graduate"
+},
+{
+	"PARTY": "All India Minorities Front",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "All India N.R. Congress",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 4.0,
+	"STANDARD_EDUCATION_LEVEL": "Post Graduate"
+},
+{
+	"PARTY": "All India Praja Party",
+	"NO_CONTESTING_CANDIDATES": 3,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "All India Puratchi Thalaivar Makkal Munnettra",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "All Indian Rajiv Congress Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "All Indians Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 4.0,
+	"STANDARD_EDUCATION_LEVEL": "Post Graduate"
+},
+{
+	"PARTY": "All Pensioner's Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 1.0,
+	"STANDARD_EDUCATION_LEVEL": "10th Pass"
+},
+{
+	"PARTY": "All Peoples Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 4.0,
+	"STANDARD_EDUCATION_LEVEL": "Post Graduate"
+},
+{
+	"PARTY": "Ambedkar National Congress",
+	"NO_CONTESTING_CANDIDATES": 9,
+	"EDUCATION_INDEX": 1.0,
+	"STANDARD_EDUCATION_LEVEL": "10th Pass"
+},
+{
+	"PARTY": "Ambedkar Samaj Party",
+	"NO_CONTESTING_CANDIDATES": 5,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Ambedkarist Republican Party",
+	"NO_CONTESTING_CANDIDATES": 2,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Ambedkarite Party of India",
+	"NO_CONTESTING_CANDIDATES": 20,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "Amra Bangalee",
+	"NO_CONTESTING_CANDIDATES": 4,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Anaithu India Makkal Katchi",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 0.0,
+	"STANDARD_EDUCATION_LEVEL": "Literate"
+},
+{
+	"PARTY": "Anaithu Makkal Katchi",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 0.0,
+	"STANDARD_EDUCATION_LEVEL": "Literate"
+},
+{
+	"PARTY": "Anaithu Makkal Puratchi Katchi",
+	"NO_CONTESTING_CANDIDATES": 2,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Andhra Chaitanya Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Andhra Rastra Praja Samithi",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "Anna YSR Congress Party",
+	"NO_CONTESTING_CANDIDATES": 2,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Anti Corruption Dynamic Party",
+	"NO_CONTESTING_CANDIDATES": 10,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Asom Gana Parishad",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 4.0,
+	"STANDARD_EDUCATION_LEVEL": "Post Graduate"
+},
+{
+	"PARTY": "Asom Jana Morcha",
+	"NO_CONTESTING_CANDIDATES": 4,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Assam Dristi Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Autonomous State Demand Committee",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "B. C. United Front",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 1.0,
+	"STANDARD_EDUCATION_LEVEL": "10th Pass"
+},
+{
+	"PARTY": "BHARTIYA JANTA DAL",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "BJD",
+	"NO_CONTESTING_CANDIDATES": 9,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "BJP",
+	"NO_CONTESTING_CANDIDATES": 134,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "BSP",
+	"NO_CONTESTING_CANDIDATES": 112,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Bahujan Maha Party",
+	"NO_CONTESTING_CANDIDATES": 7,
+	"EDUCATION_INDEX": 1.0,
+	"STANDARD_EDUCATION_LEVEL": "10th Pass"
+},
+{
+	"PARTY": "Bahujan Mukti Party",
+	"NO_CONTESTING_CANDIDATES": 28,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Bahujan Republican Socialist Party",
+	"NO_CONTESTING_CANDIDATES": 7,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Bahujana Raajyam Party (Phule Ambedkar)",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 0.0,
+	"STANDARD_EDUCATION_LEVEL": "Literate"
+},
+{
+	"PARTY": "Bhapase Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 1.0,
+	"STANDARD_EDUCATION_LEVEL": "10th Pass"
+},
+{
+	"PARTY": "Bharat Bhrashtachar Mitao Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 1.0,
+	"STANDARD_EDUCATION_LEVEL": "10th Pass"
+},
+{
+	"PARTY": "Bharat Lok Sewak Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 1.0,
+	"STANDARD_EDUCATION_LEVEL": "10th Pass"
+},
+{
+	"PARTY": "Bharatiya Bahujan Congress",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 0.0,
+	"STANDARD_EDUCATION_LEVEL": "Literate"
+},
+{
+	"PARTY": "Bharatiya Bahujan Parivartan Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 0.0,
+	"STANDARD_EDUCATION_LEVEL": "Literate"
+},
+{
+	"PARTY": "Bharatiya Bahujan Samta Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 4.0,
+	"STANDARD_EDUCATION_LEVEL": "Post Graduate"
+},
+{
+	"PARTY": "Bharatiya Gana Parishad",
+	"NO_CONTESTING_CANDIDATES": 2,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Bharatiya Majdoor Janta Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "Bharatiya Momin Front",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 0.0,
+	"STANDARD_EDUCATION_LEVEL": "Literate"
+},
+{
+	"PARTY": "Bharatiya Praja Surajya Paksha",
+	"NO_CONTESTING_CANDIDATES": 3,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Bharatiya Prajagala Kalyana Paksha",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 1.0,
+	"STANDARD_EDUCATION_LEVEL": "10th Pass"
+},
+{
+	"PARTY": "Bharatiya Rashtriya Morcha",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Bharatiya Sarvodaya Kranti Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 1.0,
+	"STANDARD_EDUCATION_LEVEL": "10th Pass"
+},
+{
+	"PARTY": "Bharatrashtra Democratic Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 0.0,
+	"STANDARD_EDUCATION_LEVEL": "Literate"
+},
+{
+	"PARTY": "Bhartiya Anarakshit Party",
+	"NO_CONTESTING_CANDIDATES": 4,
+	"EDUCATION_INDEX": 4.0,
+	"STANDARD_EDUCATION_LEVEL": "Post Graduate"
+},
+{
+	"PARTY": "Bhartiya Bahujan Kranti Dal",
+	"NO_CONTESTING_CANDIDATES": 2,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Bhartiya Bhaichara Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 0.0,
+	"STANDARD_EDUCATION_LEVEL": "Literate"
+},
+{
+	"PARTY": "Bhartiya Dalit Party",
+	"NO_CONTESTING_CANDIDATES": 3,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Bhartiya Kisan Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Bhartiya Lok Seva Dal",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Bhartiya Manvadhikaar Federal Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 1.0,
+	"STANDARD_EDUCATION_LEVEL": "10th Pass"
+},
+{
+	"PARTY": "Bhartiya Naujawan Inklav Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "Bhartiya Nojawan Dal",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Bhartiya Sarvodaya Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "Bhartiya Shakti Chetna Party",
+	"NO_CONTESTING_CANDIDATES": 3,
+	"EDUCATION_INDEX": 1.0,
+	"STANDARD_EDUCATION_LEVEL": "10th Pass"
+},
+{
+	"PARTY": "Bihar Lok Nirman Dal",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "CPI",
+	"NO_CONTESTING_CANDIDATES": 13,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "CPI(M)",
+	"NO_CONTESTING_CANDIDATES": 15,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "CPI(ML) Red Star",
+	"NO_CONTESTING_CANDIDATES": 9,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "CPI(ML)(L)",
+	"NO_CONTESTING_CANDIDATES": 7,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Chhattisgarh Swabhiman Manch",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Christian Democratic Front",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 4.0,
+	"STANDARD_EDUCATION_LEVEL": "Post Graduate"
+},
+{
+	"PARTY": "DMDK",
+	"NO_CONTESTING_CANDIDATES": 4,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "DMK",
+	"NO_CONTESTING_CANDIDATES": 24,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "Dalit Soshit Pichhara Varg Adhikar Dal",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Dalita Bahujana Party",
+	"NO_CONTESTING_CANDIDATES": 3,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Democratic Corruption Liberation Front",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "Democratic Prajakranthi Party Secularist",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "Desh Janhit Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "Desiya Makkal Sakthi Katchi",
+	"NO_CONTESTING_CANDIDATES": 8,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Desiya Uzhavar Uzhaipalar Kazhagam",
+	"NO_CONTESTING_CANDIDATES": 3,
+	"EDUCATION_INDEX": 1.0,
+	"STANDARD_EDUCATION_LEVEL": "10th Pass"
+},
+{
+	"PARTY": "Dogra Swabhiman Sangathan Party",
+	"NO_CONTESTING_CANDIDATES": 2,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "EngineeParty",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 4.0,
+	"STANDARD_EDUCATION_LEVEL": "Post Graduate"
+},
+{
+	"PARTY": "Ezhuchi Tamilargal Munnetra Kazhagam",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 0.0,
+	"STANDARD_EDUCATION_LEVEL": "Literate"
+},
+{
+	"PARTY": "Forward Democratic Labour Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "Ganasangam Party of India",
+	"NO_CONTESTING_CANDIDATES": 3,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Gareeb Aadmi Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 0.0,
+	"STANDARD_EDUCATION_LEVEL": "Literate"
+},
+{
+	"PARTY": "Gondvana Gantantra Party",
+	"NO_CONTESTING_CANDIDATES": 4,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Gorkha Rashtriya Congress",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 0.0,
+	"STANDARD_EDUCATION_LEVEL": "Literate"
+},
+{
+	"PARTY": "Hamro Sikkim Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "Hardam Manavtawadi Rashtriya Dal",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 5.0,
+	"STANDARD_EDUCATION_LEVEL": "Doctorate"
+},
+{
+	"PARTY": "Hindustan Janta Party",
+	"NO_CONTESTING_CANDIDATES": 2,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Hindustani Awam Morcha (Secular)",
+	"NO_CONTESTING_CANDIDATES": 2,
+	"EDUCATION_INDEX": 4.0,
+	"STANDARD_EDUCATION_LEVEL": "Post Graduate"
+},
+{
+	"PARTY": "Hindusthan Nirman Dal",
+	"NO_CONTESTING_CANDIDATES": 11,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Hum Bhartiya Party",
+	"NO_CONTESTING_CANDIDATES": 4,
+	"EDUCATION_INDEX": 1.0,
+	"STANDARD_EDUCATION_LEVEL": "10th Pass"
+},
+{
+	"PARTY": "IUML",
+	"NO_CONTESTING_CANDIDATES": 4,
+	"EDUCATION_INDEX": 1.0,
+	"STANDARD_EDUCATION_LEVEL": "10th Pass"
+},
+{
+	"PARTY": "Ilantamilar Munnani Kazhagam",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 4.0,
+	"STANDARD_EDUCATION_LEVEL": "Post Graduate"
+},
+{
+	"PARTY": "Independent",
+	"NO_CONTESTING_CANDIDATES": 1441,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Independent Peoples Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "India Praja Bandhu Party",
+	"NO_CONTESTING_CANDIDATES": 10,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Indian Christian Front",
+	"NO_CONTESTING_CANDIDATES": 4,
+	"EDUCATION_INDEX": 1.0,
+	"STANDARD_EDUCATION_LEVEL": "10th Pass"
+},
+{
+	"PARTY": "Indian Democratic Republican Front",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "Indian Labour Party (Ambedkar Phule)",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 4.0,
+	"STANDARD_EDUCATION_LEVEL": "Post Graduate"
+},
+{
+	"PARTY": "Indian National Congress",
+	"NO_CONTESTING_CANDIDATES": 136,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "Indian New Congress Party",
+	"NO_CONTESTING_CANDIDATES": 4,
+	"EDUCATION_INDEX": 1.0,
+	"STANDARD_EDUCATION_LEVEL": "10th Pass"
+},
+{
+	"PARTY": "Indian Rakshaka Nayakudu Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 0.0,
+	"STANDARD_EDUCATION_LEVEL": "Literate"
+},
+{
+	"PARTY": "Indigenousn Peoples Front Of Tripura",
+	"NO_CONTESTING_CANDIDATES": 2,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "Inqalab Vikas Dal",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 4.0,
+	"STANDARD_EDUCATION_LEVEL": "Post Graduate"
+},
+{
+	"PARTY": "JD(S)",
+	"NO_CONTESTING_CANDIDATES": 6,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "JD(U)",
+	"NO_CONTESTING_CANDIDATES": 9,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "JMM",
+	"NO_CONTESTING_CANDIDATES": 4,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Jai Maha Bharath Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 0.0,
+	"STANDARD_EDUCATION_LEVEL": "Literate"
+},
+{
+	"PARTY": "Jai Swaraj Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 4.0,
+	"STANDARD_EDUCATION_LEVEL": "Post Graduate"
+},
+{
+	"PARTY": "Jai Vijaya Bharathi Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 1.0,
+	"STANDARD_EDUCATION_LEVEL": "10th Pass"
+},
+{
+	"PARTY": "Jammu & Kashmir National Conference",
+	"NO_CONTESTING_CANDIDATES": 2,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "Jammu & Kashmir National PantheParty",
+	"NO_CONTESTING_CANDIDATES": 5,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Jammu & Kashmir People Conference",
+	"NO_CONTESTING_CANDIDATES": 2,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "Jammu & Kashmir Peoples Democratic Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "Jammu & Kashmir Pir Panjal Awami Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "Jan Shakti Dal",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "Jana Jagruti Party",
+	"NO_CONTESTING_CANDIDATES": 7,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Janapaalana Party (Democratic)",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 4.0,
+	"STANDARD_EDUCATION_LEVEL": "Post Graduate"
+},
+{
+	"PARTY": "Janasena Party",
+	"NO_CONTESTING_CANDIDATES": 23,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "Jansatta Party",
+	"NO_CONTESTING_CANDIDATES": 2,
+	"EDUCATION_INDEX": 0.0,
+	"STANDARD_EDUCATION_LEVEL": "Literate"
+},
+{
+	"PARTY": "Janta Dal Rashtravadi",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 4.0,
+	"STANDARD_EDUCATION_LEVEL": "Post Graduate"
+},
+{
+	"PARTY": "Kamatapur Peoples Party (United)",
+	"NO_CONTESTING_CANDIDATES": 4,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Kannada Chalavali Vatal Paksha",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 1.0,
+	"STANDARD_EDUCATION_LEVEL": "10th Pass"
+},
+{
+	"PARTY": "Karnataka Jantha Paksha",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 4.0,
+	"STANDARD_EDUCATION_LEVEL": "Post Graduate"
+},
+{
+	"PARTY": "Karnataka Karmikara Paksha",
+	"NO_CONTESTING_CANDIDATES": 4,
+	"EDUCATION_INDEX": 0.0,
+	"STANDARD_EDUCATION_LEVEL": "Literate"
+},
+{
+	"PARTY": "Karnataka Pragnyavantha Janatha Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 0.0,
+	"STANDARD_EDUCATION_LEVEL": "Literate"
+},
+{
+	"PARTY": "Karnataka Praja Party (RaithaParva)",
+	"NO_CONTESTING_CANDIDATES": 2,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Kartavya Rashtriya Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "Kranti Kari Jai Hind Sena",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "LJP",
+	"NO_CONTESTING_CANDIDATES": 2,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "Lok Dal",
+	"NO_CONTESTING_CANDIDATES": 2,
+	"EDUCATION_INDEX": 4.0,
+	"STANDARD_EDUCATION_LEVEL": "Post Graduate"
+},
+{
+	"PARTY": "Lok Gathbandhan Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "Lokjagar Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 4.0,
+	"STANDARD_EDUCATION_LEVEL": "Post Graduate"
+},
+{
+	"PARTY": "Loktantrik Janshakti Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "MNF",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "Maharashtra Kranti Sena",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 4.0,
+	"STANDARD_EDUCATION_LEVEL": "Post Graduate"
+},
+{
+	"PARTY": "Mahasankalp Janta Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 0.0,
+	"STANDARD_EDUCATION_LEVEL": "Literate"
+},
+{
+	"PARTY": "Majdoor Kisan Union Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "Makkal Needhi Maiam",
+	"NO_CONTESTING_CANDIDATES": 36,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "Makkal Sananayaga Kudiyarasu Katchi",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Makkalatchi Katchi",
+	"NO_CONTESTING_CANDIDATES": 2,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Manipur Democratic Peoples Front",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 5.0,
+	"STANDARD_EDUCATION_LEVEL": "Doctorate"
+},
+{
+	"PARTY": "Manipur Peoples Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Manvadhikar National Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 1.0,
+	"STANDARD_EDUCATION_LEVEL": "10th Pass"
+},
+{
+	"PARTY": "Marxist Communist Party of India (United)",
+	"NO_CONTESTING_CANDIDATES": 4,
+	"EDUCATION_INDEX": 0.0,
+	"STANDARD_EDUCATION_LEVEL": "Literate"
+},
+{
+	"PARTY": "Minorities Democratic Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 1.0,
+	"STANDARD_EDUCATION_LEVEL": "10th Pass"
+},
+{
+	"PARTY": "Moolniwasi Samaj Party",
+	"NO_CONTESTING_CANDIDATES": 2,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Moulik Adhikar Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Mundadugu Praja Party",
+	"NO_CONTESTING_CANDIDATES": 4,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "NCP",
+	"NO_CONTESTING_CANDIDATES": 11,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "NPF",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "NPP",
+	"NO_CONTESTING_CANDIDATES": 10,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Naam Indiar Party",
+	"NO_CONTESTING_CANDIDATES": 2,
+	"EDUCATION_INDEX": 0.0,
+	"STANDARD_EDUCATION_LEVEL": "Literate"
+},
+{
+	"PARTY": "Naam Tamilar Katchi",
+	"NO_CONTESTING_CANDIDATES": 35,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "National Bhrashtachar Mukt Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 0.0,
+	"STANDARD_EDUCATION_LEVEL": "Literate"
+},
+{
+	"PARTY": "National Dalitha Dhal Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 1.0,
+	"STANDARD_EDUCATION_LEVEL": "10th Pass"
+},
+{
+	"PARTY": "National Lokmat Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 0.0,
+	"STANDARD_EDUCATION_LEVEL": "Literate"
+},
+{
+	"PARTY": "National Nava Kranthi Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 1.0,
+	"STANDARD_EDUCATION_LEVEL": "10th Pass"
+},
+{
+	"PARTY": "National Women",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "National Womens Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 1.0,
+	"STANDARD_EDUCATION_LEVEL": "10th Pass"
+},
+{
+	"PARTY": "Nationalist Democratic Progressive Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "Nava Praja Rajyam Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 0.0,
+	"STANDARD_EDUCATION_LEVEL": "Literate"
+},
+{
+	"PARTY": "Nava Samaj Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 4.0,
+	"STANDARD_EDUCATION_LEVEL": "Post Graduate"
+},
+{
+	"PARTY": "Navarang Congress Party",
+	"NO_CONTESTING_CANDIDATES": 5,
+	"EDUCATION_INDEX": 1.0,
+	"STANDARD_EDUCATION_LEVEL": "10th Pass"
+},
+{
+	"PARTY": "Navataram Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 4.0,
+	"STANDARD_EDUCATION_LEVEL": "Post Graduate"
+},
+{
+	"PARTY": "Navodayam Party",
+	"NO_CONTESTING_CANDIDATES": 2,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "New India Party",
+	"NO_CONTESTING_CANDIDATES": 2,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "North East India Development Party",
+	"NO_CONTESTING_CANDIDATES": 2,
+	"EDUCATION_INDEX": 4.0,
+	"STANDARD_EDUCATION_LEVEL": "Post Graduate"
+},
+{
+	"PARTY": "Odisha Pragati Dal",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 0.0,
+	"STANDARD_EDUCATION_LEVEL": "Literate"
+},
+{
+	"PARTY": "PRISM Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 1.0,
+	"STANDARD_EDUCATION_LEVEL": "10th Pass"
+},
+{
+	"PARTY": "Pattali Makkal Katchi",
+	"NO_CONTESTING_CANDIDATES": 6,
+	"EDUCATION_INDEX": 4.0,
+	"STANDARD_EDUCATION_LEVEL": "Post Graduate"
+},
+{
+	"PARTY": "Peace Party",
+	"NO_CONTESTING_CANDIDATES": 2,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Peoples Democratic Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Peoples Party of Arunachal",
+	"NO_CONTESTING_CANDIDATES": 2,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Peoples Party of India (Democratic)",
+	"NO_CONTESTING_CANDIDATES": 12,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "Peoples Party of India(secular)",
+	"NO_CONTESTING_CANDIDATES": 2,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "Prabuddha Republican Party",
+	"NO_CONTESTING_CANDIDATES": 2,
+	"EDUCATION_INDEX": 4.0,
+	"STANDARD_EDUCATION_LEVEL": "Post Graduate"
+},
+{
+	"PARTY": "Pragatisheel Lok Manch",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "Pragatishil Samajwadi Party (Lohia)",
+	"NO_CONTESTING_CANDIDATES": 16,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Prahar Janshakti Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 1.0,
+	"STANDARD_EDUCATION_LEVEL": "10th Pass"
+},
+{
+	"PARTY": "Praja Satta Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 1.0,
+	"STANDARD_EDUCATION_LEVEL": "10th Pass"
+},
+{
+	"PARTY": "Praja Shanthi Party",
+	"NO_CONTESTING_CANDIDATES": 4,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Prajaa Swaraaj Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 1.0,
+	"STANDARD_EDUCATION_LEVEL": "10th Pass"
+},
+{
+	"PARTY": "Prem Janata Dal",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 0.0,
+	"STANDARD_EDUCATION_LEVEL": "Literate"
+},
+{
+	"PARTY": "Proutist Bloc India",
+	"NO_CONTESTING_CANDIDATES": 2,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Proutist Sarva Samaj",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "Public Mission Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "Puducherry Development Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 4.0,
+	"STANDARD_EDUCATION_LEVEL": "Post Graduate"
+},
+{
+	"PARTY": "Purvanchal Janta Party (Secular)",
+	"NO_CONTESTING_CANDIDATES": 3,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Pyramid Party of India",
+	"NO_CONTESTING_CANDIDATES": 36,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "RJD",
+	"NO_CONTESTING_CANDIDATES": 2,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "RLD",
+	"NO_CONTESTING_CANDIDATES": 3,
+	"EDUCATION_INDEX": 4.0,
+	"STANDARD_EDUCATION_LEVEL": "Post Graduate"
+},
+{
+	"PARTY": "RPI",
+	"NO_CONTESTING_CANDIDATES": 3,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "RPI(A)",
+	"NO_CONTESTING_CANDIDATES": 9,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "RPI(Khobragade)",
+	"NO_CONTESTING_CANDIDATES": 2,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Radical Democrats Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "Rajyadhikara Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "Rashtravadi Party (Bharat)",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 1.0,
+	"STANDARD_EDUCATION_LEVEL": "10th Pass"
+},
+{
+	"PARTY": "Rashtriya Bahujan Congress Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Rashtriya Bharatiya Jan Jan Party",
+	"NO_CONTESTING_CANDIDATES": 2,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Rashtriya Janasachetan Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 0.0,
+	"STANDARD_EDUCATION_LEVEL": "Literate"
+},
+{
+	"PARTY": "Rashtriya Janhit Sangharsh Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "Rashtriya Jankranti Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 0.0,
+	"STANDARD_EDUCATION_LEVEL": "Literate"
+},
+{
+	"PARTY": "Rashtriya Jansabha Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 0.0,
+	"STANDARD_EDUCATION_LEVEL": "Literate"
+},
+{
+	"PARTY": "Rashtriya Jansambhavna Party",
+	"NO_CONTESTING_CANDIDATES": 3,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Rashtriya Jansurajya Party",
+	"NO_CONTESTING_CANDIDATES": 2,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Rashtriya Janta Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 0.0,
+	"STANDARD_EDUCATION_LEVEL": "Literate"
+},
+{
+	"PARTY": "Rashtriya Krantikari Samajwadi Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Rashtriya Lok Samta Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "Rashtriya Lok Sarvadhikar Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 0.0,
+	"STANDARD_EDUCATION_LEVEL": "Literate"
+},
+{
+	"PARTY": "Rashtriya Mazdoor Ekta Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Rashtriya Naujawan Dal",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Rashtriya Praja Congress (Secular)",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 4.0,
+	"STANDARD_EDUCATION_LEVEL": "Post Graduate"
+},
+{
+	"PARTY": "Rashtriya Samaj Paksha",
+	"NO_CONTESTING_CANDIDATES": 3,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Rashtriya Samanta Dal",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 0.0,
+	"STANDARD_EDUCATION_LEVEL": "Literate"
+},
+{
+	"PARTY": "Rashtriya Shoshit Samaj Party",
+	"NO_CONTESTING_CANDIDATES": 3,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Rashtriya Ulama Council",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "Rashtriya Vyapari Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 0.0,
+	"STANDARD_EDUCATION_LEVEL": "Literate"
+},
+{
+	"PARTY": "Rayalaseema Rashtra Samithi",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "Republican Paksha (Khoripa)",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 1.0,
+	"STANDARD_EDUCATION_LEVEL": "10th Pass"
+},
+{
+	"PARTY": "Republican Party of India (Karnataka)",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 1.0,
+	"STANDARD_EDUCATION_LEVEL": "10th Pass"
+},
+{
+	"PARTY": "Republican Sena",
+	"NO_CONTESTING_CANDIDATES": 4,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Revolutionary Socialist Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 4.0,
+	"STANDARD_EDUCATION_LEVEL": "Post Graduate"
+},
+{
+	"PARTY": "Right to Recall Party",
+	"NO_CONTESTING_CANDIDATES": 2,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "SDF",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "SDPI",
+	"NO_CONTESTING_CANDIDATES": 3,
+	"EDUCATION_INDEX": 1.0,
+	"STANDARD_EDUCATION_LEVEL": "10th Pass"
+},
+{
+	"PARTY": "SHS",
+	"NO_CONTESTING_CANDIDATES": 19,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "SP",
+	"NO_CONTESTING_CANDIDATES": 7,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "SUCI(C)",
+	"NO_CONTESTING_CANDIDATES": 28,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Sabse Achchhi Party",
+	"NO_CONTESTING_CANDIDATES": 2,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Samaanya Praja Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 0.0,
+	"STANDARD_EDUCATION_LEVEL": "Literate"
+},
+{
+	"PARTY": "Samajwadi Forward Bloc",
+	"NO_CONTESTING_CANDIDATES": 8,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Samajwadi Jan Parishad",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "Samajwadi Janata Party(Karnataka)",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 1.0,
+	"STANDARD_EDUCATION_LEVEL": "10th Pass"
+},
+{
+	"PARTY": "Sangharsh Sena",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "Sanman Rajkiya Paksha",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Sarv Vikas Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 0.0,
+	"STANDARD_EDUCATION_LEVEL": "Literate"
+},
+{
+	"PARTY": "Sarva Janata Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 0.0,
+	"STANDARD_EDUCATION_LEVEL": "Literate"
+},
+{
+	"PARTY": "Sarvjan Lok Shakti Party",
+	"NO_CONTESTING_CANDIDATES": 2,
+	"EDUCATION_INDEX": 0.0,
+	"STANDARD_EDUCATION_LEVEL": "Literate"
+},
+{
+	"PARTY": "Sarvodaya Bharat Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 1.0,
+	"STANDARD_EDUCATION_LEVEL": "10th Pass"
+},
+{
+	"PARTY": "Secular Democratic Congress",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 0.0,
+	"STANDARD_EDUCATION_LEVEL": "Literate"
+},
+{
+	"PARTY": "Sikkim Krantikari Morcha",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 4.0,
+	"STANDARD_EDUCATION_LEVEL": "Post Graduate"
+},
+{
+	"PARTY": "Sikkim Republican Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 4.0,
+	"STANDARD_EDUCATION_LEVEL": "Post Graduate"
+},
+{
+	"PARTY": "Sikkim United Front",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "Social Justice Party of India",
+	"NO_CONTESTING_CANDIDATES": 3,
+	"EDUCATION_INDEX": 4.0,
+	"STANDARD_EDUCATION_LEVEL": "Post Graduate"
+},
+{
+	"PARTY": "Subhashwadi Bhartiya Samajwadi Party",
+	"NO_CONTESTING_CANDIDATES": 2,
+	"EDUCATION_INDEX": 4.0,
+	"STANDARD_EDUCATION_LEVEL": "Post Graduate"
+},
+{
+	"PARTY": "Swaraj Party (Loktantrik)",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "Swatantra Bharat Paksha",
+	"NO_CONTESTING_CANDIDATES": 2,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Swatantra Jantaraj Party",
+	"NO_CONTESTING_CANDIDATES": 2,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "TDP",
+	"NO_CONTESTING_CANDIDATES": 25,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "TRS",
+	"NO_CONTESTING_CANDIDATES": 17,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "Tamil Maanila Congress (Moopanar)",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "Tamil Nadu Ilangyar Katchi",
+	"NO_CONTESTING_CANDIDATES": 16,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Tamil Telugu National Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 4.0,
+	"STANDARD_EDUCATION_LEVEL": "Post Graduate"
+},
+{
+	"PARTY": "Tamizhaga Murpokku Makkal Katchi",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "Telangana Communist Party of India",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 0.0,
+	"STANDARD_EDUCATION_LEVEL": "Literate"
+},
+{
+	"PARTY": "Telangana Jana Samithi",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 4.0,
+	"STANDARD_EDUCATION_LEVEL": "Post Graduate"
+},
+{
+	"PARTY": "Telangana Prajala Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "Telangana Sakalajanula Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 4.0,
+	"STANDARD_EDUCATION_LEVEL": "Post Graduate"
+},
+{
+	"PARTY": "Telangana Yuva Shakti",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 4.0,
+	"STANDARD_EDUCATION_LEVEL": "Post Graduate"
+},
+{
+	"PARTY": "The Future India Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 4.0,
+	"STANDARD_EDUCATION_LEVEL": "Post Graduate"
+},
+{
+	"PARTY": "UKD",
+	"NO_CONTESTING_CANDIDATES": 4,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "UTTARAKHAND PARIVARTAN PARTY",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "Ulzaipali Makkal Katchy",
+	"NO_CONTESTING_CANDIDATES": 6,
+	"EDUCATION_INDEX": 0.0,
+	"STANDARD_EDUCATION_LEVEL": "Literate"
+},
+{
+	"PARTY": "United Democratic Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 5.0,
+	"STANDARD_EDUCATION_LEVEL": "Doctorate"
+},
+{
+	"PARTY": "United States of India Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 4.0,
+	"STANDARD_EDUCATION_LEVEL": "Post Graduate"
+},
+{
+	"PARTY": "Universal Brotherhood Movement",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "Uttama Prajaakeeya Party",
+	"NO_CONTESTING_CANDIDATES": 13,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Uttarakhand Kranti Dal (Democratic)",
+	"NO_CONTESTING_CANDIDATES": 4,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Uttarakhand Pragatisheel Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "VANCHITSAMAJ INSAAF PARTY",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 0.0,
+	"STANDARD_EDUCATION_LEVEL": "Literate"
+},
+{
+	"PARTY": "Vanchit Bahujan Aaghadi",
+	"NO_CONTESTING_CANDIDATES": 16,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "Viduthalai Chiruthaigal Katchi",
+	"NO_CONTESTING_CANDIDATES": 5,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "Vishwa Jana Party",
+	"NO_CONTESTING_CANDIDATES": 2,
+	"EDUCATION_INDEX": 4.0,
+	"STANDARD_EDUCATION_LEVEL": "Post Graduate"
+},
+{
+	"PARTY": "Vivasayigal Makkal Munnetra Katchi",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 0.0,
+	"STANDARD_EDUCATION_LEVEL": "Literate"
+},
+{
+	"PARTY": "VoteParty International",
+	"NO_CONTESTING_CANDIDATES": 3,
+	"EDUCATION_INDEX": 2.0,
+	"STANDARD_EDUCATION_LEVEL": "12th Pass"
+},
+{
+	"PARTY": "Welfare Party Of India",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 4.0,
+	"STANDARD_EDUCATION_LEVEL": "Post Graduate"
+},
+{
+	"PARTY": "YSRCP",
+	"NO_CONTESTING_CANDIDATES": 25,
+	"EDUCATION_INDEX": 3.0,
+	"STANDARD_EDUCATION_LEVEL": "Graduate"
+},
+{
+	"PARTY": "Yekikrutha Sankshema Rashtriya Praja Party",
+	"NO_CONTESTING_CANDIDATES": 1,
+	"EDUCATION_INDEX": 0.0,
+	"STANDARD_EDUCATION_LEVEL": "Literate"
+}]

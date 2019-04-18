@@ -180,7 +180,7 @@ edu_df = cdt.calculate_party_education_score()
 
 edu_df.to_csv("datasets/EDUCATION_INDEX_BY_PARTY.csv", index=False, header=True)
 
-json_content = edu_df.to_json('datasets/DUCATION_INDEX_BY_PARTY.json', orient='records')
+json_content = edu_df.to_json('datasets/EDUCATION_INDEX_BY_PARTY.json', orient='records')
 
 logging.info("Exported %d rows to %s file" % (len(edu_df), "datasets/EDUCATION_INDEX_BY_PARTY.csv"))
 
