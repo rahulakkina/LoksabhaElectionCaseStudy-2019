@@ -172,11 +172,15 @@ cc_df = cdt.calculate_party_criminal_score()
 
 cc_df.to_csv("datasets/PENDING_CRIMINAL_CASES_BY_PARTY.csv", index=False, header=True)
 
+json_content = cc_df.to_json('datasets/PENDING_CRIMINAL_CASES_BY_PARTY.json', orient='records')
+
 logging.info("Exported %d rows to %s file" % (len(cc_df), "datasets/PENDING_CRIMINAL_CASES_BY_PARTY.csv"))
 
 edu_df = cdt.calculate_party_education_score()
 
 edu_df.to_csv("datasets/EDUCATION_INDEX_BY_PARTY.csv", index=False, header=True)
+
+json_content = edu_df.to_json('datasets/DUCATION_INDEX_BY_PARTY.json', orient='records')
 
 logging.info("Exported %d rows to %s file" % (len(edu_df), "datasets/EDUCATION_INDEX_BY_PARTY.csv"))
 
