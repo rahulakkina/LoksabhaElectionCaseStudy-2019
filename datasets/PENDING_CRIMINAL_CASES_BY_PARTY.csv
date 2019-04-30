@@ -1,35 +1,41 @@
 PARTY,NO_CONTESTING_CANDIDATES,NO_PENDING_CRIMINAL_CASES,PENDING_CRIMINAL_CASES_PER_CANDIDATE
-AAP,8,6,0.75
-AARAKSHAN VIRODHI PARTY,2,0,0.0
+AAP,9,7,0.78
+AARAKSHAN VIRODHI PARTY,3,1,0.33
 AIADMK,22,12,0.55
-AIFB,15,3,0.2
+AIFB,22,7,0.32
 AIMIM,1,4,4.0
-AITC,33,31,0.94
+AITC,41,37,0.9
 AIUDF,3,9,3.0
 Aadarsh Mithila Party,2,1,0.5
-Aajad Bharat Party (Democratic),3,1,0.33
+Aadarsh Sangram Party,1,0,0.0
+Aajad Bharat Party (Democratic),4,3,0.75
 Aam Adhikar Morcha,4,1,0.25
-Aam Janta Party (India),1,0,0.0
+Aam Janta Party (India),4,0,0.0
 Aam Janta Party Rashtriya,3,0,0.0
+Aap Aur Hum Party,1,0,0.0
 Aapki Apni Party (Peoples),8,0,0.0
 Aasra Lokmanch Party,2,0,0.0
+Adarsh Nyay Rakshak Party,1,0,0.0
 Adarsh Samaj Party,1,0,0.0
-Adhikar Vikas Party,1,0,0.0
+Adhikar Vikas Party,2,0,0.0
 Adhunik Bharat Party,2,0,0.0
 Agila India Makkal Kazhagam,4,2,0.5
 Ahimsa Socialist Party,1,0,0.0
 Ahinsa Samaj Party,1,1,1.0
-Aihra National Party,5,2,0.4
+Aihra National Party,6,2,0.33
 Akhand Hind Party,1,0,0.0
+Akhand Rashtrawadi Party,1,0,0.0
 Akhand Samaj Party,1,0,0.0
-Akhil Bharat Hindu Mahasabha,4,0,0.0
+Akhil Bharat Hindu Mahasabha,5,0,0.0
 Akhil Bharatiya Jan Sangh,2,0,0.0
 Akhil Bharatiya Manavata Paksha,1,0,0.0
 Akhil Bharatiya Muslim League (Secular),2,1,0.5
 Akhil Bharatiya Sena,1,1,1.0
+Akhil Bhartiya Apna Dal,2,0,0.0
 Akhil Bhartiya Ekata Party,1,3,3.0
-Akhil Bhartiya Gondwana Party,2,2,1.0
+Akhil Bhartiya Gondwana Party,3,2,0.67
 Akhil Bhartiya Lok Dal,1,0,0.0
+Akhil Bhartiya Mithila Party,1,0,0.0
 Akhil Bhartiya Sarvadharma Samaj Party,1,0,0.0
 Akhil Hind Forward Bloc (Krantikari),1,1,1.0
 Akila India Vallalar Peravai,1,0,0.0
@@ -45,10 +51,10 @@ All Indians Party,1,0,0.0
 All Pensioner’s Party,1,0,0.0
 All Peoples Party,1,0,0.0
 Ambedkar National Congress,16,1,0.06
-Ambedkar Samaj Party,6,2,0.33
+Ambedkar Samaj Party,7,2,0.29
 Ambedkarist Republican Party,2,0,0.0
 Ambedkarite Party Of India,1,0,0.0
-Ambedkarite Party of India,51,4,0.08
+Ambedkarite Party of India,62,4,0.06
 Amra Bangalee,4,0,0.0
 Anaithu India Makkal Katchi,1,0,0.0
 Anaithu Makkal Katchi,1,0,0.0
@@ -63,67 +69,76 @@ Asom Gana Parishad,3,1,0.33
 Asom Jana Morcha,4,0,0.0
 Assam Dristi Party,1,0,0.0
 Autonomous State Demand Committee,1,0,0.0
+Awami Samta Party,3,0,0.0
 Azad Mazdoor Kissan Party,1,0,0.0
 B. C. United Front,1,0,0.0
 BHARTIYA JANTA DAL,1,0,0.0
 BJD,21,1,0.05
-BJP,288,664,2.31
-BSP,259,137,0.53
-Bahujan Awam Party,2,0,0.0
+BJP,336,750,2.23
+BSP,292,155,0.53
+Bahujan Awam Party,4,0,0.0
 Bahujan Azad Party,1,1,1.0
 Bahujan Maha Party,16,4,0.25
-Bahujan Mukti Party,81,15,0.19
+Bahujan Mukti Party,90,16,0.18
 Bahujan Nyay Dal,1,1,1.0
 Bahujan Republican Socialist Party,27,10,0.37
 Bahujan Samyak Party (Mission),1,0,0.0
 Bahujan Suraksha Dal,1,0,0.0
 Bahujan Vikas Aaghadi,1,3,3.0
 Bahujana Raajyam Party (Phule Ambedkar),1,0,0.0
-Bajjikanchal Vikas Party,1,0,0.0
+Bajjikanchal Vikas Party,4,0,0.0
 Baliraja Party,6,2,0.33
 Bhapase Party,1,0,0.0
 Bharat Bhoomi Party,3,1,0.33
 Bharat Bhrashtachar Mitao Party,1,0,0.0
 Bharat Jan Aadhar Party,4,0,0.0
 Bharat Lok Sewak Party,1,0,0.0
-Bharat Prabhat Party,13,1,0.08
+Bharat Nirman Party,1,0,0.0
+Bharat Prabhat Party,21,3,0.14
+Bharat Rakshak Party (Democratic),2,0,0.0
 Bharath Dharma Jana Sena,3,4,1.33
 Bharatiya Bahujan Congress,3,0,0.0
 Bharatiya Bahujan Parivartan Party,1,0,0.0
 Bharatiya Bahujan Party,1,0,0.0
 Bharatiya Bahujan Samta Party,2,0,0.0
 Bharatiya Gana Parishad,4,0,0.0
-Bharatiya Jan Kranti Dal (Democratic),1,0,0.0
+Bharatiya Jan Kranti Dal (Democratic),2,1,0.5
+Bharatiya Jan Morcha Party,1,0,0.0
 Bharatiya Kisan Parivartan Party,1,0,0.0
 Bharatiya Majdoor Janta Party,1,0,0.0
-Bharatiya Minorities Suraksha Mahasangh,1,0,0.0
-Bharatiya Momin Front,3,1,0.33
+Bharatiya Minorities Suraksha Mahasangh,2,3,1.5
+Bharatiya Momin Front,4,1,0.25
 Bharatiya National Janta Dal,4,0,0.0
-Bharatiya Nyay-Adhikar Raksha Party,1,0,0.0
+Bharatiya Nyay-Adhikar Raksha Party,2,3,1.5
 Bharatiya Peoples Party,1,0,0.0
 Bharatiya Praja Surajya Paksha,8,0,0.0
 Bharatiya Prajagala Kalyana Paksha,2,0,0.0
 Bharatiya Prajatantrik Shudh Gandhiwadi Krish,1,0,0.0
 Bharatiya Rashtravadi Paksha,1,0,0.0
 Bharatiya Rashtriya Morcha,2,0,0.0
+Bharatiya Sampuran Krantikari Party,1,0,0.0
 Bharatiya Sarvodaya Kranti Party,1,0,0.0
 Bharatrashtra Democratic Party,1,0,0.0
 Bharipa Bahujan Mahasangh,2,0,0.0
 Bhartiya Anarakshit Party,4,0,0.0
+Bhartiya Azad Sena,1,0,0.0
 Bhartiya Bahujan Kranti Dal,5,4,0.8
 Bhartiya Bhaichara Party,2,0,0.0
 Bhartiya Dalit Party,3,1,0.33
 Bhartiya Harit Party,1,0,0.0
 Bhartiya Hind Fauj,1,0,0.0
+Bhartiya Insan Party,1,0,0.0
 Bhartiya Jan Nayak Party,2,3,1.5
 Bhartiya Jan Sampark Party,1,0,0.0
+Bhartiya Jan Satta Party,1,0,0.0
 Bhartiya Kisan Party,12,1,0.08
 Bhartiya Krishak Dal,4,0,0.0
 Bhartiya Lok Seva Dal,3,0,0.0
 Bhartiya Lokmat Rashtrwadi Party,4,2,0.5
+Bhartiya Manav Samaj Party,1,0,0.0
 Bhartiya Manavadhikaar Federal Party,6,6,1.0
 Bhartiya Manvadhikaar Federal Party,2,0,0.0
-Bhartiya Mitra Party,1,0,0.0
+Bhartiya Mitra Party,3,1,0.33
 Bhartiya Naujawan Inklav Party,1,0,0.0
 Bhartiya Navjawan Sena (Paksha),3,0,0.0
 Bhartiya Navodaya Party,1,0,0.0
@@ -131,22 +146,22 @@ Bhartiya Nojawan Dal,1,0,0.0
 Bhartiya Panchyat Party,1,0,0.0
 Bhartiya Sarvjan Hitey Samaj Party,1,4,4.0
 Bhartiya Sarvodaya Party,2,0,0.0
-Bhartiya Shakti Chetna Party,18,1,0.06
+Bhartiya Shakti Chetna Party,23,1,0.04
 Bhartiya Tribal Party,18,9,0.5
 Bhartiya Vanchitsamaj Party,1,0,0.0
-Bihar Lok Nirman Dal,4,2,0.5
+Bihar Lok Nirman Dal,6,2,0.33
 Bodoland Peoples Front,1,0,0.0
 Bundelkhand Kranti Dal,1,0,0.0
-CPI,29,40,1.38
-CPI(M),43,97,2.26
-CPI(ML) Red Star,20,8,0.4
-CPI(ML)(L),11,11,1.0
+CPI,32,41,1.28
+CPI(M),54,122,2.26
+CPI(ML) Red Star,22,8,0.36
+CPI(ML)(L),13,16,1.23
 Chhattisgarh Swabhiman Manch,2,0,0.0
 Chhattisgarh Vikas Ganga Rashtriya Party,2,0,0.0
 Christian Democratic Front,1,0,0.0
 DMDK,4,14,3.5
 DMK,24,30,1.25
-Dalit Soshit Pichhara Varg Adhikar Dal,1,0,0.0
+Dalit Soshit Pichhara Varg Adhikar Dal,2,2,1.0
 Dalita Bahujana Party,3,0,0.0
 Democratic Corruption Liberation Front,1,0,0.0
 Democratic Prajakranthi Party Secularist,1,0,0.0
@@ -154,7 +169,8 @@ Desh Janhit Party,1,0,0.0
 Desiya Makkal Sakthi Katchi,9,2,0.22
 Desiya Uzhavar Uzhaipalar Kazhagam,3,0,0.0
 Dogra Swabhiman Sangathan Party,2,0,0.0
-EngineeParty,1,0,0.0
+Dr. Bhimrao Ambedkar Dal,1,0,0.0
+Engineers Party,1,0,0.0
 Ezhuchi Tamilargal Munnetra Kazhagam,1,0,0.0
 Fauji Janta Party,1,0,0.0
 Forward Democratic Labour Party,1,0,0.0
@@ -163,7 +179,7 @@ Ganasangam Party of India,3,0,0.0
 Gareeb Aadmi Party,1,0,0.0
 Garib Janshakti Party,1,0,0.0
 Garvi Gujarat Party,3,2,0.67
-Gondvana Gantantra Party,18,0,0.0
+Gondvana Gantantra Party,21,0,0.0
 Gorkha Rashtriya Congress,1,1,1.0
 Gujarat Janta Panchayat Party,1,0,0.0
 Hamari Apni Party,2,1,0.5
@@ -172,10 +188,11 @@ Hardam Manavtawadi Rashtriya Dal,1,0,0.0
 Hind Samrajya Party,1,1,1.0
 Hindustan Janta Party,7,0,0.0
 Hindustani Awam Morcha (Secular),2,3,1.5
-Hindusthan Nirman Dal,28,6,0.21
+Hindusthan Nirman Dal,32,6,0.19
 Hindusthan Praja Paksha,1,2,2.0
-Hum Bhartiya Party,6,0,0.0
-IND,2498,657,0.26
+Hum Bhartiya Party,7,0,0.0
+INC,328,647,1.97
+IND,2750,760,0.28
 IUML,8,3,0.38
 Ilantamilar Munnani Kazhagam,1,0,0.0
 Independent Peoples Party,1,0,0.0
@@ -185,31 +202,33 @@ Indian Democratic Republican Front,1,0,0.0
 Indian Gandhiyan Party,1,0,0.0
 Indian Indira Congress (R),1,0,0.0
 Indian Labour Party (Ambedkar Phule),4,0,0.0
-Indian National Congress,283,598,2.11
+Indian National League,1,0,0.0
 Indian New Congress Party,4,2,0.5
 Indian Peoples Green Party,2,0,0.0
 Indian Rakshaka Nayakudu Party,1,0,0.0
+Indian Unity Centre,2,0,0.0
 Indigenousn Peoples Front Of Tripura,2,0,0.0
 Inqalab Vikas Dal,1,0,0.0
 JD(S),9,3,0.33
-JD(U),14,15,1.07
+JD(U),15,21,1.4
 JMM,8,2,0.25
-Jago Hindustan Party,1,0,0.0
+Jago Hindustan Party,2,1,0.5
 Jai Hind Party,1,0,0.0
 Jai Maha Bharath Party,2,1,0.5
-Jai Prakash Janata Dal,4,0,0.0
+Jai Prakash Janata Dal,6,2,0.33
 Jai Swaraj Party,1,0,0.0
 Jai Vijaya Bharathi Party,1,0,0.0
 Jamat-E-Seratul Mustakim,2,0,0.0
-Jammu & Kashmir National Conference,2,1,0.5
-Jammu & Kashmir National PantheParty,6,3,0.5
-Jammu & Kashmir People Conference,2,0,0.0
-Jammu & Kashmir Peoples Democratic Party,1,0,0.0
+Jammu & Kashmir National Conference,3,1,0.33
+Jammu & Kashmir National Panthers Party,7,3,0.43
+Jammu & Kashmir People Conference,3,0,0.0
+Jammu & Kashmir Peoples Democratic Party,2,1,0.5
 Jammu & Kashmir Pir Panjal Awami Party,1,0,0.0
 Jan Adesh Akshuni Sena,1,0,0.0
-Jan Adhikar Party,11,1,0.09
+Jan Adhikar Party,12,1,0.08
 Jan Adhikar Party (Loktantrik),1,31,31.0
-Jan Sangharsh Virat Party,3,0,0.0
+Jan Samman party,1,0,0.0
+Jan Sangharsh Virat Party,4,0,0.0
 Jan Satya Path Party,4,0,0.0
 Jan Seva Sahayak Party,2,0,0.0
 Jan Shakti Dal,2,0,0.0
@@ -217,13 +236,18 @@ Jan Shakti Ekta Party,1,0,0.0
 Jana Jagruti Party,7,2,0.29
 Janapaalana Party (Democratic),1,0,0.0
 Janasena Party,23,6,0.26
-Janata Congress,1,0,0.0
+Janata Congress,4,0,0.0
+Janata Party,1,0,0.0
+Janhit Bharat Party,1,0,0.0
 Janhit Kisan Party,2,0,0.0
+Jansatta Dal Loktantrik,1,3,3.0
 Jansatta Party,2,0,0.0
 Janta Dal Rashtravadi,1,0,0.0
 Janta Raj Vikas Party,1,0,0.0
-Jharkhand Party,1,1,1.0
+Janvadi Party(Socialist),1,0,0.0
+Jharkhand Party,3,1,0.33
 Jharkhand Peoples Party,1,0,0.0
+Jharkhand Vikas Morcha (Prajatantrik),1,10,10.0
 Justice Party,1,0,0.0
 Kalinga Sena,4,1,0.25
 Kalyankari Jantantrik Party,1,0,0.0
@@ -237,13 +261,15 @@ Kartavya Rashtriya Party,1,1,1.0
 Kerala Congress,1,3,3.0
 Kerala Congress (M),1,0,0.0
 Khusro Sena Party,1,1,1.0
-Kisan Mazdoor Sangharsh Party,1,0,0.0
+Kisan Majdoor Berojgar Sangh,1,0,0.0
+Kisan Mazdoor Sangharsh Party,2,0,0.0
+Kisan Party of India,2,1,0.5
 Kisan Raksha Party,1,2,2.0
 Kranti Kari Jai Hind Sena,5,2,0.4
 Krupaa Party,3,0,0.0
-LJP,4,9,2.25
-Lok Dal,2,2,1.0
-Lok Gathbandhan Party,2,0,0.0
+LJP,5,10,2.0
+Lok Dal,5,2,0.4
+Lok Gathbandhan Party,4,0,0.0
 Lok Jan Sangharsh Party,1,0,0.0
 Lok Sewa Dal,1,0,0.0
 Lokjagar Party,1,2,2.0
@@ -251,7 +277,7 @@ Loksangram,1,8,8.0
 Loktantrik Janshakti Party,1,0,0.0
 Loktantrik Rashrtavadi Party,1,0,0.0
 MNF,1,0,0.0
-Madhya Pradesh Jan Vikas Party,1,0,0.0
+Madhya Pradesh Jan Vikas Party,2,0,0.0
 Maharashtra Kranti Sena,1,0,0.0
 Maharashtra Swabhimaan Paksh,2,7,3.5
 Mahasankalp Janta Party,2,0,0.0
@@ -259,24 +285,25 @@ Majdoor Kisan Union Party,1,0,0.0
 Makkal Needhi Maiam,37,5,0.14
 Makkal Sananayaga Kudiyarasu Katchi,1,0,0.0
 Makkalatchi Katchi,2,0,0.0
+Manavtawadi Samaj Party,2,0,0.0
 Manipur Democratic Peoples Front,1,0,0.0
 Manipur Peoples Party,1,1,1.0
-Manvadhikar National Party,3,0,0.0
+Manvadhikar National Party,4,0,0.0
 Marxist Communist Party of India (United),6,5,0.83
 Marxist Leninist Party of India (Red Flag),3,0,0.0
 Mazdoor Dalit Kisaan Mahila Gareeb Party (Hin,1,0,0.0
 Minorities Democratic Party,2,4,2.0
 Mithilanchal Mukti Morcha,1,3,3.0
-Moolniwasi Samaj Party,2,0,0.0
-Moulik Adhikar Party,2,0,0.0
+Moolniwasi Samaj Party,3,1,0.33
+Moulik Adhikar Party,4,0,0.0
 Mundadugu Praja Party,4,0,0.0
-NCP,28,60,2.14
+NCP,29,60,2.07
 NPF,1,0,0.0
 NPP,10,2,0.2
 Naam Indiar Party,2,0,0.0
 Naam Tamilar Katchi,35,15,0.43
-Nagrik Ekta Party,1,0,0.0
-Naitik Party,4,0,0.0
+Nagrik Ekta Party,2,2,1.0
+Naitik Party,5,0,0.0
 National Bhrashtachar Mukt Party,1,0,0.0
 National Dalitha Dhal Party,1,0,0.0
 National Development Party,1,0,0.0
@@ -289,6 +316,7 @@ National Republican Congress,2,0,0.0
 National Women,1,0,0.0
 National Womens Party,1,0,0.0
 Nationalist Democratic Progressive Party,1,0,0.0
+Nationalist Peoples Front,1,0,0.0
 Nava Praja Rajyam Party,1,0,0.0
 Nava Samaj Party,1,0,0.0
 Navarang Congress Party,5,1,0.2
@@ -303,19 +331,21 @@ Nirbhay Bharteey Party,1,0,0.0
 North East India Development Party,2,0,0.0
 Odisha Pragati Dal,1,0,0.0
 PRISM Party,1,0,0.0
-Party for Democratic Socialism,1,0,0.0
+Party for Democratic Socialism,2,0,0.0
 Pattali Makkal Katchi,6,19,3.17
-Peace Party,7,6,0.86
+Peace Party,9,10,1.11
 Peoples Democratic Party,3,0,0.0
 Peoples Party of Arunachal,2,0,0.0
-Peoples Party of India (Democratic),22,1,0.05
+Peoples Party of India (Democratic),31,4,0.13
 Peoples Party of India(secular),2,0,0.0
 People’s Union Party,1,0,0.0
+Pichhara Samaj Party United,1,0,0.0
 Pichhra Samaj Party,1,0,0.0
-Prabuddha Republican Party,4,0,0.0
+Poorvanchal Rashtriya Congress,2,0,0.0
+Prabuddha Republican Party,5,0,0.0
 Pragatisheel Lok Manch,1,0,0.0
-Pragatisheel Samaj Party,1,0,0.0
-Pragatishil Samajwadi Party (Lohia),36,33,0.92
+Pragatisheel Samaj Party,2,0,0.0
+Pragatishil Samajwadi Party (Lohia),52,37,0.71
 Prahar Janshakti Party,1,0,0.0
 Praja Satta Party,2,2,1.0
 Praja Shanthi Party,4,2,0.5
@@ -323,16 +353,17 @@ Prajaa Swaraaj Party,1,0,0.0
 Prajatantra Aadhar Party,1,0,0.0
 Pravasi Nivasi Party,1,0,0.0
 Prem Janata Dal,1,0,0.0
-Proutist Bloc India,5,1,0.2
-Proutist Sarva Samaj,5,0,0.0
+Proutist Bloc India,6,1,0.17
+Proutist Sarva Samaj,6,0,0.0
 Public Mission Party,1,0,0.0
 Puducherry Development Party,1,0,0.0
-Purvanchal Janta Party (Secular),11,0,0.0
+Purvanchal Janta Party (Secular),13,1,0.08
+Purvanchal Mahapanchayat,1,0,0.0
 Pyramid Party of India,40,2,0.05
-RJD,9,22,2.44
+RJD,12,30,2.5
 RLD,3,2,0.67
 RPI,4,1,0.25
-RPI(A),18,4,0.22
+RPI(A),21,4,0.19
 RPI(Khobragade),2,0,0.0
 Radical Democrats Party,1,0,0.0
 Raita Bharat Party,1,0,0.0
@@ -342,41 +373,52 @@ Rashtravadi Janata Party,4,1,0.25
 Rashtravadi Kranti Dal,1,0,0.0
 Rashtravadi Party (Bharat),1,0,0.0
 Rashtrawadi Shramjeevi Dal,1,0,0.0
+Rashtriya Aadarsh Member Party,1,0,0.0
 Rashtriya Aamjan Party,1,0,0.0
+Rashtriya Apna Dal,2,0,0.0
 Rashtriya Backward Party,1,0,0.0
 Rashtriya Bahujan Congress Party,1,0,0.0
 Rashtriya Bharatiya Jan Jan Party,3,3,1.0
 Rashtriya Gondvana Party,1,0,0.0
-Rashtriya Hind Sena,1,0,0.0
+Rashtriya Hind Sena,2,0,0.0
 Rashtriya Indepndent Morcha,1,0,0.0
+Rashtriya Jan Adhikar Party,1,0,0.0
+Rashtriya Janadhikar Party,1,0,0.0
+Rashtriya Janadhikar Suraksha Party,3,0,0.0
 Rashtriya Janasachetan Party,1,0,0.0
 Rashtriya Janhit Sangharsh Party,1,0,0.0
 Rashtriya Jankranti Party,1,0,0.0
 Rashtriya Janmat Party,1,0,0.0
 Rashtriya Jansabha Party,7,1,0.14
-Rashtriya Jansambhavna Party,5,0,0.0
+Rashtriya Jansambhavna Party,8,2,0.25
+Rashtriya Jansanchar Dal,1,0,0.0
+Rashtriya Jansangharsh Swaraj Party,2,2,1.0
 Rashtriya Jansena Party,1,0,0.0
 Rashtriya Janshakti Party (Secular),2,0,0.0
 Rashtriya Jansurajya Party,2,0,0.0
 Rashtriya Janta Party,1,0,0.0
 Rashtriya Janutthan Party,1,0,0.0
 Rashtriya Janwadi Party (Socialist),1,0,0.0
-Rashtriya Kranti Party,4,1,0.25
+Rashtriya Kranti Party,5,2,0.4
 Rashtriya Krantikari Samajwadi Party,2,0,0.0
 Rashtriya Lok Samta Party,2,8,4.0
 Rashtriya Lok Sarvadhikar Party,1,3,3.0
+Rashtriya Loktantrik Party,1,0,0.0
 Rashtriya Mahila Party,1,0,0.0
+Rashtriya Mangalam Party,1,0,0.0
 Rashtriya Maratha Party,5,0,0.0
 Rashtriya Mazdoor Ekta Party,2,0,0.0
 Rashtriya Naujawan Dal,1,0,0.0
 Rashtriya Nav Nirman Bharat Party,1,0,0.0
-Rashtriya Power Party,2,0,0.0
+Rashtriya Power Party,3,0,0.0
 Rashtriya Praja Congress (Secular),1,2,2.0
-Rashtriya Rashtrawadi Party,1,0,0.0
-Rashtriya Samaj Paksha,8,3,0.38
+Rashtriya Rashtrawadi Party,2,0,0.0
+Rashtriya Samaj Paksha,9,3,0.33
 Rashtriya Samajwadi Party (Secular),2,0,0.0
 Rashtriya Samanta Dal,2,0,0.0
 Rashtriya Samta Party (Secular),1,0,0.0
+Rashtriya Samta Vikas Party,1,0,0.0
+Rashtriya Sangail Party,1,0,0.0
 Rashtriya Shoshit Samaj Party,5,0,0.0
 Rashtriya Surya Prakash Party,1,0,0.0
 Rashtriya Ulama Council,4,0,0.0
@@ -391,57 +433,61 @@ Republican Party of India (Karnataka),4,6,1.5
 Republican Sena,4,0,0.0
 Revolutionary Socialist Party,4,5,1.25
 Revolutionary Socialist Party of India(Marxis,1,0,0.0
-Right to Recall Party,9,0,0.0
+Right to Recall Party,10,0,0.0
 SDF,1,0,0.0
 SDPI,13,23,1.77
-SHS,62,86,1.39
-SP,27,30,1.11
-SUCI(C),67,15,0.22
-Saaf Party,1,0,0.0
+SHS,67,88,1.31
+SP,36,59,1.64
+SUCI(C),79,16,0.2
+Saaf Party,2,0,0.0
 Sabhi Jan Party,2,5,2.5
-Sabka Dal United,1,0,0.0
+Sabka Dal United,2,0,0.0
 Sabse Achchhi Party,2,1,0.5
 Sadan Vikas Party,1,1,1.0
 Samaanya Praja Party,1,0,0.0
-Samagra Utthan Party,1,0,0.0
+Samagra Utthan Party,3,0,0.0
+Samajtantric Party of India,1,0,0.0
 Samajwadi Forward Bloc,11,0,0.0
 Samajwadi Jan Parishad,1,0,0.0
 Samajwadi Janata Dal Democratic,1,0,0.0
 Samajwadi Janata Party(Karnataka),1,0,0.0
 Samata Kranti Dal,1,0,0.0
+Samdarshi Samaj Party,2,0,0.0
+Samrat Ashok Sena Party,1,0,0.0
 Sanatan Sanskriti Raksha Dal,2,0,0.0
 Sangharsh Sena,1,0,0.0
 Sankhyanupati Bhagidari Party,1,1,1.0
 Sanman Rajkiya Paksha,1,0,0.0
 Sanyukt Vikas Party,4,0,0.0
-Sapaks Party,2,0,0.0
+Sapaks Party,7,0,0.0
 Sardar Vallabhbhai Patel Party,4,0,0.0
 Sarv Vikas Party,1,0,0.0
 Sarva Janata Party,3,0,0.0
 Sarvadharam Party,1,0,0.0
 Sarvjan Lok Shakti Party,2,0,0.0
-Sarvodaya Bharat Party,5,1,0.2
-Sathi Aur Aapka Faisala Party,1,0,0.0
+Sarvodaya Bharat Party,7,1,0.14
+Sathi Aur Aapka Faisala Party,2,0,0.0
 Satya Bahumat Party,2,0,0.0
 Secular Democratic Congress,4,0,0.0
 Shakti Sena (Bharat Desh),1,0,0.0
 Shoshit Samaj Dal,2,0,0.0
+Shri Janta Party,1,2,2.0
 Sikkim Krantikari Morcha,1,0,0.0
 Sikkim Republican Party,1,0,0.0
 Sikkim United Front,1,0,0.0
-Smart Indians Party,2,0,0.0
+Smart Indians Party,3,0,0.0
 Social Justice Party of India,3,1,0.33
 Subhashwadi Bhartiya Samajwadi Party,2,0,0.0
 Subhashwadi Bhartiya Samajwadi Party (Subhas,1,0,0.0
-Suheldev Bhartiya Samaj Party,1,0,0.0
+Suheldev Bhartiya Samaj Party,2,0,0.0
 Sunder Samaj Party,1,0,0.0
 Svatantra Bharat Satyagrah Party,2,0,0.0
 Swabhiman Party,1,1,1.0
 Swabhimani Paksha,2,18,9.0
 Swaraj Party (Loktantrik),1,0,0.0
-Swarna Bharat Party,2,0,0.0
+Swarna Bharat Party,3,0,0.0
 Swatantra Bharat Paksha,3,0,0.0
-Swatantra Jantaraj Party,5,0,0.0
+Swatantra Jantaraj Party,7,0,0.0
 TDP,25,7,0.28
 TRS,17,32,1.88
 Tamil Maanila Congress (Moopanar),1,0,0.0
@@ -468,17 +514,20 @@ Uttarakhand Kranti Dal (Democratic),4,1,0.25
 Uttarakhand Pragatisheel Party,1,0,0.0
 VANCHITSAMAJ INSAAF PARTY,3,1,0.33
 Vanchit Bahujan Aaghadi,46,43,0.93
-Vanchit Samaj Party,2,3,1.5
+Vanchit Samaj Party,3,3,1.0
 Viduthalai Chiruthaigal Katchi,6,8,1.33
-Vikassheel Insaan Party,1,4,4.0
+Vikas Insaf Party,1,0,0.0
+Vikassheel Insaan Party,2,4,2.0
+Vishva SHakti Party,1,0,0.0
 Vishwa Jana Party,2,0,0.0
+Vishwa Manav Samaj Kalyan Parishad,1,0,0.0
 Vivasayigal Makkal Munnetra Katchi,1,0,0.0
-VoteParty International,11,0,0.0
+Voters Party International,14,0,0.0
 Vyavastha Parivartan Party,4,4,1.0
 Wazib Adhikar Party,1,0,0.0
 Welfare Party Of India,2,0,0.0
 YSRCP,25,41,1.64
 Yekikrutha Sankshema Rashtriya Praja Party,1,0,0.0
 Yuva Jan Jagriti Party,6,0,0.0
-Yuva Krantikari Party,1,0,0.0
+Yuva Krantikari Party,3,0,0.0
 Yuva Sarkar,2,0,0.0
