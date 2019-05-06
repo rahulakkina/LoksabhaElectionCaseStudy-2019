@@ -182,6 +182,8 @@ logging.info("Exported %d rows to %s file" % (len(cc_df), "datasets/PENDING_CRIM
 
 edu_df = cdt.calculate_party_education_score()
 
+# Aggregating analysis for party wise candidate recuirtment based on education.
+
 edu_df.to_csv("datasets/EDUCATION_INDEX_BY_PARTY.csv", index=False, header=True)
 
 json_content = edu_df.to_json('datasets/EDUCATION_INDEX_BY_PARTY.json', orient='records')
