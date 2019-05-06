@@ -136,8 +136,12 @@ class CandidateDataTransformation(object):
         return self.candidates_data_df
 
     def calculate_party_criminal_score(self):
-        ca_df = self.candidate_analysis_df.groupby(['PARTY']).agg({'CANDIDATE_NAME' : 'count', 'NO_PENDING_CRIMINAL_CASES' : 'sum'}).reset_index().rename(columns={'CANDIDATE_NAME':'NO_CONTESTING_CANDIDATES'})
-        ca_df['PENDING_CRIMINAL_CASES_PER_CANDIDATE'] = round((ca_df['NO_PENDING_CRIMINAL_CASES'] / ca_df['NO_CONTESTING_CANDIDATES']),2)
+
+        ca_df = self.candidate_analysis_df.groupby(['PARTY']).agg(
+            {'CANDIDATE_NAME': 'count', 'NO_PENDING_CRIMINAL_CASES': 'mean'}).reset_index().rename(
+            columns={'CANDIDATE_NAME': 'NO_CONTESTING_CANDIDATES',
+                     'NO_PENDING_CRIMINAL_CASES': 'PENDING_CRIMINAL_CASES_PER_CANDIDATE'})
+        ca_df['PENDING_CRIMINAL_CASES_PER_CANDIDATE'] = round(ca_df['PENDING_CRIMINAL_CASES_PER_CANDIDATE'], 2)
         return ca_df
 
     def build_candidate_analysis_df(self, df):
