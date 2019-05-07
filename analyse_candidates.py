@@ -1,9 +1,11 @@
 import logging
-
+import requests
 import pandas as pd
-import numpy as np
+from bs4 import BeautifulSoup
 
 logging.basicConfig(format='%(asctime)s - %(message)s', level=logging.INFO)
+
+DATA_SET_URL = "http://myneta.info/LokSabha2019/index.php?action=summary&subAction=candidates_analyzed&sort=candidate#summary"
 
 '''Utility Class with few utility methods'''
 class ElectionUtils(object):
@@ -29,16 +31,45 @@ class ElectionUtils(object):
 
         return age_idx_df
 
+    def extract_candidate_data(self, url):
+
+        response = requests.get(url)
+        columns = ["CANDIDATE_NAME", "CONSTITUENCY", "PARTY", "NO_PENDING_CRIMINAL_CASES", "EDUCATION"]
+
+        if response.status_code == 200:
+            html_parser = BeautifulSoup(response.text, 'lxml')
+            table = html_parser.find_all('table')[1]
+
+            candidate_al_df = pd.DataFrame(columns=columns)
+
+            row_marker = 0
+            idx = 0
+            for row in table.find_all('tr'):
+                if row_marker > 1:
+                    columns = row.find_all('td')
+                    row_dict = {"CANDIDATE_NAME": columns[1].find("a").get_text().strip().replace(",", "").replace('"', ''),
+                                "CONSTITUENCY": columns[2].get_text().strip(),
+                                "PARTY": columns[3].get_text().strip(),
+                                "NO_PENDING_CRIMINAL_CASES": columns[4].get_text().strip(),
+                                "EDUCATION": columns[5].get_text().strip()}
+                    candidate_al_df.loc[idx] = row_dict
+                    idx += 1
+
+                row_marker += 1
+            candidate_al_df.to_csv("datasets/CANDIDATE_ANALYSED_LIST.csv", index=False, header=True)
 
 
+
+'''Transformations object'''
 class CandidateDataTransformation(object):
+
     # Initilization
     utils = ElectionUtils()
-    [candidates_data_df, education_idx_df, weights_df, candidate_analysis_df] = [utils.create_df("datasets/CANDIDATES_LIST.csv"),
-                                                          utils.create_df("datasets/EDUCATION_INDEX.csv"),
-                                                          utils.create_df("datasets/WEIGHTAGE.csv"), utils.create_df("datasets/CANDIDATE_ANALYSED_LIST.csv")]
+    utils.extract_candidate_data(DATA_SET_URL)
+    [candidates_data_df, education_idx_df, weights_df, candidate_analysis_df] = \
+        [utils.create_df("datasets/CANDIDATES_LIST.csv"), utils.create_df("datasets/EDUCATION_INDEX.csv"),
+         utils.create_df("datasets/WEIGHTAGE.csv"), utils.create_df("datasets/CANDIDATE_ANALYSED_LIST.csv")]
     age_idx_df = utils.age_earning_df(utils.create_df("datasets/AGE_INDEX.csv"), candidates_data_df)
-
 
     '''Returns points which can be earned given the age bracket (Please note older people score less through this system)'''
     def get_age_related_points(self, age):

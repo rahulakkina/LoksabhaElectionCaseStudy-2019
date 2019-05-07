@@ -52,7 +52,7 @@ All India Praja Party,3,3.0,Graduate
 All India Puratchi Thalaivar Makkal Munnettra,1,3.0,Graduate
 All Indian Rajiv Congress Party,1,2.0,12th Pass
 All Indians Party,2,2.0,12th Pass
-All Pensioner�s Party,1,1.0,10th Pass
+All Pensioner’s Party,1,1.0,10th Pass
 All Peoples Party,1,4.0,Post Graduate
 Ambedkar National Congress,17,1.0,10th Pass
 Ambedkar Samaj Party,7,2.0,12th Pass
@@ -174,7 +174,7 @@ CPI,39,2.0,12th Pass
 CPI(M),60,3.0,Graduate
 CPI(ML) Red Star,25,2.0,12th Pass
 CPI(ML)(L),14,2.0,12th Pass
-ChallengeParty,2,3.0,Graduate
+Challengers Party,2,3.0,Graduate
 Chhattisgarh Swabhiman Manch,2,3.0,Graduate
 Chhattisgarh Vikas Ganga Rashtriya Party,2,0.0,Literate
 Christian Democratic Front,1,4.0,Post Graduate
@@ -192,7 +192,7 @@ Desiya Uzhavar Uzhaipalar Kazhagam,3,1.0,10th Pass
 Dogra Swabhiman Sangathan Party,2,3.0,Graduate
 Dr. Bhimrao Ambedkar Dal,1,3.0,Graduate
 Ekta Samaj Party,1,3.0,Graduate
-EngineeParty,1,4.0,Post Graduate
+Engineers Party,1,4.0,Post Graduate
 Ezhuchi Tamilargal Munnetra Kazhagam,1,0.0,Literate
 Fauji Janta Party,1,0.0,Literate
 Forward Democratic Labour Party,1,3.0,Graduate
@@ -215,6 +215,7 @@ Hindusthan Nirman Dal,40,2.0,12th Pass
 Hindusthan Praja Paksha,1,3.0,Graduate
 Hum Bhartiya Party,8,2.0,12th Pass
 Hum Sabki Party,1,1.0,10th Pass
+INC,374,3.0,Graduate
 IND,3057,2.0,12th Pass
 INLD,10,2.0,12th Pass
 IUML,8,1.0,10th Pass
@@ -226,7 +227,6 @@ Indian Democratic Republican Front,1,3.0,Graduate
 Indian Gandhiyan Party,1,4.0,Post Graduate
 Indian Indira Congress (R),1,5.0,Doctorate
 Indian Labour Party (Ambedkar Phule),4,3.0,Graduate
-Indian National Congress,374,3.0,Graduate
 Indian National League,1,1.0,10th Pass
 Indian New Congress Party,4,1.0,10th Pass
 Indian Peoples Green Party,2,0.0,Literate
@@ -247,7 +247,7 @@ Jai Swaraj Party,1,4.0,Post Graduate
 Jai Vijaya Bharathi Party,1,1.0,10th Pass
 Jamat-E-Seratul Mustakim,2,4.0,Post Graduate
 Jammu & Kashmir National Conference,3,3.0,Graduate
-Jammu & Kashmir National PantheParty,8,2.0,12th Pass
+Jammu & Kashmir National Panthers Party,8,2.0,12th Pass
 Jammu & Kashmir People Conference,3,2.0,12th Pass
 Jammu & Kashmir Peoples Democratic Party,2,3.0,Graduate
 Jammu & Kashmir Pir Panjal Awami Party,1,3.0,Graduate
@@ -323,7 +323,7 @@ Mahasankalp Janta Party,2,1.0,10th Pass
 Mahila & Yuva Shakti Party,1,4.0,Post Graduate
 Majdoor Kisan Union Party,1,3.0,Graduate
 Makkal Needhi Maiam,37,3.0,Graduate
-Makkal Sananayaga Kudiyarasu Katchi,1,2.0,12th Pass
+"Makkal Sananayaga Kudiyarasu Katchi,",1,2.0,12th Pass
 Makkalatchi Katchi,2,2.0,12th Pass
 Manavtawadi Samaj Party,2,3.0,Graduate
 Manipur Democratic Peoples Front,1,5.0,Doctorate
@@ -385,7 +385,7 @@ Peoples Democratic Party,3,2.0,12th Pass
 Peoples Party of Arunachal,2,2.0,12th Pass
 Peoples Party of India (Democratic),46,3.0,Graduate
 Peoples Party of India(secular),2,3.0,Graduate
-People�s Union Party,1,3.0,Graduate
+People’s Union Party,1,3.0,Graduate
 Pichhara Samaj Party United,1,0.0,Literate
 Pichhra Samaj Party,1,3.0,Graduate
 Poorvanchal Rashtriya Congress,2,2.0,12th Pass
@@ -403,7 +403,8 @@ Prajatantrik Samadhan Party,1,2.0,12th Pass
 Pravasi Nivasi Party,1,3.0,Graduate
 Prem Janata Dal,1,0.0,Literate
 Prithviraj Janshakti Party,2,1.0,10th Pass
-Proutist Bloc India,9,2.0,12th Pass
+Proutist Bloc India,1,0.0,Literate
+"Proutist Bloc, India",8,2.0,12th Pass
 Proutist Sarva Samaj,6,3.0,Graduate
 Public Mission Party,1,3.0,Graduate
 Puducherry Development Party,1,4.0,Post Graduate
@@ -423,7 +424,7 @@ Rashtra Vikas Zumbes Party,1,2.0,12th Pass
 Rashtravadi Janata Party,4,2.0,12th Pass
 Rashtravadi Kranti Dal,1,1.0,10th Pass
 Rashtravadi Party (Bharat),1,1.0,10th Pass
-Rashtrawadi Party of India,1,0.0,Literate
+"Rashtrawadi Party of India,",1,0.0,Literate
 Rashtrawadi Shramjeevi Dal,1,2.0,12th Pass
 Rashtriya Aadarsh Member Party,1,0.0,Literate
 Rashtriya Aamjan Party,1,2.0,12th Pass
@@ -585,7 +586,7 @@ UTTARAKHAND PARIVARTAN PARTY,1,3.0,Graduate
 Ulzaipali Makkal Katchy,6,0.0,Literate
 United Democratic Front Secular,1,1.0,10th Pass
 United Democratic Party,1,5.0,Doctorate
-United Peoples Party Liberal,1,3.0,Graduate
+"United Peoples Party, Liberal",1,3.0,Graduate
 United States of India Party,1,4.0,Post Graduate
 Universal Brotherhood Movement,1,3.0,Graduate
 Uttama Prajaakeeya Party,26,2.0,12th Pass
@@ -602,8 +603,8 @@ Vishva SHakti Party,3,3.0,Graduate
 Vishwa Jana Party,2,4.0,Post Graduate
 Vishwa Manav Samaj Kalyan Parishad,1,0.0,Literate
 Vivasayigal Makkal Munnetra Katchi,1,0.0,Literate
-VoteParty,2,0.0,Literate
-VoteParty International,17,2.0,12th Pass
+Voters Party,2,0.0,Literate
+Voters Party International,17,2.0,12th Pass
 Vyavastha Parivartan Party,4,1.0,10th Pass
 Wazib Adhikar Party,1,4.0,Post Graduate
 Welfare Party Of India,2,4.0,Post Graduate

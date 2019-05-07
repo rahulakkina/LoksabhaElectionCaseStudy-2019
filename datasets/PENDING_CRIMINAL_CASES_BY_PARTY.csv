@@ -52,7 +52,7 @@ All India Praja Party,3,0.0
 All India Puratchi Thalaivar Makkal Munnettra,1,0.0
 All Indian Rajiv Congress Party,1,0.0
 All Indians Party,2,0.0
-All Pensioner�s Party,1,0.0
+All Pensioner’s Party,1,0.0
 All Peoples Party,1,0.0
 Ambedkar National Congress,17,0.06
 Ambedkar Samaj Party,7,0.29
@@ -174,7 +174,7 @@ CPI,39,1.18
 CPI(M),60,2.18
 CPI(ML) Red Star,25,0.32
 CPI(ML)(L),14,2.0
-ChallengeParty,2,0.0
+Challengers Party,2,0.0
 Chhattisgarh Swabhiman Manch,2,0.0
 Chhattisgarh Vikas Ganga Rashtriya Party,2,0.0
 Christian Democratic Front,1,0.0
@@ -192,7 +192,7 @@ Desiya Uzhavar Uzhaipalar Kazhagam,3,0.0
 Dogra Swabhiman Sangathan Party,2,0.0
 Dr. Bhimrao Ambedkar Dal,1,0.0
 Ekta Samaj Party,1,2.0
-EngineeParty,1,0.0
+Engineers Party,1,0.0
 Ezhuchi Tamilargal Munnetra Kazhagam,1,0.0
 Fauji Janta Party,1,0.0
 Forward Democratic Labour Party,1,0.0
@@ -215,6 +215,7 @@ Hindusthan Nirman Dal,40,0.4
 Hindusthan Praja Paksha,1,2.0
 Hum Bhartiya Party,8,0.0
 Hum Sabki Party,1,0.0
+INC,374,1.9
 IND,3057,0.27
 INLD,10,0.7
 IUML,8,0.38
@@ -226,7 +227,6 @@ Indian Democratic Republican Front,1,0.0
 Indian Gandhiyan Party,1,0.0
 Indian Indira Congress (R),1,0.0
 Indian Labour Party (Ambedkar Phule),4,0.0
-Indian National Congress,374,1.9
 Indian National League,1,0.0
 Indian New Congress Party,4,0.5
 Indian Peoples Green Party,2,0.0
@@ -247,7 +247,7 @@ Jai Swaraj Party,1,0.0
 Jai Vijaya Bharathi Party,1,0.0
 Jamat-E-Seratul Mustakim,2,0.0
 Jammu & Kashmir National Conference,3,0.33
-Jammu & Kashmir National PantheParty,8,0.38
+Jammu & Kashmir National Panthers Party,8,0.38
 Jammu & Kashmir People Conference,3,0.0
 Jammu & Kashmir Peoples Democratic Party,2,0.5
 Jammu & Kashmir Pir Panjal Awami Party,1,0.0
@@ -323,7 +323,7 @@ Mahasankalp Janta Party,2,0.0
 Mahila & Yuva Shakti Party,1,0.0
 Majdoor Kisan Union Party,1,0.0
 Makkal Needhi Maiam,37,0.14
-Makkal Sananayaga Kudiyarasu Katchi,1,0.0
+"Makkal Sananayaga Kudiyarasu Katchi,",1,0.0
 Makkalatchi Katchi,2,0.0
 Manavtawadi Samaj Party,2,0.0
 Manipur Democratic Peoples Front,1,0.0
@@ -385,7 +385,7 @@ Peoples Democratic Party,3,0.0
 Peoples Party of Arunachal,2,0.0
 Peoples Party of India (Democratic),46,0.09
 Peoples Party of India(secular),2,0.0
-People�s Union Party,1,0.0
+People’s Union Party,1,0.0
 Pichhara Samaj Party United,1,0.0
 Pichhra Samaj Party,1,0.0
 Poorvanchal Rashtriya Congress,2,0.0
@@ -403,7 +403,8 @@ Prajatantrik Samadhan Party,1,0.0
 Pravasi Nivasi Party,1,0.0
 Prem Janata Dal,1,0.0
 Prithviraj Janshakti Party,2,0.0
-Proutist Bloc India,9,0.11
+Proutist Bloc India,1,0.0
+"Proutist Bloc, India",8,0.12
 Proutist Sarva Samaj,6,0.0
 Public Mission Party,1,0.0
 Puducherry Development Party,1,0.0
@@ -423,7 +424,7 @@ Rashtra Vikas Zumbes Party,1,0.0
 Rashtravadi Janata Party,4,0.25
 Rashtravadi Kranti Dal,1,0.0
 Rashtravadi Party (Bharat),1,0.0
-Rashtrawadi Party of India,1,1.0
+"Rashtrawadi Party of India,",1,1.0
 Rashtrawadi Shramjeevi Dal,1,0.0
 Rashtriya Aadarsh Member Party,1,0.0
 Rashtriya Aamjan Party,1,0.0
@@ -585,7 +586,7 @@ UTTARAKHAND PARIVARTAN PARTY,1,0.0
 Ulzaipali Makkal Katchy,6,0.0
 United Democratic Front Secular,1,4.0
 United Democratic Party,1,0.0
-United Peoples Party Liberal,1,0.0
+"United Peoples Party, Liberal",1,0.0
 United States of India Party,1,0.0
 Universal Brotherhood Movement,1,0.0
 Uttama Prajaakeeya Party,26,0.08
@@ -602,8 +603,8 @@ Vishva SHakti Party,3,0.33
 Vishwa Jana Party,2,0.0
 Vishwa Manav Samaj Kalyan Parishad,1,0.0
 Vivasayigal Makkal Munnetra Katchi,1,0.0
-VoteParty,2,0.5
-VoteParty International,17,0.0
+Voters Party,2,0.5
+Voters Party International,17,0.0
 Vyavastha Parivartan Party,4,1.0
 Wazib Adhikar Party,1,0.0
 Welfare Party Of India,2,0.0
