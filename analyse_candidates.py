@@ -41,7 +41,7 @@ class ElectionUtils(object):
 
     def extract_candidate_data(self, url):
 
-        response = requests.get(url, proxies={"http": "rsexmwpa001.bp.com:80"})
+        response = requests.get(url)
         columns = ["CANDIDATE_NAME", "CONSTITUENCY", "STATE", "PARTY", "NO_PENDING_CRIMINAL_CASES", "EDUCATION"]
         state_constituency_df = pd.read_csv("datasets/CONSTITUENCIES.csv", header='infer')
 
@@ -185,6 +185,7 @@ class CandidateDataTransformation(object):
             columns={'CANDIDATE_NAME': 'NO_CONTESTING_CANDIDATES',
                      'NO_PENDING_CRIMINAL_CASES': 'PENDING_CRIMINAL_CASES_PER_CANDIDATE'})
         ca_df['PENDING_CRIMINAL_CASES_PER_CANDIDATE'] = round(ca_df['PENDING_CRIMINAL_CASES_PER_CANDIDATE'], 2)
+        ca_df = ca_df.sort_values('PENDING_CRIMINAL_CASES_PER_CANDIDATE', ascending=False)
         return ca_df
 
     def calculate_state_criminal_score(self):
@@ -194,6 +195,7 @@ class CandidateDataTransformation(object):
             columns={'CANDIDATE_NAME': 'NO_CONTESTING_CANDIDATES',
                      'NO_PENDING_CRIMINAL_CASES': 'PENDING_CRIMINAL_CASES_PER_CANDIDATE'})
         ca_df['PENDING_CRIMINAL_CASES_PER_CANDIDATE'] = round(ca_df['PENDING_CRIMINAL_CASES_PER_CANDIDATE'], 2)
+        ca_df = ca_df.sort_values('PENDING_CRIMINAL_CASES_PER_CANDIDATE', ascending=False)
         return ca_df
 
     def build_candidate_analysis_df(self, df):
@@ -208,17 +210,17 @@ class CandidateDataTransformation(object):
 
         for index, row in edu_df.iterrows():
             edu_df.loc[index, 'STANDARD_EDUCATION_LEVEL'] = self.get_edu_from_points(row['EDUCATION_INDEX'])
-
+        edu_df = edu_df.sort_values('STANDARD_EDUCATION_LEVEL', ascending=False)
         return edu_df
 
     def calculate_state_education_score(self):
         edu_df = self.build_candidate_analysis_df(self.candidate_analysis_df)
-        edu_df = edu_df.groupby(['STATE']).agg({'CANDIDATE_NAME': 'count', 'POINTS_FOR_EDUCATION': 'mean'}).reset_index().rename(columns={'CANDIDATE_NAME': 'NO_CONTESTING_CANDIDATES', 'POINTS_FOR_EDUCATION':'EDUCATION_INDEX'})
+        edu_df = edu_df.groupby(['STATE']).agg({'CANDIDATE_NAME': 'count', 'POINTS_FOR_EDUCATION': 'median'}).reset_index().rename(columns={'CANDIDATE_NAME': 'NO_CONTESTING_CANDIDATES', 'POINTS_FOR_EDUCATION':'EDUCATION_INDEX'})
         edu_df['EDUCATION_INDEX'] = round(edu_df['EDUCATION_INDEX'])
 
         for index, row in edu_df.iterrows():
             edu_df.loc[index, 'STANDARD_EDUCATION_LEVEL'] = self.get_edu_from_points(row['EDUCATION_INDEX'])
-
+        edu_df = edu_df.sort_values('STANDARD_EDUCATION_LEVEL', ascending=False)
         return edu_df
 
 
