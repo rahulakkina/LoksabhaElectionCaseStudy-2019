@@ -7,6 +7,14 @@ logging.basicConfig(format='%(asctime)s - %(message)s', level=logging.INFO)
 
 DATA_SET_URL = "http://myneta.info/LokSabha2019/index.php?action=summary&subAction=candidates_analyzed&sort=candidate#summary"
 
+
+def get_state_from_constituency(state_constituency_df, constituency):
+    for index, row in state_constituency_df.iterrows():
+        if row['CONSTITUENCY'] == constituency:
+            return row['STATE']
+    return 'NA'
+
+
 '''Utility Class with few utility methods'''
 class ElectionUtils(object):
     '''Extracts CSV contents to a dataframe'''
@@ -34,7 +42,8 @@ class ElectionUtils(object):
     def extract_candidate_data(self, url):
 
         response = requests.get(url)
-        columns = ["CANDIDATE_NAME", "CONSTITUENCY", "PARTY", "NO_PENDING_CRIMINAL_CASES", "EDUCATION"]
+        columns = ["CANDIDATE_NAME", "CONSTITUENCY", "STATE", "PARTY", "NO_PENDING_CRIMINAL_CASES", "EDUCATION"]
+        state_constituency_df = pd.read_csv("datasets/CONSTITUENCIES.csv", header='infer')
 
         if response.status_code == 200:
             html_parser = BeautifulSoup(response.text, 'lxml')
@@ -47,16 +56,19 @@ class ElectionUtils(object):
             for row in table.find_all('tr'):
                 if row_marker > 1:
                     columns = row.find_all('td')
-                    row_dict = {"CANDIDATE_NAME": columns[1].find("a").get_text().strip().replace(",", "").replace('"', ''),
+                    row_dict = {"CANDIDATE_NAME": columns[1].find("a").get_text().strip().replace(",", ""),
                                 "CONSTITUENCY": columns[2].get_text().strip(),
+                                "STATE": get_state_from_constituency(state_constituency_df, columns[2].get_text().strip()),
                                 "PARTY": columns[3].get_text().strip(),
                                 "NO_PENDING_CRIMINAL_CASES": columns[4].get_text().strip(),
                                 "EDUCATION": columns[5].get_text().strip()}
+
                     candidate_al_df.loc[idx] = row_dict
                     idx += 1
 
                 row_marker += 1
             candidate_al_df.to_csv("datasets/CANDIDATE_ANALYSED_LIST.csv", index=False, header=True)
+
 
 
 
@@ -175,6 +187,15 @@ class CandidateDataTransformation(object):
         ca_df['PENDING_CRIMINAL_CASES_PER_CANDIDATE'] = round(ca_df['PENDING_CRIMINAL_CASES_PER_CANDIDATE'], 2)
         return ca_df
 
+    def calculate_state_criminal_score(self):
+
+        ca_df = self.candidate_analysis_df.groupby(['STATE']).agg(
+            {'CANDIDATE_NAME': 'count', 'NO_PENDING_CRIMINAL_CASES': 'mean'}).reset_index().rename(
+            columns={'CANDIDATE_NAME': 'NO_CONTESTING_CANDIDATES',
+                     'NO_PENDING_CRIMINAL_CASES': 'PENDING_CRIMINAL_CASES_PER_CANDIDATE'})
+        ca_df['PENDING_CRIMINAL_CASES_PER_CANDIDATE'] = round(ca_df['PENDING_CRIMINAL_CASES_PER_CANDIDATE'], 2)
+        return ca_df
+
     def build_candidate_analysis_df(self, df):
         for index, row in df.iterrows():
             df.loc[index, 'POINTS_FOR_EDUCATION'] = self.get_edu_points(row['EDUCATION'])
@@ -190,7 +211,20 @@ class CandidateDataTransformation(object):
 
         return edu_df
 
+    def calculate_state_education_score(self):
+        edu_df = self.build_candidate_analysis_df(self.candidate_analysis_df)
+        edu_df = edu_df.groupby(['STATE']).agg({'CANDIDATE_NAME': 'count', 'POINTS_FOR_EDUCATION': 'mean'}).reset_index().rename(columns={'CANDIDATE_NAME': 'NO_CONTESTING_CANDIDATES', 'POINTS_FOR_EDUCATION':'EDUCATION_INDEX'})
+        edu_df['EDUCATION_INDEX'] = round(edu_df['EDUCATION_INDEX'])
+
+        for index, row in edu_df.iterrows():
+            edu_df.loc[index, 'STANDARD_EDUCATION_LEVEL'] = self.get_edu_from_points(row['EDUCATION_INDEX'])
+
+        return edu_df
+
+
+
 # Main Section
+
 cdt = CandidateDataTransformation()
 
 export_df = cdt.evaluate()
@@ -211,15 +245,36 @@ json_content = cc_df.to_json('datasets/PENDING_CRIMINAL_CASES_BY_PARTY.json', or
 
 logging.info("Exported %d rows to %s file" % (len(cc_df), "datasets/PENDING_CRIMINAL_CASES_BY_PARTY.csv"))
 
-edu_df = cdt.calculate_party_education_score()
+# Aggregating analysis for state wise candidate recuirtment based on criminal history.
+
+cc_df = cdt.calculate_state_criminal_score()
+
+cc_df.to_csv("datasets/PENDING_CRIMINAL_CASES_BY_STATE.csv", index=False, header=True)
+
+json_content = cc_df.to_json('datasets/PENDING_CRIMINAL_CASES_BY_STATE.json', orient='records')
+
+logging.info("Exported %d rows to %s file" % (len(cc_df), "datasets/PENDING_CRIMINAL_CASES_BY_STATE.csv"))
+
 
 # Aggregating analysis for party wise candidate recuirtment based on education.
+
+edu_df = cdt.calculate_party_education_score()
 
 edu_df.to_csv("datasets/EDUCATION_INDEX_BY_PARTY.csv", index=False, header=True)
 
 json_content = edu_df.to_json('datasets/EDUCATION_INDEX_BY_PARTY.json', orient='records')
 
 logging.info("Exported %d rows to %s file" % (len(edu_df), "datasets/EDUCATION_INDEX_BY_PARTY.csv"))
+
+# Aggregating analysis for state wise candidate recuirtment based on education.
+
+edu_df = cdt.calculate_state_education_score()
+
+edu_df.to_csv("datasets/EDUCATION_INDEX_BY_STATE.csv", index=False, header=True)
+
+json_content = edu_df.to_json('datasets/EDUCATION_INDEX_BY_STATE.json', orient='records')
+
+logging.info("Exported %d rows to %s file" % (len(edu_df), "datasets/EDUCATION_INDEX_BY_STATE.csv"))
 
 
 
