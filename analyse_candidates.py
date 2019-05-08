@@ -41,7 +41,7 @@ class ElectionUtils(object):
 
     def extract_candidate_data(self, url):
 
-        response = requests.get(url)
+        response = requests.get(url, proxies={"http": "rsexmwpa001.bp.com:80"})
         columns = ["CANDIDATE_NAME", "CONSTITUENCY", "STATE", "PARTY", "NO_PENDING_CRIMINAL_CASES", "EDUCATION"]
         state_constituency_df = pd.read_csv("datasets/CONSTITUENCIES.csv", header='infer')
 
