@@ -205,7 +205,7 @@ class CandidateDataTransformation(object):
 
     def calculate_party_education_score(self):
         edu_df = self.build_candidate_analysis_df(self.candidate_analysis_df)
-        edu_df = edu_df.groupby(['PARTY']).agg({'CANDIDATE_NAME': 'count', 'POINTS_FOR_EDUCATION': 'mean'}).reset_index().rename(columns={'CANDIDATE_NAME': 'NO_CONTESTING_CANDIDATES', 'POINTS_FOR_EDUCATION':'EDUCATION_INDEX'})
+        edu_df = edu_df.groupby(['PARTY']).agg({'CANDIDATE_NAME': 'count', 'POINTS_FOR_EDUCATION': 'median'}).reset_index().rename(columns={'CANDIDATE_NAME': 'NO_CONTESTING_CANDIDATES', 'POINTS_FOR_EDUCATION':'EDUCATION_INDEX'})
         edu_df['EDUCATION_INDEX'] = round(edu_df['EDUCATION_INDEX'])
 
         for index, row in edu_df.iterrows():
