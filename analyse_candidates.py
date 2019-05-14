@@ -42,26 +42,26 @@ class ElectionUtils(object):
     def extract_candidate_data(self, url):
 
         response = requests.get(url)
-        columns = ["CANDIDATE_NAME", "CONSTITUENCY", "STATE", "PARTY", "NO_PENDING_CRIMINAL_CASES", "EDUCATION"]
+        labels = ["CANDIDATE_NAME", "CONSTITUENCY", "STATE", "PARTY", "NO_PENDING_CRIMINAL_CASES", "EDUCATION"]
         state_constituency_df = pd.read_csv("datasets/CONSTITUENCIES.csv", header='infer')
 
         if response.status_code == 200:
             html_parser = BeautifulSoup(response.text, 'lxml')
             table = html_parser.find_all('table')[1]
 
-            candidate_al_df = pd.DataFrame(columns=columns)
+            candidate_al_df = pd.DataFrame(columns=labels)
 
             row_marker = 0
             idx = 0
             for row in table.find_all('tr'):
                 if row_marker > 1:
-                    columns = row.find_all('td')
-                    row_dict = {"CANDIDATE_NAME": columns[1].find("a").get_text().strip().replace(",", ""),
-                                "CONSTITUENCY": columns[2].get_text().strip(),
-                                "STATE": get_state_from_constituency(state_constituency_df, columns[2].get_text().strip()),
-                                "PARTY": columns[3].get_text().strip(),
-                                "NO_PENDING_CRIMINAL_CASES": columns[4].get_text().strip(),
-                                "EDUCATION": columns[5].get_text().strip()}
+                    td = row.find_all('td')
+                    row_dict = {labels[0]: td[1].find("a").get_text().strip().replace(",", ""),
+                                labels[1]: td[2].get_text().strip(),
+                                labels[2]: get_state_from_constituency(state_constituency_df, td[2].get_text().strip()),
+                                labels[3]: td[3].get_text().strip(),
+                                labels[4]: td[4].get_text().strip(),
+                                labels[5]: td[5].get_text().strip()}
 
                     candidate_al_df.loc[idx] = row_dict
                     idx += 1
