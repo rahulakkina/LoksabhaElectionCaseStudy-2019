@@ -78,7 +78,10 @@ class ElectionUtils(object):
         response = requests.get(CANDIDATE_DS_URL, params={"candidate_id": candidate_id}, proxies=cfg['PROXY'])
         if response.status_code == 200:
             age_ele = BeautifulSoup(response.text, 'lxml').findAll("div", {"class": "grid_2 alpha"})[2]
-            return int(age_ele.get_text().strip().split(":")[1].strip())
+            try:
+                return int(age_ele.get_text().strip().split(":")[1].strip())
+            except ValueError:
+                return 60
         else:
             return 60
 
