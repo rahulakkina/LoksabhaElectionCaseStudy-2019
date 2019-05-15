@@ -75,7 +75,12 @@ class ElectionUtils(object):
         return age_idx_df
 
     def get_age(self, candidate_id):
-
+        response = requests.get(CANDIDATE_DS_URL, params={"candidate_id": candidate_id}, proxies=cfg['PROXY'])
+        if response.status_code == 200:
+            age_ele = BeautifulSoup(response.text, 'lxml').findAll("div", {"class": "grid_2 alpha"})[2]
+            return int(age_ele.get_text().strip().split(":")[1].strip())
+        else:
+            return 60
 
     def extract_candidate_data(self, url):
 
@@ -88,8 +93,8 @@ class ElectionUtils(object):
 
         response = requests.get(url, proxies=cfg['PROXY'])
 
-        labels = ["CANDIDATE_NAME", "CONSTITUENCY", "STATE", "PARTY", "NO_PENDING_CRIMINAL_CASES", "EDUCATION",
-                  "CANDIDATE_ID"]
+        labels = ["CANDIDATE_ID", "CANDIDATE_NAME", "AGE", "CONSTITUENCY", "STATE", "PARTY",
+                  "NO_PENDING_CRIMINAL_CASES", "EDUCATION"]
 
         if response.status_code == 200:
             html_parser = BeautifulSoup(response.text, 'lxml')
@@ -101,15 +106,18 @@ class ElectionUtils(object):
                 if row_marker > 1:
                     td = row.find_all('td')
                     candidate_id = td[1].find("a").get("href").split("=")[1]
+                    age = self.get_age(candidate_id)
                     state = get_state_from_constituency(state_constituency_df, td[2].get_text().strip())
                     party = td[3].get_text().strip()
-                    row_dict = {labels[0]: td[1].find("a").get_text().strip().replace(",", ""),
-                                labels[1]: td[2].get_text().strip(),
-                                labels[2]: state,
-                                labels[3]: party,
-                                labels[4]: td[4].get_text().strip(),
-                                labels[5]: td[5].get_text().strip(),
-                                labels[6]: candidate_id}
+                    row_dict = {
+                                labels[0]: candidate_id,
+                                labels[1]: td[1].find("a").get_text().strip().replace(",", ""),
+                                labels[2]: age,
+                                labels[3]: td[2].get_text().strip(),
+                                labels[4]: state,
+                                labels[5]: party,
+                                labels[6]: td[4].get_text().strip(),
+                                labels[7]: td[5].get_text().strip()}
                     candidate_al_df.loc[idx] = row_dict
                     idx += 1
                 row_marker += 1

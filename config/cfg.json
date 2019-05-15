@@ -1,6 +1,6 @@
 {
   "DATA_SET_URL" : "http://myneta.info/LokSabha2019/index.php?action=summary&subAction=candidates_analyzed&sort=candidate#summary",
-  "CANDIDATE_DS_URL" : "http://myneta.info/LokSabha2019/candidate.php?candidate_id=%s",
+  "CANDIDATE_DS_URL" : "http://myneta.info/LokSabha2019/candidate.php",
   "INPUT_DATASOURCE" : {
     "AGE_INDEX" : "datasets/AGE_INDEX.csv",
     "CONSTITUENCIES" : "datasets/CONSTITUENCIES.csv",
@@ -18,5 +18,5 @@
     "PENDING_CRIMINAL_CASES_BY_PARTY" : {"CSV" :  "datasets/PENDING_CRIMINAL_CASES_BY_PARTY.csv", "JSON" : "datasets/PENDING_CRIMINAL_CASES_BY_PARTY.json"},
     "PENDING_CRIMINAL_CASES_BY_STATE" : {"CSV" :  "datasets/PENDING_CRIMINAL_CASES_BY_STATE.csv", "JSON" : "datasets/PENDING_CRIMINAL_CASES_BY_STATE.json"}
   },
-  "PROXY" : {"http": "rsexmwpa001.bp.com:80"}
+  "PROXY" : {"http": "xyz.com:80"}
 }
