@@ -1,0 +1,22 @@
+{
+  "DATA_SET_URL" : "http://myneta.info/LokSabha2019/index.php?action=summary&subAction=candidates_analyzed&sort=candidate#summary",
+  "CANDIDATE_DS_URL" : "http://myneta.info/LokSabha2019/candidate.php?candidate_id=%s",
+  "INPUT_DATASOURCE" : {
+    "AGE_INDEX" : "datasets/AGE_INDEX.csv",
+    "CONSTITUENCIES" : "datasets/CONSTITUENCIES.csv",
+    "CANDIDATES_LIST" : "datasets/CANDIDATES_LIST.csv",
+    "EDUCATION_INDEX" : "datasets/EDUCATION_INDEX.csv",
+    "STATES_INDEX" : "datasets/STATES_INDEX.csv",
+    "POLITICAL_PARTY_INDEX" : "datasets/POLITICAL_PARTY_INDEX.csv",
+    "WEIGHTAGE" : "datasets/WEIGHTAGE.csv"
+  },
+  "OUTPUT_DATASOURCE" : {
+    "CONTESTANT_LIST" : {"CSV" :  "datasets/CONTESTANT_LIST.csv", "JSON" : "datasets/CONTESTANT_LIST.json"},
+    "CANDIDATE_ANALYSED_LIST" : {"CSV" :  "datasets/CANDIDATE_ANALYSED_LIST.csv", "JSON" : "datasets/CANDIDATE_ANALYSED_LIST.json"},
+    "EDUCATION_INDEX_BY_PARTY" : {"CSV" :  "datasets/EDUCATION_INDEX_BY_PARTY.csv", "JSON" : "datasets/EDUCATION_INDEX_BY_PARTY.json"},
+    "EDUCATION_INDEX_BY_STATE" : {"CSV" :  "datasets/EDUCATION_INDEX_BY_STATE.csv", "JSON" : "datasets/EDUCATION_INDEX_BY_STATE.json"},
+    "PENDING_CRIMINAL_CASES_BY_PARTY" : {"CSV" :  "datasets/PENDING_CRIMINAL_CASES_BY_PARTY.csv", "JSON" : "datasets/PENDING_CRIMINAL_CASES_BY_PARTY.json"},
+    "PENDING_CRIMINAL_CASES_BY_STATE" : {"CSV" :  "datasets/PENDING_CRIMINAL_CASES_BY_STATE.csv", "JSON" : "datasets/PENDING_CRIMINAL_CASES_BY_STATE.json"}
+  },
+  "PROXY" : {"http": "rsexmwpa001.bp.com:80"}
+}

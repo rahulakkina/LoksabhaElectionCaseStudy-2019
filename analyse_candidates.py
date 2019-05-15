@@ -1,18 +1,38 @@
 import logging
+import codecs
+import json
 import requests
 import pandas as pd
 from bs4 import BeautifulSoup
 
+
+# Loads json configuration from the configuration file.
+def get_config(conf_path):
+    with codecs.open(conf_path, 'r', 'utf-8-sig') as json_data:
+        d = json.load(json_data)
+        return d
+
 logging.basicConfig(format='%(asctime)s - %(message)s', level=logging.INFO)
 
-DATA_SET_URL = "http://myneta.info/LokSabha2019/index.php?action=summary&subAction=candidates_analyzed&sort=candidate#summary"
+cfg = get_config("config/cfg.json")
+
+DATA_SET_URL = cfg['DATA_SET_URL']
+
+INPUT_DATASOURCE = cfg['INPUT_DATASOURCE']
+
+OUTPUT_DATASOURCE = cfg['OUTPUT_DATASOURCE']
 
 
 def execute(run, csv_file, json_file):
+    logging.info("Building '%s' file" % csv_file)
     df = run()
     df.to_csv(csv_file, index=False, header=True)
     df.to_json(json_file, orient='records')
-    logging.info("Exported %d rows to %s file" % (len(df), csv_file))
+    logging.info("Exported %d rows to '%s' file" % (len(df), csv_file))
+
+
+def create_df(file_name):
+    return pd.read_csv(file_name, header='infer')
 
 
 def get_state_from_constituency(state_constituency_df, constituency):
@@ -39,34 +59,32 @@ def get_party_score(party_df, party):
 '''Utility Class with few utility methods'''
 class ElectionUtils(object):
 
-    '''Extracts CSV contents to a dataframe'''
-    def create_df(self, file_name):
-        return pd.read_csv(file_name, header='infer')
-
-    '''Predicts what a person should be earning given the age bracket (Note : More accurate data in affidavits shall help predicting it better)'''
     def age_earning_df(self, age_idx_df, candidates_data_df):
         for index, row in age_idx_df.iterrows():
             cd_df = candidates_data_df[
                 (candidates_data_df['AGE'] >= row['FROM']) & (candidates_data_df['AGE'] <= row['TO'])]
-            #Earnings calculated by the formula EARNINGS = (MOVABLE ASSETS + IMMOVABLE ASSETS) - LIABLITIES
+            # Earnings calculated by the formula EARNINGS = (MOVABLE ASSETS + IMMOVABLE ASSETS) - LIABLITIES
             mean_earnings = ((cd_df['MOVABLE_ASSETS'] + cd_df['IMMOVABLE_ASSETS']) - cd_df['LIABLITIES']).mean()
-            #Calculating mean earnings
+            # Calculating mean earnings
             age_idx_df.loc[index, 'AVERAGE_EARNINGS'] = mean_earnings
-            #Taking boundaries of 50% average for earnings evaluation
+            # Taking boundaries of 50% average for earnings evaluation
             age_idx_df.loc[index, 'MINIMUM_EARNINGS'] = mean_earnings - (mean_earnings * 0.5)
             age_idx_df.loc[index, 'MAXIMUM_EARNINGS'] = mean_earnings + (mean_earnings * 0.5)
         return age_idx_df
 
     def extract_candidate_data(self, url):
 
-        party_df = pd.read_csv("datasets/POLITICAL_PARTY_INDEX.csv", header='infer')
-        state_df = pd.read_csv("datasets/STATES_INDEX.csv", header='infer')
-        state_constituency_df = pd.read_csv("datasets/CONSTITUENCIES.csv", header='infer')
+        # party_df = create_df(INPUT_DATASOURCE['POLITICAL_PARTY_INDEX'], header='infer')
+        # state_df = create_df(INPUT_DATASOURCE['STATES_INDEX'], header='infer')
 
-        response = requests.get(url)
+        logging.info("Extracting '%s' data" % OUTPUT_DATASOURCE['CANDIDATE_ANALYSED_LIST']['CSV'])
+
+        state_constituency_df = create_df(INPUT_DATASOURCE['CONSTITUENCIES'])
+
+        response = requests.get(url, proxies=cfg['PROXY'])
 
         labels = ["CANDIDATE_NAME", "CONSTITUENCY", "STATE", "PARTY", "NO_PENDING_CRIMINAL_CASES", "EDUCATION",
-                  "PARTY_SCORE", "STATE_INDEX"]
+                  "CANDIDATE_ID"]
 
         if response.status_code == 200:
             html_parser = BeautifulSoup(response.text, 'lxml')
@@ -77,6 +95,7 @@ class ElectionUtils(object):
             for row in table.find_all('tr'):
                 if row_marker > 1:
                     td = row.find_all('td')
+                    candidate_id = td[1].find("a").get("href").split("=")[1]
                     state = get_state_from_constituency(state_constituency_df, td[2].get_text().strip())
                     party = td[3].get_text().strip()
                     row_dict = {labels[0]: td[1].find("a").get_text().strip().replace(",", ""),
@@ -85,26 +104,32 @@ class ElectionUtils(object):
                                 labels[3]: party,
                                 labels[4]: td[4].get_text().strip(),
                                 labels[5]: td[5].get_text().strip(),
-                                labels[6]: get_party_score(party_df, party),
-                                labels[7]: get_state_index(state_df, state)}
+                                labels[6]: candidate_id}
                     candidate_al_df.loc[idx] = row_dict
                     idx += 1
                 row_marker += 1
-            candidate_al_df.to_csv("datasets/CANDIDATE_ANALYSED_LIST.csv", index=False, header=True)
+            candidate_al_df.to_csv(OUTPUT_DATASOURCE['CANDIDATE_ANALYSED_LIST']['CSV'], index=False, header=True)
+            logging.info("Extracted '%s' data" % OUTPUT_DATASOURCE['CANDIDATE_ANALYSED_LIST']['CSV'])
 
 
 '''Transformations object'''
+
+
 class CandidateDataTransformation(object):
 
     # Initilization
     utils = ElectionUtils()
-    utils.extract_candidate_data(DATA_SET_URL)
-    [candidates_data_df, education_idx_df, weights_df, candidate_analysis_df] = \
-        [utils.create_df("datasets/CANDIDATES_LIST.csv"), utils.create_df("datasets/EDUCATION_INDEX.csv"),
-         utils.create_df("datasets/WEIGHTAGE.csv"), utils.create_df("datasets/CANDIDATE_ANALYSED_LIST.csv")]
-    age_idx_df = utils.age_earning_df(utils.create_df("datasets/AGE_INDEX.csv"), candidates_data_df)
 
-    '''Returns points which can be earned given the age bracket (Please note older people score less through this system)'''
+    utils.extract_candidate_data(DATA_SET_URL)
+
+    [candidates_data_df, education_idx_df, weights_df, candidate_analysis_df] = \
+        [create_df(INPUT_DATASOURCE["CANDIDATES_LIST"]), create_df(INPUT_DATASOURCE["EDUCATION_INDEX"]),
+         create_df(INPUT_DATASOURCE["WEIGHTAGE"]), create_df(OUTPUT_DATASOURCE["CANDIDATE_ANALYSED_LIST"]['CSV'])]
+
+    age_idx_df = utils.age_earning_df(create_df(INPUT_DATASOURCE["AGE_INDEX"]), candidates_data_df)
+
+    '''Returns points which can be earned given the age bracket 
+    (Please note older people score less through this system)'''
     def get_age_related_points(self, age):
         for index, row in self.age_idx_df.iterrows():
             if row['FROM'] <= age and row['TO'] >= age:
@@ -160,9 +185,9 @@ class CandidateDataTransformation(object):
     def get_weight(self, key):
         return self.weights_df[self.weights_df['KEY'] == key]['WEIGHT'].values[0]
 
-    '''Evaluates all contestants based on the ratings system and returns a dataframe which is later exported into a CSV for report'''
+    '''Evaluates all contestants based on the ratings system and returns 
+        a data-frame which is later exported into a CSV for report'''
     def evaluate(self):
-
         for index, row in self.candidates_data_df.iterrows():
             [age_related_points, criminal_case_points, edu_points, tax_compliance_points, govt_due_points,
              local_residency_points, earnings_points] = \
@@ -224,7 +249,9 @@ class CandidateDataTransformation(object):
 
     def calculate_party_education_score(self):
         edu_df = self.build_candidate_analysis_df(self.candidate_analysis_df)
-        edu_df = edu_df.groupby(['PARTY']).agg({'CANDIDATE_NAME': 'count', 'POINTS_FOR_EDUCATION': 'median'}).reset_index().rename(columns={'CANDIDATE_NAME': 'NO_CONTESTING_CANDIDATES', 'POINTS_FOR_EDUCATION':'EDUCATION_INDEX'})
+        edu_df = edu_df.groupby(['PARTY']).agg({'CANDIDATE_NAME': 'count', 'POINTS_FOR_EDUCATION': 'median'})\
+            .reset_index().rename(columns={'CANDIDATE_NAME': 'NO_CONTESTING_CANDIDATES',
+                                           'POINTS_FOR_EDUCATION': 'EDUCATION_INDEX'})
         edu_df['EDUCATION_INDEX'] = round(edu_df['EDUCATION_INDEX'])
 
         for index, row in edu_df.iterrows():
@@ -234,7 +261,9 @@ class CandidateDataTransformation(object):
 
     def calculate_state_education_score(self):
         edu_df = self.build_candidate_analysis_df(self.candidate_analysis_df)
-        edu_df = edu_df.groupby(['STATE']).agg({'CANDIDATE_NAME': 'count', 'POINTS_FOR_EDUCATION': 'median'}).reset_index().rename(columns={'CANDIDATE_NAME': 'NO_CONTESTING_CANDIDATES', 'POINTS_FOR_EDUCATION':'EDUCATION_INDEX'})
+        edu_df = edu_df.groupby(['STATE']).agg({'CANDIDATE_NAME': 'count', 'POINTS_FOR_EDUCATION': 'median'})\
+            .reset_index().rename(columns={'CANDIDATE_NAME': 'NO_CONTESTING_CANDIDATES',
+                                           'POINTS_FOR_EDUCATION': 'EDUCATION_INDEX'})
         edu_df['EDUCATION_INDEX'] = round(edu_df['EDUCATION_INDEX'])
 
         for index, row in edu_df.iterrows():
@@ -247,23 +276,23 @@ class CandidateDataTransformation(object):
 
 cdt = CandidateDataTransformation()
 
-execute(cdt.evaluate, "datasets/CONTESTANT_LIST.csv", "datasets/CONTESTANT_LIST.json")
+execute(cdt.evaluate, OUTPUT_DATASOURCE["CONTESTANT_LIST"]["CSV"], OUTPUT_DATASOURCE["CONTESTANT_LIST"]["JSON"])
 
 # Aggregating analysis for party wise candidate recuirtment based on criminal history.
-execute(cdt.calculate_party_criminal_score, "datasets/PENDING_CRIMINAL_CASES_BY_PARTY.csv",
-        "datasets/PENDING_CRIMINAL_CASES_BY_PARTY.json")
+execute(cdt.calculate_party_criminal_score, OUTPUT_DATASOURCE["PENDING_CRIMINAL_CASES_BY_PARTY"]["CSV"],
+        OUTPUT_DATASOURCE["PENDING_CRIMINAL_CASES_BY_PARTY"]["JSON"])
 
 # Aggregating analysis for state wise candidate recuirtment based on criminal history.
-execute(cdt.calculate_state_criminal_score, "datasets/PENDING_CRIMINAL_CASES_BY_STATE.csv",
-        "datasets/PENDING_CRIMINAL_CASES_BY_STATE.json")
+execute(cdt.calculate_state_criminal_score, OUTPUT_DATASOURCE["PENDING_CRIMINAL_CASES_BY_STATE"]["CSV"],
+        OUTPUT_DATASOURCE["PENDING_CRIMINAL_CASES_BY_STATE"]["JSON"])
 
 # Aggregating analysis for party wise candidate recuirtment based on education.
-execute(cdt.calculate_party_education_score, "datasets/EDUCATION_INDEX_BY_PARTY.csv",
-        "datasets/EDUCATION_INDEX_BY_PARTY.json")
+execute(cdt.calculate_party_education_score, OUTPUT_DATASOURCE["EDUCATION_INDEX_BY_PARTY"]["CSV"],
+        OUTPUT_DATASOURCE["EDUCATION_INDEX_BY_PARTY"]["JSON"])
 
 # Aggregating analysis for state wise candidate recuirtment based on education.
-execute(cdt.calculate_state_education_score, "datasets/EDUCATION_INDEX_BY_STATE.csv",
-        "datasets/EDUCATION_INDEX_BY_STATE.json")
+execute(cdt.calculate_state_education_score, OUTPUT_DATASOURCE["EDUCATION_INDEX_BY_STATE"]["CSV"],
+        OUTPUT_DATASOURCE["EDUCATION_INDEX_BY_STATE"]["JSON"])
 
 
 
