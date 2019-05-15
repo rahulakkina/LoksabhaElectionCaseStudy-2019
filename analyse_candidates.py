@@ -16,11 +16,13 @@ logging.basicConfig(format='%(asctime)s - %(message)s', level=logging.INFO)
 
 cfg = get_config("config/cfg.json")
 
-DATA_SET_URL = cfg['DATA_SET_URL']
+DATA_SET_URL = cfg["DATA_SET_URL"]
 
-INPUT_DATASOURCE = cfg['INPUT_DATASOURCE']
+CANDIDATE_DS_URL = cfg["CANDIDATE_DS_URL"]
 
-OUTPUT_DATASOURCE = cfg['OUTPUT_DATASOURCE']
+INPUT_DATASOURCE = cfg["INPUT_DATASOURCE"]
+
+OUTPUT_DATASOURCE = cfg["OUTPUT_DATASOURCE"]
 
 
 def execute(run, csv_file, json_file):
@@ -71,6 +73,9 @@ class ElectionUtils(object):
             age_idx_df.loc[index, 'MINIMUM_EARNINGS'] = mean_earnings - (mean_earnings * 0.5)
             age_idx_df.loc[index, 'MAXIMUM_EARNINGS'] = mean_earnings + (mean_earnings * 0.5)
         return age_idx_df
+
+    def get_age(self, candidate_id):
+
 
     def extract_candidate_data(self, url):
 
