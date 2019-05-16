@@ -12,6 +12,7 @@ def get_config(conf_path):
         d = json.load(json_data)
         return d
 
+
 logging.basicConfig(format='%(asctime)s - %(message)s', level=logging.INFO)
 
 cfg = get_config("config/cfg.json")
@@ -37,28 +38,16 @@ def create_df(file_name):
     return pd.read_csv(file_name, header='infer')
 
 
-def get_state_from_constituency(state_constituency_df, constituency):
-    for index, row in state_constituency_df.iterrows():
-        if row['CONSTITUENCY'] == constituency:
-            return row['STATE']
-    return 'NA'
-
-
-def get_state_index(state_df, state):
-    for index, row in state_df.iterrows():
-        if row['STATE'] == state:
-            return row['INDEX']
-    return 0
-
-
-def get_party_score(party_df, party):
-    for index, row in party_df.iterrows():
-        if row['PARTY'] == party:
-            return row['POINTS']
-    return 1
+def get_value(df, t):
+    for index, row in df.iterrows():
+        if row[t[1]] == t[0]:
+            return row[t[2]]
+    return t[3]
 
 
 '''Utility Class with few utility methods'''
+
+
 class ElectionUtils(object):
 
     def age_earning_df(self, age_idx_df, candidates_data_df):
@@ -87,8 +76,8 @@ class ElectionUtils(object):
 
     def extract_candidate_data(self, url):
 
-        # party_df = create_df(INPUT_DATASOURCE['POLITICAL_PARTY_INDEX'], header='infer')
-        # state_df = create_df(INPUT_DATASOURCE['STATES_INDEX'], header='infer')
+        party_df = create_df(INPUT_DATASOURCE['POLITICAL_PARTY_INDEX'], header='infer')
+        state_df = create_df(INPUT_DATASOURCE['STATES_INDEX'], header='infer')
 
         logging.info("Extracting '%s' data" % OUTPUT_DATASOURCE['CANDIDATE_ANALYSED_LIST']['CSV'])
 
