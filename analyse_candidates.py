@@ -76,17 +76,16 @@ class ElectionUtils(object):
 
     def extract_candidate_data(self, url):
 
-        party_df = create_df(INPUT_DATASOURCE['POLITICAL_PARTY_INDEX'], header='infer')
-        state_df = create_df(INPUT_DATASOURCE['STATES_INDEX'], header='infer')
+        party_df = create_df(INPUT_DATASOURCE['POLITICAL_PARTY_INDEX'])
+        state_df = create_df(INPUT_DATASOURCE['STATES_INDEX'])
+        state_constituency_df = create_df(INPUT_DATASOURCE['CONSTITUENCIES'])
 
         logging.info("Extracting '%s' data" % OUTPUT_DATASOURCE['CANDIDATE_ANALYSED_LIST']['CSV'])
-
-        state_constituency_df = create_df(INPUT_DATASOURCE['CONSTITUENCIES'])
 
         response = requests.get(url, proxies=cfg['PROXY'])
 
         labels = ["CANDIDATE_ID", "CANDIDATE_NAME", "AGE", "CONSTITUENCY", "STATE", "PARTY",
-                  "NO_PENDING_CRIMINAL_CASES", "EDUCATION"]
+                  "NO_PENDING_CRIMINAL_CASES", "EDUCATION", "STATE_LITERACY_RATE", "STATE_SEAT_SHARE", "PARTY_POINTS"]
 
         if response.status_code == 200:
             html_parser = BeautifulSoup(response.text, 'lxml')
@@ -97,18 +96,27 @@ class ElectionUtils(object):
             for row in table.find_all('tr'):
                 if row_marker > 1:
                     td = row.find_all('td')
+
                     candidate_id = td[1].find("a").get("href").split("=")[1]
-                    age = self.get_age(candidate_id)
+                    state = get_value(state_constituency_df, [td[2].get_text().strip(), 'CONSTITUENCY', 'STATE', 'NA'])
                     party = td[3].get_text().strip()
-                    row_dict = {
-                                labels[0]: candidate_id,
+                    age = self.get_age(candidate_id)
+                    state_literacy_rate = get_value(state_df, [state, 'STATE', 'LITERACY_RATE', 0.0])
+                    state_seat_share = get_value(state_df, [state, 'STATE', 'SEAT_SHARE', 0.0])
+                    party_points = get_value(party_df, [party, 'PARTY', 'POINTS', 1])
+
+                    row_dict = {labels[0]: candidate_id,
                                 labels[1]: td[1].find("a").get_text().strip().replace(",", ""),
                                 labels[2]: age,
                                 labels[3]: td[2].get_text().strip(),
                                 labels[4]: state,
                                 labels[5]: party,
                                 labels[6]: td[4].get_text().strip(),
-                                labels[7]: td[5].get_text().strip()}
+                                labels[7]: td[5].get_text().strip(),
+                                labels[8]: round(state_literacy_rate, 4),
+                                labels[9]: round(state_seat_share, 4),
+                                labels[10]: party_points}
+                    logging.info(row_dict)
                     candidate_al_df.loc[idx] = row_dict
                     idx += 1
                 row_marker += 1
