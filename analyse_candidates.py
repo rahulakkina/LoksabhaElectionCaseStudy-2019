@@ -99,7 +99,6 @@ class ElectionUtils(object):
                     td = row.find_all('td')
                     candidate_id = td[1].find("a").get("href").split("=")[1]
                     age = self.get_age(candidate_id)
-                    state = get_state_from_constituency(state_constituency_df, td[2].get_text().strip())
                     party = td[3].get_text().strip()
                     row_dict = {
                                 labels[0]: candidate_id,
