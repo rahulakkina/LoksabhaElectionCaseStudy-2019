@@ -82,7 +82,7 @@ class ElectionUtils(object):
 
         logging.info("Extracting '%s' data" % OUTPUT_DATASOURCE['CANDIDATE_ANALYSED_LIST']['CSV'])
 
-        response = requests.get(url, proxies=cfg['PROXY'])
+        response = requests.get(url, params=cfg['DATA_SET_PARAMS'], proxies=cfg['PROXY'])
 
         labels = ["CANDIDATE_ID", "CANDIDATE_NAME", "AGE", "CONSTITUENCY", "STATE", "PARTY",
                   "NO_PENDING_CRIMINAL_CASES", "EDUCATION", "STATE_LITERACY_RATE", "STATE_SEAT_SHARE", "PARTY_POINTS"]
@@ -116,7 +116,6 @@ class ElectionUtils(object):
                                 labels[8]: round(state_literacy_rate, 4),
                                 labels[9]: round(state_seat_share, 4),
                                 labels[10]: party_points}
-                    logging.info(row_dict)
                     candidate_al_df.loc[idx] = row_dict
                     idx += 1
                 row_marker += 1

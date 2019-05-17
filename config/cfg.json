@@ -1,6 +1,9 @@
 {
-  "DATA_SET_URL" : "http://myneta.info/LokSabha2019/index.php?action=summary&subAction=candidates_analyzed&sort=candidate#summary",
+  "DATA_SET_URL" : "http://myneta.info/LokSabha2019/index.php",
+  "DATA_SET_PARAMS" : {"action": "summary", "subAction": "candidates_analyzed", "sort": "default#summary"},
   "CANDIDATE_DS_URL" : "http://myneta.info/LokSabha2019/candidate.php",
+  "NEWS_URL" : "https://news.google.com/rss/search",
+  "NEWS_PARAMS" : ["q", "hl", "gl", "ceid"],
   "INPUT_DATASOURCE" : {
     "AGE_INDEX" : "datasets/AGE_INDEX.csv",
     "CONSTITUENCIES" : "datasets/CONSTITUENCIES.csv",
@@ -18,5 +21,5 @@
     "PENDING_CRIMINAL_CASES_BY_PARTY" : {"CSV" :  "datasets/PENDING_CRIMINAL_CASES_BY_PARTY.csv", "JSON" : "datasets/PENDING_CRIMINAL_CASES_BY_PARTY.json"},
     "PENDING_CRIMINAL_CASES_BY_STATE" : {"CSV" :  "datasets/PENDING_CRIMINAL_CASES_BY_STATE.csv", "JSON" : "datasets/PENDING_CRIMINAL_CASES_BY_STATE.json"}
   },
-  "PROXY" : {"http": "xyz.com:80"}
+  "PROXY" : {"http": "xyzproxy.com:80"}
 }
