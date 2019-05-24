@@ -3,6 +3,7 @@ import codecs
 import json
 import requests
 import pandas as pd
+import feedparser
 from bs4 import BeautifulSoup
 
 
@@ -136,16 +137,26 @@ class ElectionUtils(object):
                 logging.error("Candidate : %s - Value is Unknown defaulting it to 0" % candidate_id)
         return val
 
-    def extract_data(self):
+    def get_media_popularity_score(self, name):
 
-        logging.info("Extracting '%s' data" % OUTPUT_DATA_SRC['CANDIDATE_ANALYSED_LIST']['CSV'])
+        response = requests.get(cfg["NEWS_URL"], params={"q": '"%s"' % name,
+                                                         "hl": "en-SG", "gl": "SG", "ceid": "SG:en"},
+                                proxies=cfg['PROXY'])
+
+        if response.status_code == 200:
+            d = feedparser.parse(response.text)
+            return float(round(len(d['entries']) / 100.0, 2))
+        else:
+            return 0.00
+
+    def build_candidate_analysis_df(self):
+
+        logging.info("Building '%s' data" % OUTPUT_DATA_SRC['CANDIDATE_ANALYSED_LIST']['CSV'])
 
         cal_df = create_df(OUTPUT_DATA_SRC["CANDIDATE_ANALYSED_LIST"]['CSV'])
-        age_idx_df = self.get_age_df()
 
         for index, row in cal_df.iterrows():
-            cal_df.loc[index, "AGE_GROUP_IDX"] = self.get_age_related_points(row["AGE"], age_idx_df)
-            cal_df.loc[index, "EDUCATION_GROUP_IDX"] = self.get_edu_points(row["EDUCATION"])
+            cal_df.loc[index, "MEDIA_POPULARITY_INDEX"] = self.get_media_popularity_score(row['CANDIDATE_NAME'])
 
         cal_df.to_csv(OUTPUT_DATA_SRC['CANDIDATE_ANALYSED_LIST']['CSV'], index=False, header=True)
 
@@ -220,6 +231,8 @@ class CandidateDataTransformation(object):
     utils = ElectionUtils()
 
     utils.extract_candidate_data(DATA_SET_URL)
+
+    utils.build_candidate_analysis_df()
 
     candidate_analysis_df = create_df(OUTPUT_DATA_SRC["CANDIDATE_ANALYSED_LIST"]['CSV'])
 
