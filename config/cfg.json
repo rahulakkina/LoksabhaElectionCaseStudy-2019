@@ -1,10 +1,13 @@
 {
   "DATA_SET_URL" : "http://myneta.info/LokSabha2019/index.php",
   "DATA_SET_PARAMS" : {"action": "summary", "subAction": "candidates_analyzed", "sort": "default#summary"},
+  "WOMEN_DATA_SET_PARAMS" : {"action": "summary", "subAction": "women_candidate", "sort": "default#summary"},
+  "WINNER_DATA_SET_PARAMS" : {"action": "summary", "subAction": "winner_analyzed", "sort": "default#summary"},
+  "RECONTEST_DATA_SET_PARAMS" : {"action": "recontestAssetsComparison"},
   "CANDIDATE_DS_URL" : "http://myneta.info/LokSabha2019/candidate.php",
   "NEWS_URL" : "https://news.google.com/rss/search",
   "NEWS_PARAMS" : ["q", "hl", "gl", "ceid"],
-  "INPUT_DATASOURCE" : {
+  "INPUT_DATA_SRC" : {
     "AGE_INDEX" : "datasets/AGE_INDEX.csv",
     "CONSTITUENCIES" : "datasets/CONSTITUENCIES.csv",
     "CANDIDATES_LIST" : "datasets/CANDIDATES_LIST.csv",
@@ -13,7 +16,7 @@
     "POLITICAL_PARTY_INDEX" : "datasets/POLITICAL_PARTY_INDEX.csv",
     "WEIGHTAGE" : "datasets/WEIGHTAGE.csv"
   },
-  "OUTPUT_DATASOURCE" : {
+  "OUTPUT_DATA_SRC" : {
     "CONTESTANT_LIST" : {"CSV" :  "datasets/CONTESTANT_LIST.csv", "JSON" : "datasets/CONTESTANT_LIST.json"},
     "CANDIDATE_ANALYSED_LIST" : {"CSV" :  "datasets/CANDIDATE_ANALYSED_LIST.csv", "JSON" : "datasets/CANDIDATE_ANALYSED_LIST.json"},
     "EDUCATION_INDEX_BY_PARTY" : {"CSV" :  "datasets/EDUCATION_INDEX_BY_PARTY.csv", "JSON" : "datasets/EDUCATION_INDEX_BY_PARTY.json"},
@@ -21,5 +24,5 @@
     "PENDING_CRIMINAL_CASES_BY_PARTY" : {"CSV" :  "datasets/PENDING_CRIMINAL_CASES_BY_PARTY.csv", "JSON" : "datasets/PENDING_CRIMINAL_CASES_BY_PARTY.json"},
     "PENDING_CRIMINAL_CASES_BY_STATE" : {"CSV" :  "datasets/PENDING_CRIMINAL_CASES_BY_STATE.csv", "JSON" : "datasets/PENDING_CRIMINAL_CASES_BY_STATE.json"}
   },
-  "PROXY" : {"http": "xyzproxy.com:80"}
+  "PROXY" : {"http": "proxy.google.com:80"}
 }

@@ -4,6 +4,7 @@ import json
 import requests
 import pandas as pd
 import feedparser
+from sortedcontainers import SortedSet
 from bs4 import BeautifulSoup
 
 
@@ -141,7 +142,7 @@ class ElectionUtils(object):
 
         response = requests.get(cfg["NEWS_URL"], params={"q": '"%s"' % name,
                                                          "hl": "en-SG", "gl": "SG", "ceid": "SG:en"},
-                                proxies=cfg['PROXY'])
+                                 proxies=cfg['PROXY'])
 
         if response.status_code == 200:
             d = feedparser.parse(response.text)
@@ -160,7 +161,41 @@ class ElectionUtils(object):
 
         cal_df.to_csv(OUTPUT_DATA_SRC['CANDIDATE_ANALYSED_LIST']['CSV'], index=False, header=True)
 
+    def get_recontest_candidates(self, url, params):
+        re_contest_candidates = SortedSet()
+        response = requests.get(url, params=params, proxies=cfg['PROXY'])
+        if response.status_code == 200:
+            html_parser = BeautifulSoup(response.text, 'lxml')
+            table = html_parser.find_all('table')[2]
+            row_marker = 0
+            for row in table.find_all('tr'):
+                if row_marker > 2:
+                    td = row.find_all('td')
+                    if len(td) > 1:
+                        href = td[1].find("a").get("href").split("&")[2]
+                        re_contest_candidates.add(href.split("=")[1])
+                row_marker += 1
+        return re_contest_candidates
+
+    def get_candidates(self, url, params):
+        wm_candidates = SortedSet()
+        response = requests.get(url, params=params, proxies=cfg['PROXY'])
+        if response.status_code == 200:
+            html_parser = BeautifulSoup(response.text, 'lxml')
+            table = html_parser.find_all('table')[2]
+            row_marker = 0
+            for row in table.find_all('tr'):
+                if row_marker > 1:
+                    td = row.find_all('td')
+                    wm_candidates.add(td[1].find("a").get("href").split("=")[1])
+                row_marker += 1
+        return wm_candidates
+
     def extract_candidate_data(self, url):
+
+        wm_candidates = self.get_candidates(url, cfg['WOMEN_DATA_SET_PARAMS'])
+        winners = self.get_candidates(url, cfg['WINNER_DATA_SET_PARAMS'])
+        re_contestants = self.get_recontest_candidates(url, cfg['RECONTEST_DATA_SET_PARAMS'])
 
         party_df = create_df(INPUT_DATA_SRC['POLITICAL_PARTY_INDEX'])
         state_df = create_df(INPUT_DATA_SRC['STATES_INDEX'])
@@ -174,11 +209,11 @@ class ElectionUtils(object):
         labels = ["CANDIDATE_ID", "CANDIDATE_NAME", "AGE", "CONSTITUENCY", "STATE", "PARTY",
                   "NO_PENDING_CRIMINAL_CASES", "EDUCATION", "EARNINGS", "STATE_LITERACY_RATE",
                   "STATE_SEAT_SHARE", "PARTY_GRP_IDX", "AGE_GROUP_IDX", "EDUCATION_GROUP_IDX",
-                  "DELTA_STATE_VOTER_TURNOUT", "NO_OF_PHASES"]
+                  "DELTA_STATE_VOTER_TURNOUT", "NO_OF_PHASES", "RE_CONTEST", "SEX", "WINNER"]
 
         if response.status_code == 200:
             html_parser = BeautifulSoup(response.text, 'lxml')
-            table = html_parser.find_all('table')[1]
+            table = html_parser.find_all('table')[2]
             candidate_al_df = pd.DataFrame(columns=labels)
             row_marker = 0
             idx = 0
@@ -186,6 +221,9 @@ class ElectionUtils(object):
                 if row_marker > 1:
                     td = row.find_all('td')
                     candidate_id = td[1].find("a").get("href").split("=")[1]
+                    is_re_contesting = (1 if candidate_id in re_contestants else 0)
+                    sex = ("F" if candidate_id in wm_candidates else "M")
+                    did_candidate_win = (1 if candidate_id in winners else 0)
                     state = get_value(state_constituency_df, [td[2].get_text().strip(), 'CONSTITUENCY', 'STATE', 'NA'])
                     party = td[3].get_text().strip()
                     [age, assets, liabilities] = self.get_candidate_data(candidate_id)
@@ -214,7 +252,10 @@ class ElectionUtils(object):
                                 labels[12]: int(age_related_idx),
                                 labels[13]: int(edu_idx),
                                 labels[14]: delta_state_voter_turnout,
-                                labels[15]: int(state_no_phases)}
+                                labels[15]: int(state_no_phases),
+                                labels[16]: is_re_contesting,
+                                labels[17]: sex,
+                                labels[18]: did_candidate_win}
                     candidate_al_df.loc[idx] = row_dict
                     idx += 1
                 row_marker += 1
@@ -232,7 +273,7 @@ class CandidateDataTransformation(object):
 
     utils.extract_candidate_data(DATA_SET_URL)
 
-    utils.build_candidate_analysis_df()
+    # utils.build_candidate_analysis_df()
 
     candidate_analysis_df = create_df(OUTPUT_DATA_SRC["CANDIDATE_ANALYSED_LIST"]['CSV'])
 
