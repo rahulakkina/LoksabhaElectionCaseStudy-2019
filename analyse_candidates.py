@@ -142,13 +142,13 @@ class ElectionUtils(object):
 
         response = requests.get(cfg["NEWS_URL"], params={"q": '"%s"' % name,
                                                          "hl": "en-SG", "gl": "SG", "ceid": "SG:en"},
-                                 proxies=cfg['PROXY'])
+                                proxies=cfg['PROXY'])
 
         if response.status_code == 200:
             d = feedparser.parse(response.text)
-            return float(round(len(d['entries']) / 100.0, 2))
+            return round(len(d['entries']) * 0.01, 3)
         else:
-            return 0.00
+            return 0.000
 
     def build_candidate_analysis_df(self):
 
@@ -157,7 +157,9 @@ class ElectionUtils(object):
         cal_df = create_df(OUTPUT_DATA_SRC["CANDIDATE_ANALYSED_LIST"]['CSV'])
 
         for index, row in cal_df.iterrows():
-            cal_df.loc[index, "MEDIA_POPULARITY_INDEX"] = self.get_media_popularity_score(row['CANDIDATE_NAME'])
+            name = row['CANDIDATE_NAME']
+            score = self.get_media_popularity_score(name)
+            cal_df.loc[index, "MEDIA_POPULARITY_INDEX"] = score
 
         cal_df.to_csv(OUTPUT_DATA_SRC['CANDIDATE_ANALYSED_LIST']['CSV'], index=False, header=True)
 
@@ -271,9 +273,9 @@ class CandidateDataTransformation(object):
     # Initilization
     utils = ElectionUtils()
 
-    utils.extract_candidate_data(DATA_SET_URL)
+    # utils.extract_candidate_data(DATA_SET_URL)
 
-    # utils.build_candidate_analysis_df()
+    utils.build_candidate_analysis_df()
 
     candidate_analysis_df = create_df(OUTPUT_DATA_SRC["CANDIDATE_ANALYSED_LIST"]['CSV'])
 
