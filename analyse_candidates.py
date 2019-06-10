@@ -4,6 +4,7 @@ import json
 import requests
 import pandas as pd
 import feedparser
+from functools import lru_cache
 from sortedcontainers import SortedSet
 from bs4 import BeautifulSoup
 
@@ -51,6 +52,60 @@ OUTPUT_DATA_SRC = cfg["OUTPUT_DATA_SRC"]
 
 class ElectionUtils(object):
 
+    def get_constituency_results(self, constituency_code, constituency_name, state_code, state_name):
+
+        url = cfg["ECI_RESULTS_URL"] % (state_code, constituency_code)
+        response = requests.get(url, params={"ac": constituency_code}, proxies=cfg['PROXY'])
+        result_set = []
+
+        if response.status_code == 200:
+            html_parser = BeautifulSoup(response.text, 'lxml')
+            table = html_parser.find_all('table')[10]
+
+            if table is not None:
+
+                row_marker = 0
+                tr_s = table.find_all('tr')
+                l_tr_s = len(tr_s)
+
+                for tr in tr_s:
+                    if row_marker > 2 and row_marker < (l_tr_s - 2):
+                        td = tr.find_all('td')
+                        row = {
+                            "CANDIDATE_NAME": td[1].get_text().replace(",", "").strip().upper(),
+                            "PARTY": td[2].get_text().strip(),
+                            "CONSTITUENCY_NAME": constituency_name,
+                            "CONSTITUENCY_CODE": constituency_code,
+                            "STATE_NAME": state_name,
+                            "STATE_CODE": state_code,
+                            "EVM_VOTES": int(td[3].get_text().strip()),
+                            "POSTAL VOTES": int(td[5].get_text().strip()) - int(td[3].get_text().strip()),
+                            "TOTAL_VOTES": int(td[5].get_text().strip()),
+                            "VOTING_PERCENTAGE": float(td[6].get_text().strip())
+                        }
+                        result_set.append(row)
+                    row_marker += 1
+        logging.debug("Code : %s%s, Constituency : %s, State : %s, Size : %d"
+                      % (state_code, constituency_code, constituency_name, state_name, len(result_set)))
+        return result_set
+
+    def extract_voting_results(self):
+
+        states_df = create_df(cfg["INPUT_DATA_SRC"]["STATES_INDEX"])
+        constituency_df = create_df(cfg["INPUT_DATA_SRC"]["CONSTITUENCIES"])
+        result_lst = []
+
+        for index, row in constituency_df.iterrows():
+            state_code = get_value(states_df, [row['STATE'], 'STATE', 'STATE_CODE'])
+            result_lst.extend(
+                self.get_constituency_results(row["POSTFIX_CODE"], row["CONSTITUENCY"], state_code, row['STATE']))
+
+        voting_results_df = pd.DataFrame.from_records(result_lst)
+        voting_results_df.to_csv(cfg["OUTPUT_DATA_SRC"]["VOTING_RESULTS"]["CSV"], index=False, header=True)
+        voting_results_df.to_json(cfg["OUTPUT_DATA_SRC"]["VOTING_RESULTS"]["JSON"], orient='records')
+
+        return voting_results_df
+
     def get_earnings_points(self, age, earnings, age_idx_df):
         for index, row in age_idx_df.iterrows():
             if row['FROM'] <= age and row['TO'] >= age:
@@ -59,6 +114,7 @@ class ElectionUtils(object):
                 else:
                     return 1
 
+    @lru_cache(maxsize=32)
     def get_criminal_case_points(self, pending_cases, convicted_cases):
         # If convicted we get a negative score twice that of offenses one has committed
         if convicted_cases > 0:
@@ -80,9 +136,11 @@ class ElectionUtils(object):
                 return row['POINTS']
         return 1
 
+    @lru_cache(maxsize=32)
     def get_weight(self, key):
         return self.weights_df[self.weights_df['KEY'] == key]['WEIGHT'].values[0]
 
+    @lru_cache(maxsize=32)
     def get_edu_from_points(self, points):
         for index, row in education_idx_df.iterrows():
             if row['POINTS'] == int(points):
@@ -90,6 +148,8 @@ class ElectionUtils(object):
         return 'Literate'
 
     ''' Returns points calculated based on education '''
+
+    @lru_cache(maxsize=32)
     def get_edu_points(self, education):
         return education_idx_df[education_idx_df['EDUCATION'] == education]['POINTS'].values[0]
 
@@ -138,6 +198,7 @@ class ElectionUtils(object):
                 logging.error("Candidate : %s - Value is Unknown defaulting it to 0" % candidate_id)
         return val
 
+    @lru_cache(maxsize=32)
     def get_media_popularity_score(self, name):
 
         response = requests.get(cfg["NEWS_URL"], params={"q": '"%s"' % name,
@@ -262,6 +323,7 @@ class ElectionUtils(object):
                     idx += 1
                 row_marker += 1
             candidate_al_df.to_csv(OUTPUT_DATA_SRC['CANDIDATE_ANALYSED_LIST']['CSV'], index=False, header=True)
+            candidate_al_df.to_json(OUTPUT_DATA_SRC['CANDIDATE_ANALYSED_LIST']['JSON'], orient='records')
             logging.info("Extracted '%s' data" % OUTPUT_DATA_SRC['CANDIDATE_ANALYSED_LIST']['CSV'])
 
 
@@ -273,6 +335,8 @@ class CandidateDataTransformation(object):
     # Initilization
     utils = ElectionUtils()
 
+    voting_results_df = utils.extract_voting_results()
+
     utils.extract_candidate_data(DATA_SET_URL)
 
     # utils.build_candidate_analysis_df()
@@ -282,16 +346,22 @@ class CandidateDataTransformation(object):
     age_idx_df = utils.get_age_df()
 
     '''Returns points based on income tax compliance, if you are a regular payer you earn a point'''
+
+    @lru_cache(maxsize=32)
     def get_tax_compliance_points(self, tax_compliance):
         dict = {"YES": 1, "NO": 0}
         return dict[tax_compliance]
 
     '''Returns points based on government dues payout compliance, if you are a regular payer you earn a point'''
+
+    @lru_cache(maxsize=32)
     def get_govt_due_points(self, govt_due):
         dict = {"YES": 0, "NO": 1}
         return dict[govt_due]
 
     '''Returns points based on residency, if the contestent is a local he/she gets a point'''
+
+    @lru_cache(maxsize=32)
     def get_local_residency_points(self, local_residency):
         dict = {"YES": 1, "NO": 0}
         return dict[local_residency]
