@@ -49,7 +49,7 @@ def get_constituency_results(constituency_code, constituency_name, state_code, s
                 if row_marker > 2 and row_marker < (l_tr_s - 2):
                     td = tr.find_all('td')
                     row = {
-                        "CANDIDATE_NAME": td[1].get_text().strip(),
+                        "CANDIDATE_NAME": td[1].get_text().strip().upper(),
                         "PARTY": td[2].get_text().strip(),
                         "CONSTITUENCY_NAME": constituency_name,
                         "CONSTITUENCY_CODE": constituency_code,
