@@ -240,7 +240,7 @@ class ElectionUtils(object):
                     party_grp_idx = get_value(party_df, [party, 'PARTY', 'POINTS', 1])
                     edu_idx = self.get_edu_points(td[5].get_text().strip())
                     row_dict = {labels[0]: candidate_id,
-                                labels[1]: td[1].find("a").get_text().strip().replace(",", ""),
+                                labels[1]: td[1].find("a").get_text().strip().replace(",", "").upper(),
                                 labels[2]: age,
                                 labels[3]: td[2].get_text().strip(),
                                 labels[4]: state,
@@ -273,9 +273,9 @@ class CandidateDataTransformation(object):
     # Initilization
     utils = ElectionUtils()
 
-    # utils.extract_candidate_data(DATA_SET_URL)
+    utils.extract_candidate_data(DATA_SET_URL)
 
-    utils.build_candidate_analysis_df()
+    # utils.build_candidate_analysis_df()
 
     candidate_analysis_df = create_df(OUTPUT_DATA_SRC["CANDIDATE_ANALYSED_LIST"]['CSV'])
 
