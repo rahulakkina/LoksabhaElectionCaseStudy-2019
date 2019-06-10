@@ -15,13 +15,6 @@ def create_df(file_name):
     return pd.read_csv(file_name, header='infer')
 
 
-def get_value(df, t):
-    for index, row in df.iterrows():
-        if row[t[1]] == t[0]:
-            return row[t[2]]
-    return t[3]
-
-
 logging.basicConfig(format='%(asctime)s - %(message)s', level=logging.INFO)
 
 cfg = get_config("config/cfg.json")
