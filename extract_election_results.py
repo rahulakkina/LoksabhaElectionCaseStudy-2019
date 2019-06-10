@@ -1,9 +1,7 @@
 import logging
 import codecs
 import json
-import requests
 import pandas as pd
-from bs4 import BeautifulSoup
 
 
 # Loads json configuration from the configuration file.
@@ -29,65 +27,33 @@ logging.basicConfig(format='%(asctime)s - %(message)s', level=logging.INFO)
 cfg = get_config("config/cfg.json")
 
 
-def get_constituency_results(constituency_code, constituency_name, state_code, state_name):
+candidate_analysis_df = create_df(cfg["OUTPUT_DATA_SRC"]["CANDIDATE_ANALYSED_LIST"]['CSV'])
 
-    url = cfg["ECI_RESULTS_URL"] %(state_code, constituency_code)
-    response = requests.get(url, params={"ac": constituency_code}, proxies=cfg['PROXY'])
-    result_set = []
+voting_results_df = create_df(cfg["OUTPUT_DATA_SRC"]["VOTING_RESULTS"]['CSV'])
 
-    if response.status_code == 200:
-        html_parser = BeautifulSoup(response.text, 'lxml')
-        table = html_parser.find_all('table')[10]
+result_dict = {}
 
-        if table is not None:
+for index, row in voting_results_df.iterrows():
+    if row["CONSTITUENCY_NAME"] not in result_dict:
+        result_dict[row["CONSTITUENCY_NAME"]] = {}
+    result_dict[row["CONSTITUENCY_NAME"]][row["CANDIDATE_NAME"]] = row
 
-            row_marker = 0
-            tr_s = table.find_all('tr')
-            l_tr_s = len(tr_s)
+result_count = 0
 
-            for tr in tr_s:
-                if row_marker > 2 and row_marker < (l_tr_s - 2):
-                    td = tr.find_all('td')
-                    row = {
-                        "CANDIDATE_NAME": td[1].get_text().replace(",", "").strip().upper(),
-                        "PARTY": td[2].get_text().strip(),
-                        "CONSTITUENCY_NAME": constituency_name,
-                        "CONSTITUENCY_CODE": constituency_code,
-                        "STATE_NAME": state_name,
-                        "STATE_CODE": state_code,
-                        "EVM_VOTES": int(td[3].get_text().strip()),
-                        "POSTAL VOTES": int(td[5].get_text().strip()) - int(td[3].get_text().strip()),
-                        "TOTAL_VOTES": int(td[5].get_text().strip()),
-                        "VOTING_PERCENTAGE": float(td[6].get_text().strip())
-                    }
-                    result_set.append(row)
-                row_marker += 1
-    logging.info("Code : %s%s, Constituency : %s, State : %s, Size : %d" %(state_code, constituency_code,
-                                                                           constituency_name, state_name,
-                                                                           len(result_set)))
-    return result_set
+for index, row in candidate_analysis_df.iterrows():
+    if row["CONSTITUENCY"] in result_dict:
+        if row["CANDIDATE_NAME"] in result_dict[row["CONSTITUENCY"]]:
+            dictionary = result_dict[row["CONSTITUENCY"]][row["CANDIDATE_NAME"]]
+            candidate_analysis_df.loc[index, "TOTAL_VOTES"] = dictionary["TOTAL_VOTES"]
+            candidate_analysis_df.loc[index, "VOTING_PERCENTAGE"] = dictionary["VOTING_PERCENTAGE"] * 0.01
+            result_count = result_count + 1
 
 
-def extract_voting_results():
+candidate_analysis_df.to_csv(cfg["OUTPUT_DATA_SRC"]['CANDIDATE_ANALYSED_LIST']['CSV'], index=False, header=True)
+candidate_analysis_df.to_json(cfg["OUTPUT_DATA_SRC"]['CANDIDATE_ANALYSED_LIST']['JSON'], orient='records')
 
-    states_df = create_df(cfg["INPUT_DATA_SRC"]["STATES_INDEX"])
-    constituency_df = create_df(cfg["INPUT_DATA_SRC"]["CONSTITUENCIES"])
-    result_lst = []
+logging.info("%d candidate details found" % result_count)
 
-    for index, row in constituency_df.iterrows():
-        state_code = get_value(states_df, [row['STATE'], 'STATE', 'STATE_CODE'])
-        result_lst.extend(get_constituency_results(row["POSTFIX_CODE"], row["CONSTITUENCY"], state_code, row['STATE']))
-
-    voting_results_df = pd.DataFrame.from_records(result_lst)
-    voting_results_df.to_csv(cfg["OUTPUT_DATA_SRC"]["VOTING_RESULTS"]["CSV"], index=False, header=True)
-    voting_results_df.to_json(cfg["OUTPUT_DATA_SRC"]["VOTING_RESULTS"]["JSON"], orient='records')
-
-    return voting_results_df
-
-
-''' Main '''
-
-extract_voting_results()
 
 
 
