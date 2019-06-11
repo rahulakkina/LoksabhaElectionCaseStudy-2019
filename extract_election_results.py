@@ -1,6 +1,7 @@
 import logging
 import codecs
 import json
+import difflib
 import pandas as pd
 
 
@@ -32,6 +33,7 @@ for index, row in voting_results_df.iterrows():
     result_dict[row["CONSTITUENCY_NAME"]][row["CANDIDATE_NAME"]] = row
 
 result_count = 0
+closest_count = 0
 
 for index, row in candidate_analysis_df.iterrows():
     if row["CONSTITUENCY"] in result_dict:
@@ -40,12 +42,19 @@ for index, row in candidate_analysis_df.iterrows():
             candidate_analysis_df.loc[index, "TOTAL_VOTES"] = dictionary["TOTAL_VOTES"]
             candidate_analysis_df.loc[index, "VOTING_PERCENTAGE"] = dictionary["VOTING_PERCENTAGE"] * 0.01
             result_count = result_count + 1
+        else:
+            nearest = difflib.get_close_matches(row["CANDIDATE_NAME"], result_dict[row["CONSTITUENCY"]].keys(), n=1, cutoff=0.3)
+            if len(nearest) > 0:
+                dictionary = result_dict[row["CONSTITUENCY"]][nearest[0]]
+                candidate_analysis_df.loc[index, "TOTAL_VOTES"] = dictionary["TOTAL_VOTES"]
+                candidate_analysis_df.loc[index, "VOTING_PERCENTAGE"] = dictionary["VOTING_PERCENTAGE"] * 0.01
+                closest_count = closest_count + 1
 
 
 candidate_analysis_df.to_csv(cfg["OUTPUT_DATA_SRC"]['CANDIDATE_ANALYSED_LIST']['CSV'], index=False, header=True)
 candidate_analysis_df.to_json(cfg["OUTPUT_DATA_SRC"]['CANDIDATE_ANALYSED_LIST']['JSON'], orient='records')
 
-logging.info("%d candidate details found" % result_count)
+logging.info("%d candidate details found and %d closest once" % (result_count, closest_count))
 
 
 
