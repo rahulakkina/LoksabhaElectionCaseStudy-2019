@@ -71,6 +71,11 @@ class ElectionUtils(object):
                 for tr in tr_s:
                     if row_marker > 2 and row_marker < (l_tr_s - 2):
                         td = tr.find_all('td')
+
+                        voting_pct = float(td[6].get_text().strip())
+
+                        if state_code == 'S09':
+                            voting_pct = float(td[7].get_text().strip())
                         row = {
                             "CANDIDATE_NAME": td[1].get_text().replace(",", "").strip().upper(),
                             "PARTY": td[2].get_text().strip(),
@@ -81,11 +86,11 @@ class ElectionUtils(object):
                             "EVM_VOTES": int(td[3].get_text().strip()),
                             "POSTAL VOTES": int(td[5].get_text().strip()) - int(td[3].get_text().strip()),
                             "TOTAL_VOTES": int(td[5].get_text().strip()),
-                            "VOTING_PERCENTAGE": float(td[6].get_text().strip())
+                            "VOTING_PERCENTAGE": voting_pct
                         }
                         result_set.append(row)
                     row_marker += 1
-        logging.debug("Code : %s%s, Constituency : %s, State : %s, Size : %d"
+        logging.info("Code : %s%s, Constituency : %s, State : %s, Size : %d"
                       % (state_code, constituency_code, constituency_name, state_name, len(result_set)))
         return result_set
 
@@ -337,7 +342,7 @@ class CandidateDataTransformation(object):
 
     voting_results_df = utils.extract_voting_results()
 
-    utils.extract_candidate_data(DATA_SET_URL)
+    # utils.extract_candidate_data(DATA_SET_URL)
 
     # utils.build_candidate_analysis_df()
 
