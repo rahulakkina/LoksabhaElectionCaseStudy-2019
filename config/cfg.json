@@ -26,5 +26,9 @@
     "PENDING_CRIMINAL_CASES_BY_PARTY" : {"CSV" :  "datasets/PENDING_CRIMINAL_CASES_BY_PARTY.csv", "JSON" : "datasets/PENDING_CRIMINAL_CASES_BY_PARTY.json"},
     "PENDING_CRIMINAL_CASES_BY_STATE" : {"CSV" :  "datasets/PENDING_CRIMINAL_CASES_BY_STATE.csv", "JSON" : "datasets/PENDING_CRIMINAL_CASES_BY_STATE.json"}
   },
-  "PROXY" : {"http": "xyz.com:80"}
+  "ML" : {
+    "TRAIN" : "datasets/train/CANDIDATE_ANALYSED.csv",
+    "MODEL" : "datasets/model/LS-2019-prediction.model"
+  },
+  "PROXY" : {"http": "www.proxy.com:80"}
 }
