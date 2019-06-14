@@ -1,11 +1,13 @@
 import logging
 import codecs
-import difflib
 import pandas as pd
 import json
 import requests
+import feedparser
+import difflib
 from sortedcontainers import SortedSet
 from bs4 import BeautifulSoup
+from functools import lru_cache
 
 # Loads json configuration from the configuration file.
 
@@ -61,6 +63,18 @@ def get_age_related_points(age):
           if row['FROM'] <= age and row['TO'] >= age:
               return row['POINTS']
 
+@lru_cache(maxsize=3000)
+def get_media_popularity_score(name):
+
+    response = requests.get(cfg["NEWS_URL"], params={"q": '"%s"' % name,
+                                                   "hl": "en-SG", "gl": "SG", "ceid": "SG:en"}, proxies=cfg['PROXY'])
+
+    if response.status_code == 200:
+        d = feedparser.parse(response.text)
+        return round(len(d['entries']) * 0.01, 3)
+    else:
+        return 0.000
+
 result_dict = {}
 
 recontesting_candidates = get_recontest_candidates(cfg["DATA_SET_URL"], cfg["RECONTEST_DATA_SET_PARAMS"])
@@ -87,7 +101,7 @@ def build_age_earning_dict(age_index, earnings):
         age_earnings_dict[age_index] = [age_earnings_dict[age_index][0] + 1, age_earnings_dict[age_index][1] + earnings]
 
 
-for idx, r in candidate_analysis_df.iterrows():
+'''for idx, r in candidate_analysis_df.iterrows():
     if r["CONSTITUENCY"] in result_dict:
         if r["CANDIDATE_NAME"] in result_dict[r["CONSTITUENCY"]]:
             dictionary = result_dict[r["CONSTITUENCY"]][r["CANDIDATE_NAME"]]
@@ -118,8 +132,11 @@ for idx, r in candidate_analysis_df.iterrows():
                 candidate_analysis_df.loc[idx, "STATE_INDEX"] = get_value(state_df, [r["STATE"], 'STATE', 'INDEX', 0])
                 closest_count = closest_count + 1
 
+'''
+result_count = 0
 
 for idx, r in candidate_analysis_df.iterrows():
+
     if r["AGE_INDEX"] in age_earnings_dict:
         [t, s] = age_earnings_dict[r["AGE_INDEX"]]
         earnings_average = round(s/t, 2)
@@ -127,6 +144,21 @@ for idx, r in candidate_analysis_df.iterrows():
             candidate_analysis_df.loc[idx, "EARNINGS_POINTS"] = 1
         else:
             candidate_analysis_df.loc[idx, "EARNINGS_POINTS"] = 0
+
+    if pd.isna(r["MEDIA_POPULARITY"]):
+        candidate_analysis_df.loc[idx, "MEDIA_POPULARITY"] = get_media_popularity_score(r["CANDIDATE_NAME"])
+
+    result_count = result_count + 1
+
+    if result_count % 100 == 0:
+
+        logging.info("Saving for %d records" % result_count)
+
+        candidate_analysis_df.to_csv(cfg["OUTPUT_DATA_SRC"]['CANDIDATE_ANALYSED_LIST']['CSV'], index=False,
+                                     header=True)
+        candidate_analysis_df.to_json(cfg["OUTPUT_DATA_SRC"]['CANDIDATE_ANALYSED_LIST']['JSON'],
+                                      orient='records')
+
 
 candidate_analysis_df.to_csv(cfg["OUTPUT_DATA_SRC"]['CANDIDATE_ANALYSED_LIST']['CSV'], index=False, header=True)
 candidate_analysis_df.to_json(cfg["OUTPUT_DATA_SRC"]['CANDIDATE_ANALYSED_LIST']['JSON'], orient='records')

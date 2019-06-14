@@ -5,7 +5,6 @@ import json
 import numpy as np
 from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import confusion_matrix
 from sklearn.model_selection import cross_val_score
 import xgboost
 import warnings
@@ -29,11 +28,12 @@ df = pd.read_csv(cfg["ML"]["TRAIN"], header='infer')
 
 logging.info(df.shape)
 
-x = df.iloc[:, 2:16]
-y = df.iloc[:, 16]
+x = df.iloc[:, 2:17]
+y = df.iloc[:, 17]
 
 X = x.values
 Y = y.values
+
 
 
 # Splitting the dataset into the Training set and Test set
@@ -45,9 +45,9 @@ X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.3, random_
 
 # Fitting XGBoost to the Training set
 
-xgb = xgboost.XGBRegressor(colsample_bytree=0.8, subsample=0.5, learning_rate=0.01, max_depth=7,
-                             min_child_weight=1.8, n_estimators=5000, reg_alpha=0.1, reg_lambda=0.2, gamma=0.01,
-                             silent=1, random_state=7, nthread=-1)
+xgb = xgboost.XGBRegressor(colsample_bytree=0.8, subsample=0.5, learning_rate=0.05, max_depth=12,
+                           min_child_weight=1, n_estimators=2000, reg_alpha=0.1, reg_lambda=0.2,
+                           gamma=0.01, silent=True, random_state=7, nthread=-1)
 
 logging.info("Fitting XGBoost to the training set ...")
 
@@ -60,26 +60,24 @@ logging.info("Predicting the Test set results ....")
 
 Y_pred = xgb.predict(X_test)
 
+Y_train_pred = xgb.predict(X_train)
 
 # Applying k-Fold Cross Validation
 
 logging.info("Applying k-Fold Cross Validation .....")
 
 accuracies = cross_val_score(estimator=xgb, X=X_train, y=Y_train, cv=10)
-accuracies.mean()
-accuracies.std()
+
+logging.info("Accuracies - Mean : %f, Standard Deviation : %f" % (accuracies.mean(), accuracies.std()))
 
 logging.info("Calculating Root Mean Square Error ......")
 
+RMSE = np.sqrt(mean_squared_error(Y_train, Y_train_pred))
+
+logging.info("Train - RMSE : %f" % RMSE.round(4))
+
 RMSE = np.sqrt(mean_squared_error(Y_test, Y_pred))
-logging.info("RMSE : %f" % RMSE.round(4))
+
+logging.info("Test - RMSE : %f" % RMSE.round(4))
 
 xgb.save_model(cfg["ML"]["MODEL"])
-
-
-
-
-
-
-
-
