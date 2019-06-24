@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util
+        http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <util:map id="datasetResourceMap" map-class="java.util.HashMap">
+        <entry key="age">
+            <value>input/AGE_INDEX.csv</value>
+        </entry>
+        <entry key="constituencies">
+            <value>input/CONSTITUENCIES.csv</value>
+        </entry>
+        <entry key="education">
+            <value>input/EDUCATION_INDEX.csv</value>
+        </entry>
+        <entry key="political-parties">
+            <value>input/POLITICAL_PARTY_INDEX.csv</value>
+        </entry>
+        <entry key="states">
+            <value>input/STATES_INDEX.csv</value>
+        </entry>
+        <entry key="candidate-analysed">
+            <value>CANDIDATE_ANALYSED_LIST.csv</value>
+        </entry>
+    </util:map>
+
+</beans>
