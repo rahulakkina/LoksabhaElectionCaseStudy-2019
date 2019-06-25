@@ -18,7 +18,7 @@
         </encoder>
     </appender>
 
-    <logger name="com.bp" level="INFO"/>
+    <logger name="com.loks" level="INFO"/>
 
     <logger name="org.apache" level="INFO"/>
 
@@ -26,7 +26,6 @@
 
     <root level="INFO">
         <appender-ref ref="STDOUT" />
-        <!--<appender-ref ref="FILE" />-->
     </root>
 
 </configuration>
