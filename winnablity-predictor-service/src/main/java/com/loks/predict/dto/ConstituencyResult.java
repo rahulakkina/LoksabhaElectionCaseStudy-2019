@@ -5,6 +5,8 @@ import java.util.Objects;
 
 public class ConstituencyResult implements Serializable, Comparable<ConstituencyResult> {
 
+    private static final long serialVersionUID = 775664285425868L;
+
     private final String candidateName;
 
     private final Double votingPercentage;
