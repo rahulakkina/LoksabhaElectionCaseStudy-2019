@@ -13,8 +13,8 @@ resource:
 http:
   use-proxy: ${PROXY_ENABLED:true}
   proxy:
-    host: ${PROXY_HOST:rsexmwpa001.bp.com}
+    host: ${PROXY_HOST:www.xyzproxy.com}
     port: ${PROXY_PORT:80}
 poll:
   job:
-    schedule: ${SCHEDULE_INTERVAL:3600000}
+    schedule: ${SCHEDULE_INTERVAL:900000}
