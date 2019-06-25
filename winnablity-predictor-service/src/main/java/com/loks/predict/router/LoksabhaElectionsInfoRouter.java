@@ -39,43 +39,80 @@ public class LoksabhaElectionsInfoRouter {
         this.predictionService = predictionService;
     }
 
-    @RequestMapping(value ="/statesInfo", method = RequestMethod.GET, produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    @RequestMapping(value ="/statesInfoR", method = RequestMethod.GET, produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    public Flux<State> getStateInfoR(){
+        return stateService.getStatesInfo();
+    }
+
+    @RequestMapping(value ="/statesInfo", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public Flux<State> getStateInfo(){
         return stateService.getStatesInfo();
     }
 
-    @RequestMapping(value ="/constituenciesInfo", method = RequestMethod.GET, produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    @RequestMapping(value ="/constituenciesInfoR", method = RequestMethod.GET, produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    public Flux<Constituency> getConstituenciesInfoR(){
+        return constituenciesService.getConstituenciesInfo();
+    }
+
+    @RequestMapping(value ="/constituenciesInfo", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public Flux<Constituency> getConstituenciesInfo(){
         return constituenciesService.getConstituenciesInfo();
     }
 
-    @RequestMapping(value ="/constituenciesByState", method = RequestMethod.GET, produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    @RequestMapping(value ="/constituenciesByStateR", method = RequestMethod.GET, produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    public Flux<Constituency> getConstituenciesInfoR(@RequestParam("state") final String stateName){
+        return constituenciesService.getConstituenciesByState(stateName);
+    }
+
+    @RequestMapping(value ="/constituenciesByState", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public Flux<Constituency> getConstituenciesInfo(@RequestParam("state") final String stateName){
         return constituenciesService.getConstituenciesByState(stateName);
     }
 
-    @RequestMapping(value ="/politicalPartiesInfo", method = RequestMethod.GET, produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    @RequestMapping(value ="/politicalPartiesInfoR", method = RequestMethod.GET, produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    public Flux<PoliticalParty> getPoliticalPartiesInfoR(){
+        return politicalPartyService.getPoliticalPartiesInfo();
+    }
+
+    @RequestMapping(value ="/politicalPartiesInfo", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public Flux<PoliticalParty> getPoliticalPartiesInfo(){
         return politicalPartyService.getPoliticalPartiesInfo();
     }
 
-    @RequestMapping(value ="/educationInfo", method = RequestMethod.GET, produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+
+    @RequestMapping(value ="/educationInfoR", method = RequestMethod.GET, produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    public Flux<Education> getEducationInfoR(){
+        return educationInfoService.getEducationInfo();
+    }
+
+    @RequestMapping(value ="/educationInfo", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public Flux<Education> getEducationInfo(){
         return educationInfoService.getEducationInfo();
     }
 
-    @RequestMapping(value ="/predict", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+
+    @RequestMapping(value ="/predictR", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public Mono<PredictionResponse> predict(@RequestBody final PredictionParameters predictionParameters){
         return predictionService.predict(predictionParameters);
     }
 
-    @RequestMapping(value ="/candidatesByKey", method = RequestMethod.GET, produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    @RequestMapping(value ="/candidatesByKeyR", method = RequestMethod.GET, produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    public Flux<Candidate> getCandidatesByKeyWordR(@RequestParam("keyword") final String keyWord){
+        return candidateService.getContestantByKeyWord(keyWord);
+    }
+
+    @RequestMapping(value ="/candidatesByKey", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public Flux<Candidate> getCandidatesByKeyWord(@RequestParam("keyword") final String keyWord){
         return candidateService.getContestantByKeyWord(keyWord);
     }
 
-    @RequestMapping(value ="/candidateById", method = RequestMethod.GET, produces = MediaType.TEXT_EVENT_STREAM_VALUE)
-    public Mono<Candidate> getCandidateById(@RequestParam("candidateId") final Integer candidateId){
+    @RequestMapping(value ="/candidatesByIdR", method = RequestMethod.GET, produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    public Mono<Candidate> getCandidateByCandidateIdR(@RequestParam("candidateId") final Integer candidateId){
+        return candidateService.getContestantByCandidateId(candidateId);
+    }
+
+    @RequestMapping(value ="/candidatesById", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public Mono<Candidate> getCandidateByCandidateId(@RequestParam("candidateId") final Integer candidateId){
         return candidateService.getContestantByCandidateId(candidateId);
     }
 }
