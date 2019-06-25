@@ -3,7 +3,7 @@ package com.loks.predict.dto;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class Contestant implements Serializable {
+public class Candidate implements Serializable {
 
     private static final long serialVersionUID = -14553663385344462L;
 
@@ -15,6 +15,8 @@ public class Contestant implements Serializable {
 
     private final Integer partyId;
 
+    private final Integer numberOfPendingCriminalCases;
+
     private final Integer educationGroupId;
 
     private final Double earnings;
@@ -25,15 +27,17 @@ public class Contestant implements Serializable {
 
     private final Boolean sex;
 
-    public Contestant(final Integer candidateId, final String candidateName,
-                      final Integer age, final Integer partyId, final Integer educationGroupId,
-                      final Double earnings, final Double mediaPopularity,
-                      final Boolean recontesting, final Boolean sex) {
+    public Candidate(final Integer candidateId, final String candidateName,
+                     final Integer age, final Integer partyId, final Integer educationGroupId,
+                     final Integer numberOfPendingCriminalCases,
+                     final Double earnings, final Double mediaPopularity,
+                     final Boolean recontesting, final Boolean sex) {
         this.candidateId = candidateId;
         this.candidateName = candidateName;
         this.age = age;
         this.partyId = partyId;
         this.educationGroupId = educationGroupId;
+        this.numberOfPendingCriminalCases = numberOfPendingCriminalCases;
         this.earnings = earnings;
         this.mediaPopularity = mediaPopularity;
         this.recontesting = recontesting;
@@ -76,11 +80,15 @@ public class Contestant implements Serializable {
         return sex;
     }
 
+    public Integer getNumberOfPendingCriminalCases() {
+        return numberOfPendingCriminalCases;
+    }
+
     @Override
     public boolean equals(final Object o) {
         if (this == o) return true;
-        if (!(o instanceof Contestant)) return false;
-        final Contestant that = (Contestant) o;
+        if (!(o instanceof Candidate)) return false;
+        final Candidate that = (Candidate) o;
         return Objects.equals(getCandidateId(), that.getCandidateId()) &&
                 Objects.equals(getCandidateName(), that.getCandidateName()) &&
                 Objects.equals(getAge(), that.getAge()) &&

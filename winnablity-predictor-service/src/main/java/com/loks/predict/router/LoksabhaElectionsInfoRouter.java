@@ -22,12 +22,16 @@ public class LoksabhaElectionsInfoRouter {
 
     private final PredictionService predictionService;
 
+    private final CandidateService candidateService;
+
     @Autowired
-    public LoksabhaElectionsInfoRouter(final StateService stateService,
+    public LoksabhaElectionsInfoRouter(final CandidateService candidateService,
+                                       final StateService stateService,
                                        final ConstituenciesService constituenciesService,
                                        final PoliticalPartyService politicalPartyService,
                                        final EducationInfoService educationInfoService,
                                        final PredictionService predictionService) {
+        this.candidateService = candidateService;
         this.stateService = stateService;
         this.constituenciesService = constituenciesService;
         this.politicalPartyService = politicalPartyService;
@@ -63,5 +67,15 @@ public class LoksabhaElectionsInfoRouter {
     @RequestMapping(value ="/predict", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public Mono<PredictionResponse> predict(@RequestBody final PredictionParameters predictionParameters){
         return predictionService.predict(predictionParameters);
+    }
+
+    @RequestMapping(value ="/candidatesByKey", method = RequestMethod.GET, produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    public Flux<Candidate> getCandidatesByKeyWord(@RequestParam("keyword") final String keyWord){
+        return candidateService.getContestantByKeyWord(keyWord);
+    }
+
+    @RequestMapping(value ="/candidateById", method = RequestMethod.GET, produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    public Mono<Candidate> getCandidateById(@RequestParam("candidateId") final Integer candidateId){
+        return candidateService.getContestantByCandidateId(candidateId);
     }
 }
