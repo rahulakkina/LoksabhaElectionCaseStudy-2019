@@ -12,7 +12,6 @@ import tech.tablesaw.api.Table;
 import javax.annotation.Nullable;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.nio.charset.Charset;
 import java.util.Map;
 
 
@@ -50,22 +49,6 @@ public interface HttpUtility {
             public Booster apply(@Nullable final ByteArrayOutputStream byteArrayOutputStream) {
                 try {
                     return XGBoost.loadModel(new ByteArrayInputStream(byteArrayOutputStream.toByteArray()));
-                }catch(Exception e){
-                    logger.error(e.getMessage(), e);
-                }
-                return null;
-            }
-        };
-    }
-
-    default Function<ByteArrayOutputStream, String> getTextFunction(){
-        return new Function<ByteArrayOutputStream, String>(){
-            @Nullable
-            @Override
-            public String apply(@Nullable final ByteArrayOutputStream byteArrayOutputStream) {
-                try {
-                    final Charset charset = Charset.forName("UTF-8");
-                    return new String(byteArrayOutputStream.toByteArray(), charset);
                 }catch(Exception e){
                     logger.error(e.getMessage(), e);
                 }

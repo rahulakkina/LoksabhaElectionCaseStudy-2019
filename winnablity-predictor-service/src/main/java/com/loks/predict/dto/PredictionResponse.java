@@ -13,11 +13,11 @@ public class PredictionResponse implements Serializable {
 
     private List<ConstituencyResult> rankings;
 
-    public void setScore(Double score) {
+    public void setScore(final Double score) {
         this.score = score;
     }
 
-    public void setRankings(List<ConstituencyResult> rankings) {
+    public void setRankings(final List<ConstituencyResult> rankings) {
         this.rankings = rankings;
     }
 

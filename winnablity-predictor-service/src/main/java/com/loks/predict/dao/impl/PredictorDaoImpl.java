@@ -51,7 +51,7 @@ public class PredictorDaoImpl implements PredictorDao {
     @PostConstruct
     @Scheduled(fixedDelayString = "${poll.job.schedule}")
     public void load(){
-        logger.info("Refereshing the data tier");
+        logger.info("Refreshing the data tier");
 
         datasets = Maps.newConcurrentMap();
 
@@ -67,8 +67,7 @@ public class PredictorDaoImpl implements PredictorDao {
         StreamSupport.stream(datasets.get("candidate-analysed").block().spliterator(), false)
                 .forEach(row -> collectRow(row, ageGroupedMap));
 
-        ageGroupedMap.entrySet()
-                .stream()
+        ageGroupedMap.entrySet().stream()
                 .forEach(entry -> ageGroupedEarningsMappings.put(entry.getKey(), getAverage(entry.getValue())));
     }
 
@@ -82,8 +81,7 @@ public class PredictorDaoImpl implements PredictorDao {
         datasetResourceMap.entrySet()
                 .parallelStream()
                 .forEach(entry ->
-                        resources.put(entry.getKey(),
-                                new StringBuilder().append(parentUrl).append(entry.getValue()).toString()));
+                        resources.put(entry.getKey(), getUrl(parentUrl,entry.getValue())));
         return resources;
     }
 
@@ -102,7 +100,7 @@ public class PredictorDaoImpl implements PredictorDao {
     }
 
     public String getModelUrl(){
-        return new StringBuilder().append(parentUrl).append(modelPostFix).toString();
+        return getUrl(parentUrl, modelPostFix);
     }
 
     protected void buildDataset(final Map.Entry<String, String> entry){
@@ -110,6 +108,10 @@ public class PredictorDaoImpl implements PredictorDao {
        if(logger.isDebugEnabled()) {
            logger.debug(String.format("Loaded %s dataset", entry.getKey()));
        }
+    }
+
+    protected String getUrl(final String parentUrl, final String postFix){
+        return new StringBuilder().append(parentUrl).append(postFix).toString();
     }
 
     public Map<String, Mono<Table>> getDatasets(){

@@ -17,8 +17,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 import tech.tablesaw.api.Table;
+
+import java.math.BigDecimal;
 import java.util.*;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 @Component
@@ -53,7 +56,7 @@ public class PredictionServiceImpl implements PredictionService {
                     final float prediction[][] = booster.predict(
                             new DMatrix(predictionVector.getVector(), 1, predictionVector.vectorSize()));
 
-                    final Double score = Precision.round(new Double(prediction[0][0]), 4);
+                    final Double score = Precision.round(new BigDecimal(prediction[0][0]).doubleValue(), 4);
 
                     result.setScore(score);
 
@@ -66,7 +69,7 @@ public class PredictionServiceImpl implements PredictionService {
                     result.setRankings(rankings);
 
                     logger.info(String.format(
-                            "Constituency Result prediction for the Candidate : %s - completed in %d ms",
+                            "Constituency Result prediction for the Candidate : '%s' - completed in %d ms",
                             predictionParameters.getCandidateName(), (System.currentTimeMillis() - startTime)));
 
                 } catch (final XGBoostError xgBoostError) {
@@ -139,16 +142,11 @@ public class PredictionServiceImpl implements PredictionService {
 
         final Table candidateAnalysed = predictorDao.getDatasets().get("candidate-analysed").block();
 
-        final List<ConstituencyResult> candidates = Lists.newArrayList();
-
-        StreamSupport.stream(candidateAnalysed.spliterator(), false)
+        final List<ConstituencyResult> candidates = StreamSupport.stream(candidateAnalysed.spliterator(), false)
                 .filter(row -> constituencyId.compareTo(row.getInt("CONSTITUENCY_INDEX")) == 0)
-                .forEach(row ->
-                        candidates.add(
-                                new ConstituencyResult(row.getString("CANDIDATE_NAME"),
-                                        Precision.round(row.getDouble("VOTING_PERCENTAGE"), 4))
-                        )
-                );
+                .map(row -> new ConstituencyResult(row.getString("CANDIDATE_NAME"),
+                        Precision.round(row.getDouble("VOTING_PERCENTAGE"), 4)))
+                .collect(Collectors.toList());
 
         return candidates;
     }
