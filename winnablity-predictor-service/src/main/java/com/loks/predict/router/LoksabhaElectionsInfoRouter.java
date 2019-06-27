@@ -91,7 +91,7 @@ public class LoksabhaElectionsInfoRouter {
     }
 
 
-    @RequestMapping(value ="/predictR", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @RequestMapping(value ="/predict", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public Mono<PredictionResponse> predict(@RequestBody final PredictionParameters predictionParameters){
         return predictionService.predict(predictionParameters);
     }
