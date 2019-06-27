@@ -37,7 +37,7 @@ def get_value(df, t):
 
 logging.basicConfig(format='%(asctime)s - %(message)s', level=logging.INFO)
 
-cfg = get_config("config/cfg.json")
+cfg = get_config("../../config/cfg.json")
 DATA_SET_URL = cfg["DATA_SET_URL"]
 CANDIDATE_DS_URL = cfg["CANDIDATE_DS_URL"]
 INPUT_DATA_SRC = cfg["INPUT_DATA_SRC"]

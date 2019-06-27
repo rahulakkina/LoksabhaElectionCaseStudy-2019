@@ -18,7 +18,7 @@ def get_config(conf_path):
         return d
 
 
-cfg = get_config("config/cfg.json")
+cfg = get_config("../../config/cfg.json")
 
 logging.basicConfig(format='%(asctime)s - %(message)s', level=logging.INFO, filename=cfg['LOG'])
 
@@ -44,9 +44,9 @@ X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.1, random_
 
 # Fitting XGBoost to the Training set
 
-xgb = xgboost.XGBRegressor(colsample_bytree=0.8, subsample=0.5, learning_rate=0.01, max_depth=14,
+xgb = xgboost.XGBRegressor(colsample_bytree=0.8, subsample=0.5, learning_rate=0.01, max_depth=12,
                            min_child_weight=1, n_estimators=10000, reg_alpha=0.1, reg_lambda=0.2,
-                           gamma=0.01, silent=True, random_state=7, nthread=-1, missing=None, booster="dart")
+                           gamma=0.01, silent=True, random_state=7, nthread=-1, missing=None)
 
 logging.info("Fitting XGBoost to the training set ...")
 
@@ -72,9 +72,9 @@ logging.info("Calculating Root Mean Square Error ......")
 
 logging.info("RMSE - [train, test] : [%f, %f]" % (train_rmse.round(4), test_rmse.round(4)))
 
-''' logging.info("Applying k-Fold Cross Validation .....") 
+logging.info("Applying k-Fold Cross Validation .....")
 accuracies = cross_val_score(estimator=xgb, X=X_train, y=Y_train, cv=10)
 
-logging.info("Accuracies - Mean : %f, Standard Deviation : %f" % (accuracies.mean(), accuracies.std())) '''
+logging.info("Accuracies - Mean : %f, Standard Deviation : %f" % (accuracies.mean(), accuracies.std()))
 
 xgb.save_model(cfg["ML"]["MODEL"])

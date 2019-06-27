@@ -9,26 +9,27 @@
   "NEWS_URL" : "https://news.google.com/rss/search",
   "NEWS_PARAMS" : ["q", "hl", "gl", "ceid"],
   "INPUT_DATA_SRC" : {
-    "AGE_INDEX" : "datasets/input/AGE_INDEX.csv",
-    "CONSTITUENCIES" : "datasets/input/CONSTITUENCIES.csv",
-    "CANDIDATES_LIST" : "datasets/input/CANDIDATES_LIST.csv",
-    "EDUCATION_INDEX" : "datasets/input/EDUCATION_INDEX.csv",
-    "STATES_INDEX" : "datasets/input/STATES_INDEX.csv",
-    "POLITICAL_PARTY_INDEX" : "datasets/input/POLITICAL_PARTY_INDEX.csv",
-    "WEIGHTAGE" : "datasets/input/WEIGHTAGE.csv"
+    "AGE_INDEX" : "../../datasets/input/AGE_INDEX.csv",
+    "CONSTITUENCIES" : "../../datasets/input/CONSTITUENCIES.csv",
+    "CANDIDATES_LIST" : "../../datasets/input/CANDIDATES_LIST.csv",
+    "EDUCATION_INDEX" : "../../datasets/input/EDUCATION_INDEX.csv",
+    "STATES_INDEX" : "../../datasets/input/STATES_INDEX.csv",
+    "POLITICAL_PARTY_INDEX" : "../../datasets/input/POLITICAL_PARTY_INDEX.csv",
+    "WEIGHTAGE" : "../../datasets/input/WEIGHTAGE.csv"
   },
   "OUTPUT_DATA_SRC" : {
-    "VOTING_RESULTS" : {"CSV" :  "datasets/VOTING_RESULTS.csv", "JSON" : "datasets/VOTING_RESULTS.json"},
-    "CONTESTANT_LIST" : {"CSV" :  "datasets/CONTESTANT_LIST.csv", "JSON" : "datasets/CONTESTANT_LIST.json"},
-    "CANDIDATE_ANALYSED_LIST" : {"CSV" :  "datasets/CANDIDATE_ANALYSED_LIST.csv", "JSON" : "datasets/CANDIDATE_ANALYSED_LIST.json"},
-    "EDUCATION_INDEX_BY_PARTY" : {"CSV" :  "datasets/EDUCATION_INDEX_BY_PARTY.csv", "JSON" : "datasets/EDUCATION_INDEX_BY_PARTY.json"},
-    "EDUCATION_INDEX_BY_STATE" : {"CSV" :  "datasets/EDUCATION_INDEX_BY_STATE.csv", "JSON" : "datasets/EDUCATION_INDEX_BY_STATE.json"},
-    "PENDING_CRIMINAL_CASES_BY_PARTY" : {"CSV" :  "datasets/PENDING_CRIMINAL_CASES_BY_PARTY.csv", "JSON" : "datasets/PENDING_CRIMINAL_CASES_BY_PARTY.json"},
-    "PENDING_CRIMINAL_CASES_BY_STATE" : {"CSV" :  "datasets/PENDING_CRIMINAL_CASES_BY_STATE.csv", "JSON" : "datasets/PENDING_CRIMINAL_CASES_BY_STATE.json"}
+    "VOTING_RESULTS" : {"CSV" :  "../../datasets/VOTING_RESULTS.csv", "JSON" : "../../datasets/VOTING_RESULTS.json"},
+    "CONTESTANT_LIST" : {"CSV" :  "../../datasets/CONTESTANT_LIST.csv", "JSON" : "../../datasets/CONTESTANT_LIST.json"},
+    "CANDIDATE_ANALYSED_LIST" : {"CSV" :  "../../datasets/CANDIDATE_ANALYSED_LIST.csv", "JSON" : "../../datasets/CANDIDATE_ANALYSED_LIST.json"},
+    "EDUCATION_INDEX_BY_PARTY" : {"CSV" :  "../..datasets/EDUCATION_INDEX_BY_PARTY.csv", "JSON" : "../../datasets/EDUCATION_INDEX_BY_PARTY.json"},
+    "EDUCATION_INDEX_BY_STATE" : {"CSV" :  "../../datasets/EDUCATION_INDEX_BY_STATE.csv", "JSON" : "../../datasets/EDUCATION_INDEX_BY_STATE.json"},
+    "PENDING_CRIMINAL_CASES_BY_PARTY" : {"CSV" :  "../../datasets/PENDING_CRIMINAL_CASES_BY_PARTY.csv", "JSON" : "../../datasets/PENDING_CRIMINAL_CASES_BY_PARTY.json"},
+    "PENDING_CRIMINAL_CASES_BY_STATE" : {"CSV" :  "../../datasets/PENDING_CRIMINAL_CASES_BY_STATE.csv", "JSON" : "../../datasets/PENDING_CRIMINAL_CASES_BY_STATE.json"}
   },
   "ML" : {
-    "TRAIN" : "datasets/train/CANDIDATE_ANALYSED.csv",
-    "MODEL" : "datasets/model/LS-2019-prediction.model"
+    "TRAIN" : "../../datasets/train/CANDIDATE_ANALYSED.csv",
+    "MODEL" : "../../datasets/model/LS-2019-prediction.model"
   },
+  "LOG" : "../../logs/train_model.log",
   "PROXY" : {"http": "www.proxy.com:80"}
 }

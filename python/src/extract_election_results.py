@@ -48,7 +48,7 @@ def get_recontest_candidates(url, params):
 
 logging.basicConfig(format='%(asctime)s - %(message)s', level=logging.INFO)
 
-cfg = get_config("config/cfg.json")
+cfg = get_config("../../config/cfg.json")
 
 
 candidate_analysis_df = create_df(cfg["OUTPUT_DATA_SRC"]["CANDIDATE_ANALYSED_LIST"]['CSV'])
