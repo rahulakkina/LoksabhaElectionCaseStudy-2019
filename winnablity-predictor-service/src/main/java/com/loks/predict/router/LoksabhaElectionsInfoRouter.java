@@ -39,7 +39,7 @@ public class LoksabhaElectionsInfoRouter {
         this.predictionService = predictionService;
     }
 
-    @RequestMapping(value ="/statesInfoR", method = RequestMethod.GET, produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    @RequestMapping(value ="/statesInfoReact", method = RequestMethod.GET, produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<State> getStateInfoR(){
         return stateService.getStatesInfo();
     }
@@ -49,7 +49,7 @@ public class LoksabhaElectionsInfoRouter {
         return stateService.getStatesInfo();
     }
 
-    @RequestMapping(value ="/constituenciesInfoR", method = RequestMethod.GET, produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    @RequestMapping(value ="/constituenciesInfoReact", method = RequestMethod.GET, produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<Constituency> getConstituenciesInfoR(){
         return constituenciesService.getConstituenciesInfo();
     }
@@ -59,7 +59,7 @@ public class LoksabhaElectionsInfoRouter {
         return constituenciesService.getConstituenciesInfo();
     }
 
-    @RequestMapping(value ="/constituenciesByStateR", method = RequestMethod.GET, produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    @RequestMapping(value ="/constituenciesByStateReact", method = RequestMethod.GET, produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<Constituency> getConstituenciesInfoR(@RequestParam("state") final String stateName){
         return constituenciesService.getConstituenciesByState(stateName);
     }
@@ -69,7 +69,7 @@ public class LoksabhaElectionsInfoRouter {
         return constituenciesService.getConstituenciesByState(stateName);
     }
 
-    @RequestMapping(value ="/politicalPartiesInfoR", method = RequestMethod.GET, produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    @RequestMapping(value ="/politicalPartiesInfoReact", method = RequestMethod.GET, produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<PoliticalParty> getPoliticalPartiesInfoR(){
         return politicalPartyService.getPoliticalPartiesInfo();
     }
@@ -80,7 +80,7 @@ public class LoksabhaElectionsInfoRouter {
     }
 
 
-    @RequestMapping(value ="/educationInfoR", method = RequestMethod.GET, produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    @RequestMapping(value ="/educationInfoReact", method = RequestMethod.GET, produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<Education> getEducationInfoR(){
         return educationInfoService.getEducationInfo();
     }
@@ -96,7 +96,7 @@ public class LoksabhaElectionsInfoRouter {
         return predictionService.predict(predictionParameters);
     }
 
-    @RequestMapping(value ="/candidatesByKeyR", method = RequestMethod.GET, produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    @RequestMapping(value ="/candidatesByKeyReact", method = RequestMethod.GET, produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<Candidate> getCandidatesByKeyWordR(@RequestParam("keyword") final String keyWord){
         return candidateService.getContestantByKeyWord(keyWord);
     }
@@ -106,7 +106,7 @@ public class LoksabhaElectionsInfoRouter {
         return candidateService.getContestantByKeyWord(keyWord);
     }
 
-    @RequestMapping(value ="/candidatesByIdR", method = RequestMethod.GET, produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    @RequestMapping(value ="/candidatesByIdReact", method = RequestMethod.GET, produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Mono<Candidate> getCandidateByCandidateIdR(@RequestParam("candidateId") final Integer candidateId){
         return candidateService.getContestantByCandidateId(candidateId);
     }

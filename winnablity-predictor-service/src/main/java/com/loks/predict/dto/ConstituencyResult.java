@@ -3,7 +3,7 @@ package com.loks.predict.dto;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class ConstituencyResult implements Serializable, Comparable<ConstituencyResult> {
+public class ConstituencyResult implements Serializable{
 
     private static final long serialVersionUID = 775664285425868L;
 
@@ -59,9 +59,4 @@ public class ConstituencyResult implements Serializable, Comparable<Constituency
         return Objects.hash(getCandidateName(), getVotingPercentage());
     }
 
-
-    @Override
-    public int compareTo(final ConstituencyResult constituencyResult) {
-        return constituencyResult.votingPercentage.compareTo(this.votingPercentage);
-    }
 }

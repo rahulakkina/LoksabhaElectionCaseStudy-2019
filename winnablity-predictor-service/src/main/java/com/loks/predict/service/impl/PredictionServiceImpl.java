@@ -64,7 +64,7 @@ public class PredictionServiceImpl implements PredictionService {
 
                     rankings.add(new ConstituencyResult(predictionParameters.getCandidateName(), score, true));
 
-                    Collections.sort(rankings);
+                    Collections.sort(rankings, (cr1,cr2) -> cr2.getVotingPercentage().compareTo(cr1.getVotingPercentage()));
 
                     result.setRankings(rankings);
 
