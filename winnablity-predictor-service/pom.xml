@@ -84,7 +84,7 @@
         <dependency>
             <groupId>ml.dmlc</groupId>
             <artifactId>xgboost4j</artifactId>
-            <version>0.82-SNAPSHOT</version>
+            <version>0.82</version>
         </dependency>
         <!-- Logging -->
         <dependency>
