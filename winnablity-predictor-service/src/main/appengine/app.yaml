@@ -4,6 +4,7 @@ runtime_config:
   jdk: openjdk8
 env_variables:
   SPRING_PROFILES_ACTIVE: "gcp"
+  PROXY_ENABLED: false
 handlers:
 - url: /.*
   script: this field is required, but ignored
