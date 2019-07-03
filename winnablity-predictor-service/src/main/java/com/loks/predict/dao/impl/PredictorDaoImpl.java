@@ -34,7 +34,8 @@ public class PredictorDaoImpl implements PredictorDao {
     @Value("${resource.parent}")
     private String parentUrl;
 
-    @Value("${resource.model}")
+    @Autowired
+    @Qualifier("modelPostFix")
     private String modelPostFix;
 
     @Autowired

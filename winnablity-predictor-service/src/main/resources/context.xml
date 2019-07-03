@@ -28,4 +28,10 @@
         </entry>
     </util:map>
 
+    <bean id="modelPostFix" class="java.lang.String">
+        <constructor-arg value="model/LS-2019-prediction.model"/>
+    </bean>
+
+
+
 </beans>
