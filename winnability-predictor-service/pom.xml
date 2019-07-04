@@ -12,9 +12,9 @@
     </parent>
 
     <groupId>com.loks.predict</groupId>
-    <artifactId>winnablity-predictor-svc</artifactId>
+    <artifactId>winnability-predictor-svc</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>winnablity-predictor-service</name>
+    <name>winnability-predictor-service</name>
     <packaging>jar</packaging>
 
     <prerequisites>
@@ -23,7 +23,7 @@
 
     <properties>
             <java.version>1.8</java.version>
-            <project>mot</project>
+            <project>winnability-predictor-service</project>
             <log4j2-version>2.5</log4j2-version>
             <slf4j-api.version>1.7.25</slf4j-api.version>
     </properties>
