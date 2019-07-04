@@ -23,6 +23,11 @@ public class ConstituencyServiceImpl implements ConstituenciesService {
         this.predictorDao = predictorDao;
     }
 
+    private static Constituency getConstituency(final Row row){
+        return new Constituency(row.getInt("INDEX"), row.getString("CONSTITUENCY"),
+                row.getString("STATE"),  row.getInt("POSTFIX_CODE"));
+    }
+
     /**
      *
      * @return
@@ -32,12 +37,7 @@ public class ConstituencyServiceImpl implements ConstituenciesService {
         return predictorDao.getDatasets().get("constituencies").flatMapMany(new Function<Table, Publisher<Constituency>>() {
             @Override
             public Publisher<Constituency> apply(final Table table) {
-                return Flux.fromStream(StreamSupport.stream(table.spliterator(), false).map(this::getConstituency));
-            }
-
-            private Constituency getConstituency(final Row row){
-                return new Constituency(row.getInt("INDEX"), row.getString("CONSTITUENCY"),
-                        row.getString("STATE"),  row.getInt("POSTFIX_CODE"));
+                return Flux.fromStream(StreamSupport.stream(table.spliterator(), false).map(ConstituencyServiceImpl::getConstituency));
             }
         });
     }
@@ -54,12 +54,7 @@ public class ConstituencyServiceImpl implements ConstituenciesService {
             public Publisher<Constituency> apply(final Table table) {
                 return Flux.fromStream(StreamSupport.stream(table.spliterator(), false)
                         .filter(row -> stateName.equalsIgnoreCase(row.getString("STATE")))
-                        .map(this::getConstituency));
-            }
-
-            private Constituency getConstituency(final Row row){
-                return new Constituency(row.getInt("INDEX"), row.getString("CONSTITUENCY"),
-                        row.getString("STATE"),  row.getInt("POSTFIX_CODE"));
+                        .map(ConstituencyServiceImpl::getConstituency));
             }
         });
     }
