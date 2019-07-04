@@ -18,7 +18,7 @@ def get_config(conf_path):
         return d
 
 
-cfg = get_config("../../config/cfg.json")
+cfg = get_config("../config/cfg.json")
 
 logging.basicConfig(format='%(asctime)s - %(message)s', level=logging.INFO, filename=cfg['LOG'])
 
