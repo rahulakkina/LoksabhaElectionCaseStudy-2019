@@ -28,7 +28,7 @@ cfg = get_config("../../config/cfg.json")
 
 class NewsSearch(Resource):
 
-    request_args = {"candidateName": fields.Str(missing="Modi")}
+    request_args = {"candidateName": fields.Str(missing="")}
 
     @lru_cache(maxsize=3000)
     def get_media_popularity_score(self, candidate_name):
