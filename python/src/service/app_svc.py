@@ -30,6 +30,8 @@ logging.basicConfig(format='%(asctime)s - %(message)s', level=logging.INFO)
 
 cfg = get_config("../../config/cfg.json")
 
+candidate_analysis_df = create_df("%s%s" % ("../",cfg["OUTPUT_DATA_SRC"]["CANDIDATE_ANALYSED_LIST"]['CSV']))
+
 
 class NewsSearch(Resource):
 
@@ -58,10 +60,10 @@ class NewsSearch(Resource):
 
 class StateInfo(Resource):
 
-    state_df = create_df("%s%s" % ("../", cfg['INPUT_DATA_SRC']['STATES_INDEX']) )
+    state_df = create_df("%s%s" % ("../", cfg['INPUT_DATA_SRC']['STATES_INDEX']))
 
     def get(self):
-        return self.state_df.to_dict()
+        return self.state_df.to_dict('records')
 
 
 class ConstituenciesInfo(Resource):
@@ -70,23 +72,44 @@ class ConstituenciesInfo(Resource):
 
     @use_args(request_args)
     def get(self, args):
-        return self.constituency_df[self.constituency_df["STATE"] == args["stateName"]].to_dict()
+        return self.constituency_df[self.constituency_df["STATE"] == args["stateName"]].to_dict('records')
 
 
 class PoliticalPartiesInfo(Resource):
     party_df = create_df("%s%s" % ("../", cfg['INPUT_DATA_SRC']['POLITICAL_PARTY_INDEX']))
 
     def get(self):
-        return self.party_df.to_dict()
+        return self.party_df.to_dict('records')
+
+
+class CandidatesInfo(Resource):
+
+    request_args = {"candidateName": fields.Str(missing="")}
+
+    @use_args(request_args)
+    def get(self, args):
+        return \
+            candidate_analysis_df[
+                candidate_analysis_df["CANDIDATE_NAME"].str
+                    .lower().str.contains(args["candidateName"], case=False)].to_dict('records')
+
+
+class EducationInfo(Resource):
+    education_df = create_df("%s%s" % ("../", cfg['INPUT_DATA_SRC']['EDUCATION_INDEX']))
+
+    def get(self):
+        return self.education_df.to_dict('records')
 
 
 app = Flask(__name__)
 api = Api(app)
-CORS(app, resources={r"/news/*": {"origins": "*"}})
+CORS(app, resources={r"/loksabhaElections/*": {"origins": "*"}})
 
 if __name__ == '__main__':
-    api.add_resource(NewsSearch, '/news/search')
+    api.add_resource(NewsSearch, '/loksabhaElections/news/search')
+    api.add_resource(EducationInfo, '/loksabhaElections/educationInfo')
     api.add_resource(StateInfo, '/loksabhaElections/statesInfo')
     api.add_resource(ConstituenciesInfo, '/loksabhaElections/constituenciesInfo')
     api.add_resource(PoliticalPartiesInfo, '/loksabhaElections/politicalPartiesInfo')
+    api.add_resource(CandidatesInfo, '/loksabhaElections/candidatesInfo')
     app.run(debug=True)
