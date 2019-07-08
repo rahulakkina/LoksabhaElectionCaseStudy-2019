@@ -8,8 +8,9 @@ from flask import Flask
 from flask_restful import Api, Resource
 from webargs import fields
 from webargs.flaskparser import use_args
-
+from flask_cors import CORS
 from functools import lru_cache
+
 
 # Loads json configuration from the configuration file.
 
@@ -52,6 +53,7 @@ class NewsSearch(Resource):
 
 app = Flask(__name__)
 api = Api(app)
+CORS(app, resources={r"/news/*": {"origins": "*"}})
 
 if __name__ == '__main__':
     api.add_resource(NewsSearch, '/news/search')
