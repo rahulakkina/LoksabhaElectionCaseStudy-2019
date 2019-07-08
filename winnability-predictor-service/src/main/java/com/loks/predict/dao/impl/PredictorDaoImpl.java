@@ -47,7 +47,7 @@ public class PredictorDaoImpl implements PredictorDao {
 
     private Map<Integer, Integer> ageGroupMappings = Maps.newHashMap();
 
-    private Map<Integer, Double> ageGroupedEarningsMappings = Maps.newHashMap();
+    private Map<Integer, Double> ageGroupedEarningsMappings = Maps.newConcurrentMap();
 
     @PostConstruct
     @Scheduled(fixedDelayString = "${poll.job.schedule}")
@@ -68,7 +68,7 @@ public class PredictorDaoImpl implements PredictorDao {
         StreamSupport.stream(datasets.get("candidate-analysed").block().spliterator(), false)
                 .forEach(row -> collectRow(row, ageGroupedMap));
 
-        ageGroupedMap.entrySet().stream()
+        ageGroupedMap.entrySet().parallelStream()
                 .forEach(entry -> ageGroupedEarningsMappings.put(entry.getKey(), getAverage(entry.getValue())));
     }
 
