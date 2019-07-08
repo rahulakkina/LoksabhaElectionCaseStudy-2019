@@ -4,6 +4,7 @@ import codecs
 import requests
 import feedparser
 import json
+import pandas as pd
 from flask import Flask
 from flask_restful import Api, Resource
 from webargs import fields
@@ -19,6 +20,10 @@ def get_config(conf_path):
     with codecs.open(conf_path, 'r', 'utf-8-sig') as json_data:
         d = json.load(json_data)
         return d
+
+
+def create_df(file_name):
+    return pd.read_csv(file_name, header='infer')
 
 
 logging.basicConfig(format='%(asctime)s - %(message)s', level=logging.INFO)
@@ -51,10 +56,37 @@ class NewsSearch(Resource):
         return self.get_media_popularity_score(args["candidateName"])
 
 
+class StateInfo(Resource):
+
+    state_df = create_df("%s%s" % ("../", cfg['INPUT_DATA_SRC']['STATES_INDEX']) )
+
+    def get(self):
+        return self.state_df.to_dict()
+
+
+class ConstituenciesInfo(Resource):
+    request_args = {"stateName": fields.Str(missing="ANDHRA PRADESH")}
+    constituency_df = create_df("%s%s" % ("../", cfg['INPUT_DATA_SRC']['CONSTITUENCIES']))
+
+    @use_args(request_args)
+    def get(self, args):
+        return self.constituency_df[self.constituency_df["STATE"] == args["stateName"]].to_dict()
+
+
+class PoliticalPartiesInfo(Resource):
+    party_df = create_df("%s%s" % ("../", cfg['INPUT_DATA_SRC']['POLITICAL_PARTY_INDEX']))
+
+    def get(self):
+        return self.party_df.to_dict()
+
+
 app = Flask(__name__)
 api = Api(app)
 CORS(app, resources={r"/news/*": {"origins": "*"}})
 
 if __name__ == '__main__':
     api.add_resource(NewsSearch, '/news/search')
+    api.add_resource(StateInfo, '/loksabhaElections/statesInfo')
+    api.add_resource(ConstituenciesInfo, '/loksabhaElections/constituenciesInfo')
+    api.add_resource(PoliticalPartiesInfo, '/loksabhaElections/politicalPartiesInfo')
     app.run(debug=True)
