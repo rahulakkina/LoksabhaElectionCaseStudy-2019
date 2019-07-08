@@ -5,7 +5,7 @@ import requests
 import feedparser
 import json
 import pandas as pd
-from flask import Flask
+from flask import Flask, request
 from flask_restful import Api, Resource
 from webargs import fields
 from webargs.flaskparser import use_args
@@ -25,6 +25,17 @@ def get_config(conf_path):
 def create_df(file_name):
     return pd.read_csv(file_name, header='infer')
 
+@lru_cache(maxsize=3000)
+def get_media_popularity_score(self, candidate_name):
+    response = requests.get(cfg["NEWS_URL"], params={"q": '"%s"' % candidate_name,
+                                             "hl": "en-SG", "gl": "SG", "ceid": "SG:en"}, proxies=cfg['PROXY'])
+    if response.status_code == 200:
+        d = feedparser.parse(response.text)
+        logging.info("Name : %s, Number Of Items Found : %d" % (candidate_name, len(d['entries'])))
+        return len(d['entries'])
+    else:
+        return 0.000
+
 
 logging.basicConfig(format='%(asctime)s - %(message)s', level=logging.INFO)
 
@@ -33,29 +44,7 @@ cfg = get_config("../../config/cfg.json")
 candidate_analysis_df = create_df("%s%s" % ("../",cfg["OUTPUT_DATA_SRC"]["CANDIDATE_ANALYSED_LIST"]['CSV']))
 
 
-class NewsSearch(Resource):
-
-    request_args = {"candidateName": fields.Str(missing="")}
-
-    @lru_cache(maxsize=3000)
-    def get_media_popularity_score(self, candidate_name):
-        response = requests.get(cfg["NEWS_URL"], params={"q": '"%s"' % candidate_name,
-                                                         "hl": "en-SG", "gl": "SG", "ceid": "SG:en"},
-                                proxies=cfg['PROXY'])
-
-        if response.status_code == 200:
-
-            d = feedparser.parse(response.text)
-
-            logging.info("Name : %s, Number Of Items Found : %d" % (candidate_name, len(d['entries'])))
-
-            return {"numberOfNewsItems": len(d['entries'])}
-        else:
-            return {"numberOfNewsItems": 0.000}
-
-    @use_args(request_args)
-    def get(self, args):
-        return self.get_media_popularity_score(args["candidateName"])
+'''Gets info about states'''
 
 
 class StateInfo(Resource):
@@ -64,6 +53,9 @@ class StateInfo(Resource):
 
     def get(self):
         return self.state_df.to_dict('records')
+
+
+'''Get constituencies listed under given state'''
 
 
 class ConstituenciesInfo(Resource):
@@ -75,11 +67,17 @@ class ConstituenciesInfo(Resource):
         return self.constituency_df[self.constituency_df["STATE"] == args["stateName"]].to_dict('records')
 
 
+'''Gets details around all contesting political parties'''
+
+
 class PoliticalPartiesInfo(Resource):
     party_df = create_df("%s%s" % ("../", cfg['INPUT_DATA_SRC']['POLITICAL_PARTY_INDEX']))
 
     def get(self):
         return self.party_df.to_dict('records')
+
+
+'''Gets details of candidates contesting  the election'''
 
 
 class CandidatesInfo(Resource):
@@ -94,6 +92,9 @@ class CandidatesInfo(Resource):
                     .lower().str.contains(args["candidateName"], case=False)].to_dict('records')
 
 
+'''Gets education listings and their ratings'''
+
+
 class EducationInfo(Resource):
     education_df = create_df("%s%s" % ("../", cfg['INPUT_DATA_SRC']['EDUCATION_INDEX']))
 
@@ -101,15 +102,23 @@ class EducationInfo(Resource):
         return self.education_df.to_dict('records')
 
 
+class Predictor(Resource):
+
+    def post(self):
+        content = request.json
+        return content
+
+
 app = Flask(__name__)
 api = Api(app)
 CORS(app, resources={r"/loksabhaElections/*": {"origins": "*"}})
 
+
 if __name__ == '__main__':
-    api.add_resource(NewsSearch, '/loksabhaElections/news/search')
     api.add_resource(EducationInfo, '/loksabhaElections/educationInfo')
     api.add_resource(StateInfo, '/loksabhaElections/statesInfo')
     api.add_resource(ConstituenciesInfo, '/loksabhaElections/constituenciesInfo')
     api.add_resource(PoliticalPartiesInfo, '/loksabhaElections/politicalPartiesInfo')
     api.add_resource(CandidatesInfo, '/loksabhaElections/candidatesInfo')
+    api.add_resource(Predictor, "/loksabhaElections/predict")
     app.run(debug=True)
