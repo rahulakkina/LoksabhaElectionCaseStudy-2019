@@ -125,6 +125,11 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <jvmArguments>
+                        -XX:+UseG1GC -XX:+UseStringDeduplication -DROOT_DIR=../datasets/
+                    </jvmArguments>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>com.google.cloud.tools</groupId>
@@ -177,6 +182,11 @@
                     <plugin>
                         <groupId>org.springframework.boot</groupId>
                         <artifactId>spring-boot-maven-plugin</artifactId>
+                        <configuration>
+                            <jvmArguments>
+                                -XX:+UseG1GC -XX:+UseStringDeduplication -DROOT_DIR=../datasets/
+                            </jvmArguments>
+                        </configuration>
                     </plugin>
                 </plugins>
             </build>

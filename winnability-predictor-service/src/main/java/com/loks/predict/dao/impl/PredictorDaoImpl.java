@@ -2,7 +2,7 @@ package com.loks.predict.dao.impl;
 
 import com.google.common.collect.Maps;
 import com.loks.predict.dao.PredictorDao;
-import com.loks.predict.util.HttpUtility;
+import com.loks.predict.util.ResourceUtility;
 import ml.dmlc.xgboost4j.java.Booster;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,7 +31,8 @@ public class PredictorDaoImpl implements PredictorDao {
     @Qualifier("datasetResourceMap")
     private Map<String, String> datasetResourceMap;
 
-    @Value("${resource.parent}")
+    @Autowired
+    @Qualifier("parentUrl")
     private String parentUrl;
 
     @Autowired
@@ -39,7 +40,7 @@ public class PredictorDaoImpl implements PredictorDao {
     private String modelPostFix;
 
     @Autowired
-    private HttpUtility httpUtility;
+    private ResourceUtility resourceUtility;
 
     private Map<String, Mono<Table>> datasets;
 
@@ -60,7 +61,7 @@ public class PredictorDaoImpl implements PredictorDao {
 
         getDatasetResources().entrySet().parallelStream().forEach(entry -> buildDataset(entry));
 
-        booster = httpUtility.getData(getModelUrl(), httpUtility.getBoosterFunction());
+        booster = resourceUtility.getData(getModelUrl(), resourceUtility.getBoosterFunction());
 
         StreamSupport.stream(datasets.get("age").block().spliterator(), false)
                 .forEach(this::buildAgeGroupMap);
@@ -105,7 +106,7 @@ public class PredictorDaoImpl implements PredictorDao {
     }
 
     protected void buildDataset(final Map.Entry<String, String> entry){
-       datasets.put(entry.getKey(), httpUtility.getData(entry.getValue(), httpUtility.getTableFunction()));
+       datasets.put(entry.getKey(), resourceUtility.getData(entry.getValue(), resourceUtility.getTableFunction()));
        if(logger.isDebugEnabled()) {
            logger.debug(String.format("Loaded %s dataset", entry.getKey()));
        }

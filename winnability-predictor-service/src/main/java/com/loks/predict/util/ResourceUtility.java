@@ -15,9 +15,9 @@ import java.io.ByteArrayOutputStream;
 import java.util.Map;
 
 
-public interface HttpUtility {
+public interface ResourceUtility {
 
-    Logger logger = LoggerFactory.getLogger(HttpUtility.class);
+    Logger logger = LoggerFactory.getLogger(ResourceUtility.class);
 
     <T> Mono<T> getData(final String url, final Function<ByteArrayOutputStream, T> function);
 

@@ -13,15 +13,13 @@ public class ConstituencyResult implements Serializable{
 
     private final Boolean test;
 
-    public ConstituencyResult(String candidateName, Double votingPercentage) {
-        this.candidateName = candidateName;
-        this.votingPercentage = votingPercentage;
-        this.test = false;
+    public ConstituencyResult(final String candidateName, final Double votingPercentage) {
+        this(candidateName, votingPercentage, false);
     }
 
     public ConstituencyResult(final String candidateName, final Double votingPercentage, final Boolean test) {
         this.candidateName = candidateName;
-        this.votingPercentage = votingPercentage;
+        this.votingPercentage = votingPercentage * 100.0;
         this.test = test;
     }
 

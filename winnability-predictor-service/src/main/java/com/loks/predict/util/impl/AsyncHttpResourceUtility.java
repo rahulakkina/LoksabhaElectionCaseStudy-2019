@@ -2,8 +2,7 @@ package com.loks.predict.util.impl;
 
 
 import com.google.common.base.Function;
-import com.google.common.collect.Maps;
-import com.loks.predict.util.HttpUtility;
+import com.loks.predict.util.ResourceUtility;
 import org.asynchttpclient.*;
 import org.asynchttpclient.proxy.ProxyServer;
 import org.springframework.beans.factory.annotation.Value;
@@ -16,17 +15,20 @@ import java.nio.channels.WritableByteChannel;
 import java.util.Map;
 
 
-@Component
-public class AsyncHttpUtility implements HttpUtility {
 
-    @Value("${http.use-proxy}")
-    private Boolean useProxy;
+public class AsyncHttpResourceUtility implements ResourceUtility {
 
-    @Value("${http.proxy.host}")
-    private String proxyHost;
+    private final Integer proxyPort;
 
-    @Value("${http.proxy.port}")
-    private Integer proxyPort;
+    private final String proxyHost;
+
+    private final Boolean useProxy;
+
+    public AsyncHttpResourceUtility(final Boolean useProxy, final String proxyHost, final Integer proxyPort) {
+        this.proxyPort = proxyPort;
+        this.proxyHost = proxyHost;
+        this.useProxy = useProxy;
+    }
 
     public <T> Mono<T> getData(final String url, final Function<ByteArrayOutputStream, T> function){
         final AsyncHttpClient client =

@@ -8,11 +8,13 @@ spring:
   jackson:
     default-property-inclusion: non_null
 resource:
-  parent: ${PARENT_URI:https://raw.githubusercontent.com/rahulakkina/LoksabhaElectionCaseStudy-2019/master/datasets/}
+  fetch-online: ${FETCH_ONLINE:false}
+  parent-uri: ${PARENT_URI:https://raw.githubusercontent.com/rahulakkina/LoksabhaElectionCaseStudy-2019/master/datasets/}
+  root-dir: ${ROOT_DIR}
 http:
   use-proxy: ${PROXY_ENABLED:true}
   proxy:
-    host: ${PROXY_HOST:proxy.gcloud.com}
+    host: ${PROXY_HOST:rsexmwpa001.bp.com}
     port: ${PROXY_PORT:80}
 poll:
   job:
