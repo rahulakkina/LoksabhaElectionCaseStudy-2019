@@ -11,5 +11,18 @@ env_variables:
 handlers:
 - url: /.*
   script: this field is required, but ignored
-manual_scaling:
-  instances: 1
+resources:
+    cpu: 2
+    memory_gb: 4
+    disk_size_gb: 10
+    volumes:
+    - name: ramdisk1
+      volume_type: tmpfs
+      size_gb: 0.5
+# Automatic Scaling
+automatic_scaling:
+    min_num_instances: 1
+    max_num_instances: 4
+    cool_down_period_sec: 180
+    cpu_utilization:
+      target_utilization: 0.6
