@@ -40,6 +40,7 @@ public class PredictorDaoImpl implements PredictorDao {
     private String modelPostFix;
 
     @Autowired
+    @Qualifier("resourceUtility")
     private ResourceUtility resourceUtility;
 
     private Map<String, Mono<Table>> datasets;

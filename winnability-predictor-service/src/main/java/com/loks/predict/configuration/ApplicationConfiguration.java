@@ -3,6 +3,7 @@ package com.loks.predict.configuration;
 import com.loks.predict.util.ResourceUtility;
 import com.loks.predict.util.impl.AsyncFileResourceUtility;
 import com.loks.predict.util.impl.AsyncHttpResourceUtility;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -13,15 +14,6 @@ import org.springframework.context.annotation.ImportResource;
 @ImportResource({"classpath*:context.xml"})
 public class ApplicationConfiguration {
 
-    @Value("${http.use-proxy}")
-    private Boolean useProxy;
-
-    @Value("${http.proxy.host}")
-    private String proxyHost;
-
-    @Value("${http.proxy.port}")
-    private Integer proxyPort;
-
     @Value("${resource.parent-uri}")
     private String parentUrl;
 
@@ -31,10 +23,19 @@ public class ApplicationConfiguration {
     @Value("${resource.fetch-online}")
     private Boolean fetchOnline;
 
+    @Autowired
+    @Qualifier("asyncHttpResourceUtility")
+    private ResourceUtility asyncHttpResourceUtility;
+
+    @Autowired
+    @Qualifier("asyncFileResourceUtility")
+    private ResourceUtility asyncFileResourceUtility;
+
     @Bean
+    @Qualifier("resourceUtility")
     public ResourceUtility getResourceUtility(){
         return fetchOnline ?
-                new AsyncHttpResourceUtility(useProxy, proxyHost, proxyPort) : new AsyncFileResourceUtility();
+                asyncHttpResourceUtility : asyncFileResourceUtility;
     }
 
     @Bean

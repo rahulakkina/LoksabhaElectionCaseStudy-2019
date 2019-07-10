@@ -12,9 +12,9 @@ resource:
   parent-uri: ${PARENT_URI:https://raw.githubusercontent.com/rahulakkina/LoksabhaElectionCaseStudy-2019/master/datasets/}
   root-dir: ${ROOT_DIR}
 http:
-  use-proxy: ${PROXY_ENABLED:true}
+  use-proxy: ${PROXY_ENABLED:false}
   proxy:
-    host: ${PROXY_HOST:rsexmwpa001.bp.com}
+    host: ${PROXY_HOST:gcloud-proxy.google.com}
     port: ${PROXY_PORT:80}
 poll:
   job:

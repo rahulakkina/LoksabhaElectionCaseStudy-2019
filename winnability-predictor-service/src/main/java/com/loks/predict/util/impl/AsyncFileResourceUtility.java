@@ -4,6 +4,8 @@ import com.google.common.base.Function;
 import com.loks.predict.util.ResourceUtility;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 
 import javax.annotation.Nullable;
@@ -20,11 +22,11 @@ import java.util.concurrent.CompletableFuture;
 import static java.util.concurrent.CompletableFuture.completedFuture;
 
 
+@Component
+@Qualifier("asyncFileResourceUtility")
 public class AsyncFileResourceUtility implements ResourceUtility {
 
     private static final Logger logger = LoggerFactory.getLogger(AsyncFileResourceUtility.class);
-
-    private final Integer BUFFER_SIZE = 262144;
 
     @Override
     public <T> Mono<T> getData(final String filePath, final Function<ByteArrayOutputStream, T> function) {
@@ -44,20 +46,25 @@ public class AsyncFileResourceUtility implements ResourceUtility {
 
     protected Mono<ByteArrayOutputStream> readAllBytes(final Path filePath){
         try {
+
             final File file = filePath.toFile();
             final Integer fileSize = (int)file.length();
-            logger.info(String.format("File : '%s' with Size : %d", file.getName(), fileSize));
+
+            if(logger.isInfoEnabled()) {
+                logger.info(String.format("Processing - File : '%s', Size : %d", file.getName(), fileSize));
+            }
+
             final ByteBuffer buffer = ByteBuffer.allocate(fileSize);
             final ByteArrayOutputStream out = new ByteArrayOutputStream();
             final AsynchronousFileChannel asyncFile = AsynchronousFileChannel.open(filePath, StandardOpenOption.READ);
             return Mono.fromFuture(readAllBytes(asyncFile, buffer, 0, out)
-                            .whenComplete((pos, ex) -> closeAfc(asyncFile , buffer)).thenApply(position -> out));
+                            .whenComplete((pos, ex) -> close(asyncFile , buffer)).thenApply(position -> out));
         }catch (IOException e) {
             throw new UncheckedIOException(e);
         }
     }
 
-    protected void closeAfc(final AsynchronousFileChannel asyncFile, final ByteBuffer byteBuffer) {
+    protected void close(final AsynchronousFileChannel asyncFile, final ByteBuffer byteBuffer) {
         try {
             asyncFile.close();
             byteBuffer.clear();

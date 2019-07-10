@@ -5,6 +5,8 @@ import com.google.common.base.Function;
 import com.loks.predict.util.ResourceUtility;
 import org.asynchttpclient.*;
 import org.asynchttpclient.proxy.ProxyServer;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
@@ -16,21 +18,25 @@ import java.util.Map;
 
 
 
+@Component
+@Qualifier("asyncHttpResourceUtility")
 public class AsyncHttpResourceUtility implements ResourceUtility {
 
-    private final Integer proxyPort;
+    @Value("${http.use-proxy}")
+    private Boolean useProxy;
 
-    private final String proxyHost;
+    @Value("${http.proxy.host}")
+    private String proxyHost;
 
-    private final Boolean useProxy;
-
-    public AsyncHttpResourceUtility(final Boolean useProxy, final String proxyHost, final Integer proxyPort) {
-        this.proxyPort = proxyPort;
-        this.proxyHost = proxyHost;
-        this.useProxy = useProxy;
-    }
+    @Value("${http.proxy.port}")
+    private Integer proxyPort;
 
     public <T> Mono<T> getData(final String url, final Function<ByteArrayOutputStream, T> function){
+
+        if(logger.isInfoEnabled()) {
+            logger.info(String.format("Processing - URL : '%s'", url));
+        }
+
         final AsyncHttpClient client =
                 useProxy ?
                         (Dsl.asyncHttpClient(new DefaultAsyncHttpClientConfig.Builder()

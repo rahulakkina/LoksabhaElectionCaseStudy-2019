@@ -1,5 +1,7 @@
 package com.loks.predict.dto;
 
+import org.apache.commons.math3.util.Precision;
+
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -19,7 +21,7 @@ public class ConstituencyResult implements Serializable{
 
     public ConstituencyResult(final String candidateName, final Double votingPercentage, final Boolean test) {
         this.candidateName = candidateName;
-        this.votingPercentage = votingPercentage * 100.0;
+        this.votingPercentage = Precision.round(votingPercentage * 100.0,2);
         this.test = test;
     }
 

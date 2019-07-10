@@ -56,7 +56,7 @@ public class PredictionServiceImpl implements PredictionService {
                     final float prediction[][] = booster.predict(
                             new DMatrix(predictionVector.getVector(), 1, predictionVector.vectorSize()));
 
-                    final Double score = Precision.round(new BigDecimal(prediction[0][0]).doubleValue(), 4);
+                    final Double score = new BigDecimal(prediction[0][0]).doubleValue();
 
                     result.setScore(score);
 
@@ -144,8 +144,8 @@ public class PredictionServiceImpl implements PredictionService {
 
         final List<ConstituencyResult> candidates = StreamSupport.stream(candidateAnalysed.spliterator(), false)
                 .filter(row -> constituencyId.compareTo(row.getInt("CONSTITUENCY_INDEX")) == 0)
-                .map(row -> new ConstituencyResult(row.getString("CANDIDATE_NAME"),
-                        Precision.round(row.getDouble("VOTING_PERCENTAGE"), 4)))
+                .map(row -> new ConstituencyResult(
+                        row.getString("CANDIDATE_NAME"), row.getDouble("VOTING_PERCENTAGE")))
                 .collect(Collectors.toList());
 
         return candidates;
