@@ -1,6 +1,5 @@
 package com.loks.predict.service.impl;
 
-import com.google.common.collect.Lists;
 import com.loks.predict.dao.PredictorDao;
 import com.loks.predict.dto.ConstituencyResult;
 import com.loks.predict.dto.PredictionParameters;
