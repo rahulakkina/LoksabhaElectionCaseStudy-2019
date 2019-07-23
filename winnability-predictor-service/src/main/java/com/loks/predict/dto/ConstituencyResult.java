@@ -9,17 +9,20 @@ public class ConstituencyResult implements Serializable{
 
     private static final long serialVersionUID = 775664285425868L;
 
+    private final Integer candidateId;
+
     private final String candidateName;
 
     private final Double votingPercentage;
 
     private final Boolean test;
 
-    public ConstituencyResult(final String candidateName, final Double votingPercentage) {
-        this(candidateName, votingPercentage, false);
+    public ConstituencyResult(final Integer candidateId, final String candidateName, final Double votingPercentage) {
+        this(candidateId, candidateName, votingPercentage, false);
     }
 
-    public ConstituencyResult(final String candidateName, final Double votingPercentage, final Boolean test) {
+    public ConstituencyResult(final Integer candidateId, final String candidateName, final Double votingPercentage, final Boolean test) {
+        this.candidateId = candidateId;
         this.candidateName = candidateName;
         this.votingPercentage = Precision.round(votingPercentage * 100.0,2);
         this.test = test;

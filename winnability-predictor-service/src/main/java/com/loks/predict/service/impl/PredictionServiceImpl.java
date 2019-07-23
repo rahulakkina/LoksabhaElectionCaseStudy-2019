@@ -10,7 +10,6 @@ import com.loks.predict.service.PredictionService;
 import ml.dmlc.xgboost4j.java.Booster;
 import ml.dmlc.xgboost4j.java.DMatrix;
 import ml.dmlc.xgboost4j.java.XGBoostError;
-import org.apache.commons.math3.util.Precision;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,7 +61,7 @@ public class PredictionServiceImpl implements PredictionService {
 
                     final List<ConstituencyResult> rankings = getConstituencyResults(predictionParameters.getConstituencyId());
 
-                    rankings.add(new ConstituencyResult(predictionParameters.getCandidateName(), score, true));
+                    rankings.add(new ConstituencyResult(-1, predictionParameters.getCandidateName(), score, true));
 
                     Collections.sort(rankings, (cr1,cr2) -> cr2.getVotingPercentage().compareTo(cr1.getVotingPercentage()));
 
@@ -144,8 +143,9 @@ public class PredictionServiceImpl implements PredictionService {
 
         final List<ConstituencyResult> candidates = StreamSupport.stream(candidateAnalysed.spliterator(), false)
                 .filter(row -> constituencyId.compareTo(row.getInt("CONSTITUENCY_INDEX")) == 0)
-                .map(row -> new ConstituencyResult(
-                        row.getString("CANDIDATE_NAME"), row.getDouble("VOTING_PERCENTAGE")))
+                .map(row -> new ConstituencyResult(row.getInt("CANDIDATE_ID"),
+                        row.getString("CANDIDATE_NAME"),
+                        row.getDouble("VOTING_PERCENTAGE")))
                 .collect(Collectors.toList());
 
         return candidates;

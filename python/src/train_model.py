@@ -39,12 +39,12 @@ Y = y.values
 
 logging.info("Splitting data set for Cross Validation ..")
 
-X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.1, random_state=7)
+X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.08, random_state=7)
 
 
 # Fitting XGBoost to the Training set
 
-xgb = xgboost.XGBRegressor(colsample_bytree=0.8, subsample=0.5, learning_rate=0.01, max_depth=12,
+xgb = xgboost.XGBRegressor(colsample_bytree=0.8, subsample=0.5, learning_rate=0.01, max_depth=8,
                            min_child_weight=1, n_estimators=10000, reg_alpha=0.1, reg_lambda=0.2,
                            gamma=0.01, silent=True, random_state=7, nthread=-1, missing=None)
 
@@ -72,9 +72,9 @@ logging.info("Calculating Root Mean Square Error ......")
 
 logging.info("RMSE - [train, test] : [%f, %f]" % (train_rmse.round(4), test_rmse.round(4)))
 
-logging.info("Applying k-Fold Cross Validation .....")
+'''logging.info("Applying k-Fold Cross Validation .....")
 accuracies = cross_val_score(estimator=xgb, X=X_train, y=Y_train, cv=10)
 
-logging.info("Accuracies - Mean : %f, Standard Deviation : %f" % (accuracies.mean(), accuracies.std()))
+logging.info("Accuracies - Mean : %f, Standard Deviation : %f" % (accuracies.mean(), accuracies.std()))'''
 
 xgb.save_model(cfg["ML"]["MODEL"])

@@ -1,7 +1,7 @@
 import xgboost
 
 
-data = [[2,414,32,187,0,1,0.665,0.031,3,0,-0.0814,1,0,0,0.01]]
+data = [[1,456,34,187,0,0,0.6972,0.147,3,2,0.0121,7,0,0,0.1]]
 
 
 xgb = xgboost.XGBRegressor(colsample_bytree=0.8, subsample=0.5, learning_rate=0.01, max_depth=12,
