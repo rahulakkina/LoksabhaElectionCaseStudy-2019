@@ -7,6 +7,7 @@ import org.reactivestreams.Publisher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 import tech.tablesaw.api.Row;
 import tech.tablesaw.api.Table;
 
@@ -28,13 +29,26 @@ public class PoliticalPartyServiceImpl implements PoliticalPartyService {
         return predictorDao.getDatasets().get("political-parties").flatMapMany(new Function<Table, Publisher<PoliticalParty>>() {
             @Override
             public Publisher<PoliticalParty> apply(final Table table) {
-                return Flux.fromStream(StreamSupport.stream(table.spliterator(), false).map(this::getPoliticalParty));
-            }
-
-            private PoliticalParty getPoliticalParty(final Row row){
-                return new PoliticalParty(row.getInt("INDEX"), row.getString("PARTY"),
-                         row.getInt("POINTS"));
+                return Flux.fromStream(StreamSupport.stream(table.spliterator(), false).map(row -> getPoliticalParty(row)));
             }
         });
+    }
+
+    @Override
+    public Mono<PoliticalParty> getPoliticalParty(final Integer id) {
+        return predictorDao.getDatasets().get("political-parties").flatMap(new Function<Table, Mono<PoliticalParty>>() {
+            @Override
+            public Mono<PoliticalParty> apply(final Table table) {
+                return Mono.justOrEmpty(StreamSupport.stream(table.spliterator(), false)
+                        .filter(row -> row.getInt("INDEX") == id)
+                        .map(row -> getPoliticalParty(row)).findAny());
+
+            }
+        });
+    }
+
+    private static PoliticalParty getPoliticalParty(final Row row){
+        return new PoliticalParty(row.getInt("INDEX"), row.getString("PARTY"),
+                row.getInt("POINTS"));
     }
 }

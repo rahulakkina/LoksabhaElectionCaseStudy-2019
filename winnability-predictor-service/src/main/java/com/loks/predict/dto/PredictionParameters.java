@@ -209,4 +209,27 @@ public class PredictionParameters implements Serializable{
                 getEducationGroupId(), getDeltaStateVoterTurnout(), getNumberOfPhases(),
                 getRecontest(), getSex(), getNumberOfMediaItems());
     }
+
+    @Override
+    public String toString() {
+        return "PredictionParameters{" +
+                "candidateName='" + candidateName + '\'' +
+                ", age=" + age +
+                ", constituencyId=" + constituencyId +
+                ", stateId=" + stateId +
+                ", partyId=" + partyId +
+                ", numberOfPendingCriminalCases=" + numberOfPendingCriminalCases +
+                ", earnedIncome=" + earnedIncome +
+                ", liabilities=" + liabilities +
+                ", stateLiteracyRate=" + stateLiteracyRate +
+                ", stateSeatShare=" + stateSeatShare +
+                ", partyGroupId=" + partyGroupId +
+                ", educationGroupId=" + educationGroupId +
+                ", deltaStateVoterTurnout=" + deltaStateVoterTurnout +
+                ", numberOfPhases=" + numberOfPhases +
+                ", recontest=" + recontest +
+                ", sex=" + sex +
+                ", numberOfMediaItems=" + numberOfMediaItems +
+                '}';
+    }
 }

@@ -6,6 +6,7 @@ import com.loks.predict.dto.PredictionParameters;
 import com.loks.predict.dto.PredictionResponse;
 import com.loks.predict.dto.PredictionVector;
 import com.loks.predict.service.PredictionService;
+import com.loks.predict.service.PredictorService;
 import ml.dmlc.xgboost4j.java.Booster;
 import ml.dmlc.xgboost4j.java.DMatrix;
 import ml.dmlc.xgboost4j.java.XGBoostError;
@@ -19,19 +20,18 @@ import tech.tablesaw.api.Table;
 import java.math.BigDecimal;
 import java.util.*;
 import java.util.function.Function;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
+
 
 @Component
 public class PredictionServiceImpl implements PredictionService {
 
     private static final Logger logger = LoggerFactory.getLogger(PredictionServiceImpl.class);
 
-    private final PredictorDao predictorDao;
+    private final PredictorService predictorService;
 
     @Autowired
-    public PredictionServiceImpl(final PredictorDao predictorDao) {
-        this.predictorDao = predictorDao;
+    public PredictionServiceImpl(final PredictorService predictorService) {
+        this.predictorService = predictorService;
     }
 
     /**
@@ -41,8 +41,10 @@ public class PredictionServiceImpl implements PredictionService {
      */
     @Override
     public Mono<PredictionResponse> predict(final PredictionParameters predictionParameters) {
-        final PredictionVector predictionVector = transform(predictionParameters);
-        final Mono<Booster> model = predictorDao.getModel();
+
+        final PredictionVector predictionVector = predictorService.build(predictionParameters);
+        final Mono<Booster> model = predictorService.getModel();
+
         return model.flatMap(new Function<Booster, Mono<PredictionResponse>>() {
             @Override
             public Mono<PredictionResponse> apply(final Booster booster) {
@@ -58,7 +60,7 @@ public class PredictionServiceImpl implements PredictionService {
 
                     result.setScore(score);
 
-                    final List<ConstituencyResult> rankings = getConstituencyResults(predictionParameters.getConstituencyId());
+                    final List<ConstituencyResult> rankings = predictorService.getConstituencyResults(predictionParameters.getConstituencyId());
 
                     rankings.add(new ConstituencyResult(-1, predictionParameters.getCandidateName(), score, true));
 
@@ -79,75 +81,6 @@ public class PredictionServiceImpl implements PredictionService {
         });
     }
 
-    /**
-     *
-     * @param predictionParameters
-     * @return
-     */
-    protected PredictionVector transform(final PredictionParameters predictionParameters){
-        final PredictionVector predictionVector = new PredictionVector();
 
-        predictionVector.setAgeGroupId(predictorDao.getAgeGroupMappings().get(predictionParameters.getAge()));
-        predictionVector.setConstituencyId(predictionParameters.getConstituencyId());
-        predictionVector.setStateId(predictionParameters.getStateId());
-        predictionVector.setPartyId(predictionParameters.getPartyId());
-        predictionVector.setNumberOfPendingCriminalCases(predictionParameters.getNumberOfPendingCriminalCases());
-        predictionVector.setEarningPoints(calculateEarningPoints(predictionParameters.getAge(),
-                (predictionParameters.getEarnedIncome() - predictionParameters.getLiabilities())));
-        predictionVector.setStateLiteracyRate(predictionParameters.getStateLiteracyRate());
-        predictionVector.setStateSeatShare(predictionParameters.getStateSeatShare());
-        predictionVector.setPartyGroupId(predictionParameters.getPartyGroupId());
-        predictionVector.setEducationGroupId(predictionParameters.getEducationGroupId());
-        predictionVector.setDeltaStateVoterTurnout(predictionParameters.getDeltaStateVoterTurnout());
-        predictionVector.setNumberOfPhases(predictionParameters.getNumberOfPhases());
-        predictionVector.setRecontest(predictionParameters.getRecontest());
-        predictionVector.setSex(predictionParameters.getSex());
-        predictionVector.setNumberOfMediaItems(predictionParameters.getNumberOfMediaItems());
-
-        return predictionVector;
-    }
-
-    /**
-     *
-     * @param age
-     * @param earnings
-     * @return
-     */
-    protected Integer calculateEarningPoints(final Integer age, final Double earnings){
-        final Integer ageGroup = predictorDao.getAgeGroupMappings().get(age);
-
-        if(ageGroup == null){
-            return 0;
-        }
-
-        final Double ageGroupAverageEarnings = predictorDao.getAgeGroupedEarningsMappings().get(ageGroup);
-
-        if(ageGroupAverageEarnings == null){
-            return 0;
-        }
-
-        return (earnings >= (ageGroupAverageEarnings - 0.5 * ageGroupAverageEarnings)
-                && earnings <= (ageGroupAverageEarnings + 0.5 * ageGroupAverageEarnings)) ? 1 : 0;
-
-    }
-
-    /**
-     *
-     * @param constituencyId
-     * @return
-     */
-    protected List<ConstituencyResult> getConstituencyResults(final Integer constituencyId){
-
-        final Table candidateAnalysed = predictorDao.getDatasets().get("candidate-analysed").block();
-
-        final List<ConstituencyResult> candidates = StreamSupport.stream(candidateAnalysed.spliterator(), false)
-                .filter(row -> constituencyId.compareTo(row.getInt("CONSTITUENCY_INDEX")) == 0)
-                .map(row -> new ConstituencyResult(row.getInt("CANDIDATE_ID"),
-                        row.getString("CANDIDATE_NAME"),
-                        row.getDouble("VOTING_PERCENTAGE")))
-                .collect(Collectors.toList());
-
-        return candidates;
-    }
 
 }
