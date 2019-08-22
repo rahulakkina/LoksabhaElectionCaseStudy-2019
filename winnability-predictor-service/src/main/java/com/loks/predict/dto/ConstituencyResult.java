@@ -28,6 +28,10 @@ public class ConstituencyResult implements Serializable{
         this.test = test;
     }
 
+    public Integer getCandidateId() {
+        return candidateId;
+    }
+
     public String getCandidateName() {
         return candidateName;
     }
@@ -41,25 +45,29 @@ public class ConstituencyResult implements Serializable{
     }
 
     @Override
-    public boolean equals(final Object o) {
-        if (this == o) return true;
-        if (!(o instanceof ConstituencyResult)) return false;
-        final ConstituencyResult constituencyResult = (ConstituencyResult) o;
-        return Objects.equals(getCandidateName(), constituencyResult.getCandidateName()) &&
-                Objects.equals(getVotingPercentage(), constituencyResult.getVotingPercentage());
-    }
-
-    @Override
     public String toString() {
-        return "ConstituencyResult{" +
-                "candidateName='" + candidateName + '\'' +
+        return "{" +
+                "candidateId=" + candidateId +
+                ", candidateName='" + candidateName + '\'' +
                 ", votingPercentage=" + votingPercentage +
+                ", test=" + test +
                 '}';
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof ConstituencyResult)) return false;
+        ConstituencyResult that = (ConstituencyResult) o;
+        return Objects.equals(candidateId, that.candidateId) &&
+                Objects.equals(getCandidateName(), that.getCandidateName()) &&
+                Objects.equals(getVotingPercentage(), that.getVotingPercentage()) &&
+                Objects.equals(getTest(), that.getTest());
+    }
+
+    @Override
     public int hashCode() {
-        return Objects.hash(getCandidateName(), getVotingPercentage());
+        return Objects.hash(getCandidateId(), getCandidateName(), getVotingPercentage());
     }
 
 }
