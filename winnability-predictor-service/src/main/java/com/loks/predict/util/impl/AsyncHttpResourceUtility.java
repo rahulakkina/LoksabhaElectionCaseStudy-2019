@@ -5,7 +5,6 @@ import com.google.common.base.Function;
 import com.loks.predict.util.ResourceUtility;
 import org.asynchttpclient.*;
 import org.asynchttpclient.proxy.ProxyServer;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;

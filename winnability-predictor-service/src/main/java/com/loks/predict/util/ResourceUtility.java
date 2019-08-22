@@ -1,17 +1,31 @@
 package com.loks.predict.util;
 
 import com.google.common.base.Function;
+import com.rometools.rome.feed.synd.SyndFeed;
+import com.rometools.rome.io.FeedException;
+import com.rometools.rome.io.SyndFeedInput;
 import ml.dmlc.xgboost4j.java.Booster;
 import ml.dmlc.xgboost4j.java.XGBoost;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.http.HttpHeaders;
+import org.apache.http.HttpHost;
+import org.apache.http.client.fluent.Request;
+import org.apache.http.client.utils.URIBuilder;
 import org.asynchttpclient.ListenableFuture;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.util.CollectionUtils;
+import org.xml.sax.InputSource;
 import reactor.core.publisher.Mono;
 import tech.tablesaw.api.Table;
 
 import javax.annotation.Nullable;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.StringReader;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Map;
 
 
@@ -55,5 +69,41 @@ public interface ResourceUtility {
                 return null;
             }
         };
+    }
+
+    static Double getFloatAsDouble(float value) {
+        return Double.valueOf(Float.valueOf(value).toString()).doubleValue();
+    }
+
+    static Integer getMediaPopularityScore(final String searchQ, final String newsUri,
+                                          final Boolean useProxy, final String proxyHost, final Integer proxyPort){
+        try {
+
+            logger.info(String.format("Performing News Search For '%s'", searchQ));
+
+            final URI uri = new URIBuilder().setPath(newsUri)
+                    .addParameter("q", String.format("\"%s\"", searchQ))
+                    .addParameter("hl", "en-SG")
+                    .addParameter("gl", "SG")
+                    .addParameter("ceid", "SG:en").build();
+
+            Request request = Request.Get(uri).setHeader(HttpHeaders.CONTENT_TYPE, "application/json");
+
+            if(useProxy) {
+                request = request.viaProxy(new HttpHost(proxyHost, proxyPort));
+            }
+
+            final String feedContent = request.execute().returnContent().asString();
+
+            if (StringUtils.isNotBlank(feedContent)) {
+                final SyndFeed feed = new SyndFeedInput().build(new InputSource(new StringReader(feedContent)));
+                return (feed != null && !CollectionUtils.isEmpty(feed.getEntries())) ? feed.getEntries().size() : 0;
+            }
+
+        }catch(IOException | URISyntaxException | FeedException ie){
+            logger.error(ie.getMessage(), ie);
+        }
+
+        return 0;
     }
 }

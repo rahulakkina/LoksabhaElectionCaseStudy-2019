@@ -1,5 +1,7 @@
 package com.loks.predict.dto;
 
+import org.apache.commons.math3.util.Precision;
+
 import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
@@ -14,7 +16,7 @@ public class PredictionResponse implements Serializable {
     private List<ConstituencyResult> rankings;
 
     public void setScore(final Double score) {
-        this.score = score;
+        this.score = Precision.round(score, 4);
     }
 
     public void setRankings(final List<ConstituencyResult> rankings) {

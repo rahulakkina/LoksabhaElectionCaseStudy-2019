@@ -11,6 +11,7 @@ resource:
   fetch-online: ${FETCH_ONLINE:false}
   parent-uri: ${PARENT_URI:https://raw.githubusercontent.com/rahulakkina/LoksabhaElectionCaseStudy-2019/master/datasets/}
   root-dir: ${ROOT_DIR}
+  news-uri: ${NEWS_URI:https://news.google.com/rss/search}
 http:
   use-proxy: ${PROXY_ENABLED:false}
   proxy:

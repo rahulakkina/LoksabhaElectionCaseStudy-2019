@@ -7,6 +7,7 @@ import ml.dmlc.xgboost4j.java.Booster;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 import tech.tablesaw.api.Table;
@@ -14,6 +15,7 @@ import tech.tablesaw.api.Table;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
+import static com.loks.predict.util.ResourceUtility.*;
 
 @Component
 public class PredictorServiceImpl implements PredictorService {
@@ -34,6 +36,18 @@ public class PredictorServiceImpl implements PredictorService {
 
     @Autowired
     private PredictorDao predictorDao;
+
+    @Value("${resource.news-uri}")
+    private String newsUri;
+
+    @Value("${http.use-proxy}")
+    private Boolean useProxy;
+
+    @Value("${http.proxy.host}")
+    private String proxyHost;
+
+    @Value("${http.proxy.port}")
+    private Integer proxyPort;
 
 
     @Override
@@ -68,6 +82,12 @@ public class PredictorServiceImpl implements PredictorService {
         final PoliticalParty politicalParty = find(predictionParameters.getPartyId(), PoliticalParty.class);
 
         predictionParameters.setPartyGroupId(politicalParty.getPoints());
+
+        final Integer numberOfMediaItems =
+                getMediaPopularityScore(predictionParameters.getCandidateName(),
+                        newsUri, useProxy, proxyHost, proxyPort);
+
+        predictionParameters.setNumberOfMediaItems(numberOfMediaItems);
 
         return transform(predictionParameters);
     }
@@ -147,7 +167,8 @@ public class PredictorServiceImpl implements PredictorService {
         return predictorDao.getModel();
     }
 
-    static double getFloatAsDouble(float value) {
-        return Double.valueOf(Float.valueOf(value).toString()).doubleValue();
-    }
+
+
+
+
 }
