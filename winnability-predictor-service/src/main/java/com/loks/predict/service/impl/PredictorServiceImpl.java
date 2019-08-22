@@ -39,31 +39,20 @@ public class PredictorServiceImpl implements PredictorService {
     @Override
     public <T> T find(final Integer id, final Class<T> cl) {
         if(State.class == cl){
-            return (T)stateService.getStatesInfo()
-                    .filter(state -> state.getId() == id)
-                    .last()
-                    .block();
+            return (T)stateService.getStateInfo(id).block();
         }
 
         if(Constituency.class == cl){
-            return (T)constituenciesService.getConstituenciesInfo()
-                    .filter(constituency -> constituency.getId() == id)
-                    .last()
-                    .block();
+            return (T)constituenciesService.getConstituencyInfo(id).block();
         }
 
         if(PoliticalParty.class == cl){
-            return (T)politicalPartyService
-                    .getPoliticalParty(id)
-                    .block();
+            return (T)politicalPartyService.getPoliticalParty(id).block();
         }
 
         if(Candidate.class == cl){
-            return (T)candidateService.getContestantByCandidateId(id)
-                    .block();
+            return (T)candidateService.getContestantByCandidateId(id).block();
         }
-
-
         return null;
     }
 
@@ -71,10 +60,10 @@ public class PredictorServiceImpl implements PredictorService {
     public PredictionVector build(final PredictionParameters predictionParameters) {
         final State state = find(predictionParameters.getStateId(), State.class);
 
-        predictionParameters.setStateSeatShare((double)state.getSeatShare());
-        predictionParameters.setStateLiteracyRate((double)state.getLiteracyRate());
+        predictionParameters.setStateSeatShare(getFloatAsDouble(state.getSeatShare()));
+        predictionParameters.setStateLiteracyRate(getFloatAsDouble(state.getLiteracyRate()));
         predictionParameters.setNumberOfPhases(state.getNoOfPhases());
-        predictionParameters.setDeltaStateVoterTurnout((double)state.getDeltaVoterTurnout());
+        predictionParameters.setDeltaStateVoterTurnout(getFloatAsDouble(state.getDeltaVoterTurnout()));
 
         final PoliticalParty politicalParty = find(predictionParameters.getPartyId(), PoliticalParty.class);
 
@@ -156,5 +145,9 @@ public class PredictorServiceImpl implements PredictorService {
 
     public Mono<Booster> getModel(){
         return predictorDao.getModel();
+    }
+
+    static double getFloatAsDouble(float value) {
+        return Double.valueOf(Float.valueOf(value).toString()).doubleValue();
     }
 }

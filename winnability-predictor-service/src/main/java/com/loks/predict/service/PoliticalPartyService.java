@@ -6,5 +6,5 @@ import reactor.core.publisher.Mono;
 
 public interface PoliticalPartyService {
     Flux<PoliticalParty> getPoliticalPartiesInfo();
-    public Mono<PoliticalParty> getPoliticalParty(final Integer id);
+    Mono<PoliticalParty> getPoliticalParty(final Integer id);
 }

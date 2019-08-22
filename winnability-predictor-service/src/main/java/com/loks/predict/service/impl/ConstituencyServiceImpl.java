@@ -7,6 +7,7 @@ import org.reactivestreams.Publisher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 import tech.tablesaw.api.Row;
 import tech.tablesaw.api.Table;
 
@@ -55,6 +56,19 @@ public class ConstituencyServiceImpl implements ConstituenciesService {
                 return Flux.fromStream(StreamSupport.stream(table.spliterator(), false)
                         .filter(row -> stateName.equalsIgnoreCase(row.getString("STATE")))
                         .map(ConstituencyServiceImpl::getConstituency));
+            }
+        });
+    }
+
+    @Override
+    public Mono<Constituency> getConstituencyInfo(final Integer id) {
+        return predictorDao.getDatasets().get("constituencies").flatMap(new Function<Table, Mono<Constituency>>() {
+            @Override
+            public Mono<Constituency> apply(final Table table) {
+                return Mono.justOrEmpty(StreamSupport.stream(table.spliterator(), false)
+                        .filter(row -> row.getInt("INDEX") == id)
+                        .map(ConstituencyServiceImpl::getConstituency).findAny());
+
             }
         });
     }
