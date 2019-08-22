@@ -79,7 +79,9 @@ public interface ResourceUtility {
                                           final Boolean useProxy, final String proxyHost, final Integer proxyPort){
         try {
 
-            logger.info(String.format("Performing News Search For '%s'", searchQ));
+            if(logger.isInfoEnabled()) {
+                logger.info(String.format("Performing News Search For '%s'", searchQ));
+            }
 
             final URI uri = new URIBuilder().setPath(newsUri)
                     .addParameter("q", String.format("\"%s\"", searchQ))
