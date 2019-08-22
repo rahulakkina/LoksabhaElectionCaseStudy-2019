@@ -1,6 +1,5 @@
 package com.loks.predict.service.impl;
 
-import com.loks.predict.dao.PredictorDao;
 import com.loks.predict.dto.ConstituencyResult;
 import com.loks.predict.dto.PredictionParameters;
 import com.loks.predict.dto.PredictionResponse;
@@ -70,7 +69,7 @@ public class PredictionServiceImpl implements PredictionService {
 
                     logger.info(String.format(
                             "Constituency Result prediction for the Candidate : '%s' - completed in %d ms",
-                            predictionParameters.getCandidateName(), (System.currentTimeMillis() - startTime)));
+                            predictionParameters.toString(), (System.currentTimeMillis() - startTime)));
 
                 } catch (final XGBoostError xgBoostError) {
                     logger.error(xgBoostError.getMessage(), xgBoostError);

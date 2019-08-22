@@ -2,6 +2,7 @@ package com.loks.predict.service.impl;
 
 import com.loks.predict.dao.PredictorDao;
 import com.loks.predict.dto.Constituency;
+import com.loks.predict.dto.ConstituencyResult;
 import com.loks.predict.service.ConstituenciesService;
 import org.reactivestreams.Publisher;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,9 @@ import reactor.core.publisher.Mono;
 import tech.tablesaw.api.Row;
 import tech.tablesaw.api.Table;
 
+import java.util.List;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 @Component
@@ -71,5 +74,24 @@ public class ConstituencyServiceImpl implements ConstituenciesService {
 
             }
         });
+    }
+
+    /**
+     *
+     * @param constituencyId
+     * @return
+     */
+    public List<ConstituencyResult> getConstituencyResults(final Integer constituencyId){
+
+        final Table candidateAnalysed = predictorDao.getDatasets().get("candidate-analysed").block();
+
+        final List<ConstituencyResult> candidates = StreamSupport.stream(candidateAnalysed.spliterator(), false)
+                .filter(row -> constituencyId.compareTo(row.getInt("CONSTITUENCY_INDEX")) == 0)
+                .map(row -> new ConstituencyResult(row.getInt("CANDIDATE_ID"),
+                        row.getString("CANDIDATE_NAME"),
+                        row.getDouble("VOTING_PERCENTAGE")))
+                .collect(Collectors.toList());
+
+        return candidates;
     }
 }

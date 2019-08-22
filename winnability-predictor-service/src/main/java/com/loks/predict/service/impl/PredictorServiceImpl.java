@@ -4,23 +4,16 @@ import com.loks.predict.dao.PredictorDao;
 import com.loks.predict.dto.*;
 import com.loks.predict.service.*;
 import ml.dmlc.xgboost4j.java.Booster;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
-import tech.tablesaw.api.Table;
 
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 import static com.loks.predict.util.ResourceUtility.*;
 
 @Component
 public class PredictorServiceImpl implements PredictorService {
-
-    private static final Logger logger = LoggerFactory.getLogger(PredictorServiceImpl.class);
 
     @Autowired
     private StateService stateService;
@@ -49,43 +42,47 @@ public class PredictorServiceImpl implements PredictorService {
     @Value("${http.proxy.port}")
     private Integer proxyPort;
 
-
-    @Override
-    public <T> T find(final Integer id, final Class<T> cl) {
-        if(State.class == cl){
-            return (T)stateService.getStateInfo(id).block();
-        }
-
-        if(Constituency.class == cl){
-            return (T)constituenciesService.getConstituencyInfo(id).block();
-        }
-
-        if(PoliticalParty.class == cl){
-            return (T)politicalPartyService.getPoliticalParty(id).block();
-        }
-
-        if(Candidate.class == cl){
-            return (T)candidateService.getContestantByCandidateId(id).block();
-        }
-        return null;
-    }
-
+    /**
+     *
+     * @param predictionParameters
+     * @return
+     */
     @Override
     public PredictionVector build(final PredictionParameters predictionParameters) {
-        final State state = find(predictionParameters.getStateId(), State.class);
 
+        final PoliticalParty politicalParty = (predictionParameters.getPartyId() != null) ?
+                    politicalPartyService.getPoliticalParty(predictionParameters.getPartyId()).block() :
+                    politicalPartyService.getPoliticalParty("IND").block();
+
+        predictionParameters.setPartyId(politicalParty.getId());
+        predictionParameters.setPartyGroupId(politicalParty.getPoints());
+
+        final State state = predictionParameters.getStateId() != null ?
+                        stateService.getStateInfo(predictionParameters.getStateId()).block() :
+                        stateService.getStateInfo(
+                                constituenciesService
+                                        .getConstituencyInfo(predictionParameters.getStateId())
+                                        .block()
+                                        .getStateName()
+                        ).block();
+
+        predictionParameters.setStateId(state.getId());
         predictionParameters.setStateSeatShare(getFloatAsDouble(state.getSeatShare()));
         predictionParameters.setStateLiteracyRate(getFloatAsDouble(state.getLiteracyRate()));
         predictionParameters.setNumberOfPhases(state.getNoOfPhases());
         predictionParameters.setDeltaStateVoterTurnout(getFloatAsDouble(state.getDeltaVoterTurnout()));
 
-        final PoliticalParty politicalParty = find(predictionParameters.getPartyId(), PoliticalParty.class);
+        predictionParameters.setRecontest(predictionParameters.getRecontest() != null ?
+                predictionParameters.getRecontest() : false);
 
-        predictionParameters.setPartyGroupId(politicalParty.getPoints());
+        predictionParameters.setSex(predictionParameters.getSex() != null ?
+                predictionParameters.getSex() : false);
 
         final Integer numberOfMediaItems =
-                getMediaPopularityScore(predictionParameters.getCandidateName(),
-                        newsUri, useProxy, proxyHost, proxyPort);
+                    (predictionParameters.getNumberOfMediaItems() == null) ?
+                            getMediaPopularityScore(predictionParameters.getCandidateName(),
+                                    newsUri, useProxy, proxyHost, proxyPort) :
+                            predictionParameters.getNumberOfMediaItems();
 
         predictionParameters.setNumberOfMediaItems(numberOfMediaItems);
 
@@ -150,25 +147,10 @@ public class PredictorServiceImpl implements PredictorService {
      * @return
      */
     public List<ConstituencyResult> getConstituencyResults(final Integer constituencyId){
-
-        final Table candidateAnalysed = predictorDao.getDatasets().get("candidate-analysed").block();
-
-        final List<ConstituencyResult> candidates = StreamSupport.stream(candidateAnalysed.spliterator(), false)
-                .filter(row -> constituencyId.compareTo(row.getInt("CONSTITUENCY_INDEX")) == 0)
-                .map(row -> new ConstituencyResult(row.getInt("CANDIDATE_ID"),
-                        row.getString("CANDIDATE_NAME"),
-                        row.getDouble("VOTING_PERCENTAGE")))
-                .collect(Collectors.toList());
-
-        return candidates;
+        return constituenciesService.getConstituencyResults(constituencyId);
     }
 
     public Mono<Booster> getModel(){
         return predictorDao.getModel();
     }
-
-
-
-
-
 }

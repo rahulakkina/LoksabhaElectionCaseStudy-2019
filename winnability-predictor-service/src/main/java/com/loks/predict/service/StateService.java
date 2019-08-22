@@ -7,4 +7,5 @@ import reactor.core.publisher.Mono;
 public interface StateService {
     Flux<State> getStatesInfo();
     Mono<State> getStateInfo(final Integer id);
+    Mono<State> getStateInfo(final String stateName);
 }

@@ -56,4 +56,17 @@ public class StateServiceImpl implements StateService {
             }
         });
     }
+
+    @Override
+    public Mono<State> getStateInfo(final String stateName) {
+        return predictorDao.getDatasets().get("states").flatMap(new Function<Table, Mono<State>>() {
+            @Override
+            public Mono<State> apply(final Table table) {
+                return Mono.justOrEmpty(StreamSupport.stream(table.spliterator(), false)
+                        .filter(row -> row.getString("STATE").equalsIgnoreCase(stateName))
+                        .map(row -> getState(row)).findAny());
+
+            }
+        });
+    }
 }

@@ -77,12 +77,10 @@ public interface ResourceUtility {
 
     static Integer getMediaPopularityScore(final String searchQ, final String newsUri,
                                           final Boolean useProxy, final String proxyHost, final Integer proxyPort){
+
+        final Long startTime = System.currentTimeMillis();
+
         try {
-
-            if(logger.isInfoEnabled()) {
-                logger.info(String.format("Performing News Search For '%s'", searchQ));
-            }
-
             final URI uri = new URIBuilder().setPath(newsUri)
                     .addParameter("q", String.format("\"%s\"", searchQ))
                     .addParameter("hl", "en-SG")
@@ -99,11 +97,15 @@ public interface ResourceUtility {
 
             if (StringUtils.isNotBlank(feedContent)) {
                 final SyndFeed feed = new SyndFeedInput().build(new InputSource(new StringReader(feedContent)));
+
                 return (feed != null && !CollectionUtils.isEmpty(feed.getEntries())) ? feed.getEntries().size() : 0;
             }
 
         }catch(IOException | URISyntaxException | FeedException ie){
             logger.error(ie.getMessage(), ie);
+        }finally{
+            logger.info(String.format("Performed news search for the Candidate : '%s' - completed in %d ms",
+                    searchQ, (System.currentTimeMillis() - startTime)));
         }
 
         return 0;

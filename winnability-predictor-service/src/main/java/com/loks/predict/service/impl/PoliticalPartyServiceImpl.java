@@ -47,6 +47,19 @@ public class PoliticalPartyServiceImpl implements PoliticalPartyService {
         });
     }
 
+    @Override
+    public Mono<PoliticalParty> getPoliticalParty(final String partyName) {
+        return predictorDao.getDatasets().get("political-parties").flatMap(new Function<Table, Mono<PoliticalParty>>() {
+            @Override
+            public Mono<PoliticalParty> apply(final Table table) {
+                return Mono.justOrEmpty(StreamSupport.stream(table.spliterator(), false)
+                        .filter(row -> row.getString("PARTY").equalsIgnoreCase(partyName))
+                        .map(row -> getPoliticalParty(row)).findAny());
+
+            }
+        });
+    }
+
     private static PoliticalParty getPoliticalParty(final Row row){
         return new PoliticalParty(row.getInt("INDEX"), row.getString("PARTY"),
                 row.getInt("POINTS"));

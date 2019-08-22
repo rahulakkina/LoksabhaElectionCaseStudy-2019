@@ -212,7 +212,7 @@ public class PredictionParameters implements Serializable{
 
     @Override
     public String toString() {
-        return "PredictionParameters{" +
+        return "{" +
                 "candidateName='" + candidateName + '\'' +
                 ", age=" + age +
                 ", constituencyId=" + constituencyId +
