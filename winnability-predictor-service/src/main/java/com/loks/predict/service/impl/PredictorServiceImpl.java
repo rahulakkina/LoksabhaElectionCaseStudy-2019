@@ -61,7 +61,7 @@ public class PredictorServiceImpl implements PredictorService {
                         stateService.getStateInfo(predictionParameters.getStateId()).block() :
                         stateService.getStateInfo(
                                 constituenciesService
-                                        .getConstituencyInfo(predictionParameters.getStateId())
+                                        .getConstituencyInfo(predictionParameters.getConstituencyId())
                                         .block()
                                         .getStateName()
                         ).block();
