@@ -60,7 +60,10 @@ public class PredictorDaoImpl implements PredictorDao {
 
         final Map<Integer, List<Double>> ageGroupedMap = Maps.newHashMap();
 
-        getDatasetResources().entrySet().parallelStream().forEach(this::buildDataset);
+        getDatasetResources()
+                .entrySet()
+                .parallelStream()
+                .forEach(this::buildDataset);
 
         booster = resourceUtility.getData(getModelUrl(), resourceUtility.getBoosterFunction());
 
@@ -114,7 +117,12 @@ public class PredictorDaoImpl implements PredictorDao {
     }
 
     protected void buildDataset(final Map.Entry<String, String> entry){
-       datasets.put(entry.getKey(), resourceUtility.getData(entry.getValue(), resourceUtility.getTableFunction()));
+
+        datasets.put(
+               entry.getKey(),
+               resourceUtility.getData(entry.getValue(),
+                       resourceUtility.getTableFunction()));
+
        if(logger.isDebugEnabled()) {
            logger.debug(String.format("Loaded %s dataset", entry.getKey()));
        }

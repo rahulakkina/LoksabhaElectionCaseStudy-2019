@@ -44,10 +44,14 @@ public class PredictionServiceImpl implements PredictionService {
         final PredictionVector predictionVector = predictorService.build(predictionParameters);
         final Mono<Booster> model = predictorService.getModel();
 
-        return model
+
+        return  Mono.first(
+                model
                 .flatMap(
                          booster -> {
-                            final PredictionResponse result = new PredictionResponse();
+
+                             final PredictionResponse result = new PredictionResponse();
+
                             try {
 
                                 final Long startTime = System.currentTimeMillis();
@@ -81,7 +85,9 @@ public class PredictionServiceImpl implements PredictionService {
                             }
 
                            return Mono.just(result);
-                        });
+                         }
+                        )
+        );
     }
 
 
