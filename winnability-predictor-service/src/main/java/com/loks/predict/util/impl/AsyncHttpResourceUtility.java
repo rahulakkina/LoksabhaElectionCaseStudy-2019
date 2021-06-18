@@ -55,13 +55,15 @@ public class AsyncHttpResourceUtility implements ResourceUtility {
                     }
 
                     @Override
-                    public T onCompleted(final Response response) throws Exception {
+                    public T onCompleted(final Response response) {
                         return function.apply(stream);
                     }
                 }));
     }
 
-    public <T> Mono<T> getData(final String url, final Map<String, String> params, final Function<ByteArrayOutputStream, T> function){
+    public <T> Mono<T> getData(final String url,
+                               final Map<String, String> params,
+                               final Function<ByteArrayOutputStream, T> function){
         final AsyncHttpClient client =
                 useProxy ?
                         (Dsl.asyncHttpClient(new DefaultAsyncHttpClientConfig.Builder()
@@ -89,7 +91,7 @@ public class AsyncHttpResourceUtility implements ResourceUtility {
                     }
 
                     @Override
-                    public T onCompleted(final Response response) throws Exception {
+                    public T onCompleted(final Response response) {
                         return function.apply(stream);
                     }
                 }));

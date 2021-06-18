@@ -27,6 +27,7 @@ import java.io.StringReader;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Map;
+import java.util.Objects;
 
 
 public interface ResourceUtility {
@@ -47,7 +48,11 @@ public interface ResourceUtility {
             @Override
             public Table apply(@Nullable final ByteArrayOutputStream byteArrayOutputStream) {
                 try {
-                    return Table.read().csv(new ByteArrayInputStream(byteArrayOutputStream.toByteArray()));
+                    return Table.read()
+                            .csv(
+                                    new ByteArrayInputStream(
+                                            Objects.requireNonNull(byteArrayOutputStream)
+                                                    .toByteArray()));
                 }catch(Exception e){
                     logger.error(e.getMessage(), e);
                 }
@@ -62,7 +67,9 @@ public interface ResourceUtility {
             @Override
             public Booster apply(@Nullable final ByteArrayOutputStream byteArrayOutputStream) {
                 try {
-                    return XGBoost.loadModel(new ByteArrayInputStream(byteArrayOutputStream.toByteArray()));
+                    return XGBoost.loadModel(
+                            new ByteArrayInputStream(
+                                    Objects.requireNonNull(byteArrayOutputStream).toByteArray()));
                 }catch(Exception e){
                     logger.error(e.getMessage(), e);
                 }
@@ -72,7 +79,8 @@ public interface ResourceUtility {
     }
 
     static Double getFloatAsDouble(float value) {
-        return Double.valueOf(Float.valueOf(value).toString()).doubleValue();
+        return Double.valueOf(
+                Float.valueOf(value).toString());
     }
 
     static Integer getMediaPopularityScore(final String searchQ, final String newsUri,

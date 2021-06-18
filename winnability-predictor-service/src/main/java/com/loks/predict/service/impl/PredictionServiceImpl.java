@@ -17,8 +17,7 @@ import reactor.core.publisher.Mono;
 
 
 import java.math.BigDecimal;
-import java.util.*;
-import java.util.function.Function;
+import java.util.List;
 
 
 @Component
@@ -39,45 +38,50 @@ public class PredictionServiceImpl implements PredictionService {
      * @return
      */
     @Override
-    public Mono<PredictionResponse> predict(final PredictionParameters predictionParameters) {
+    public Mono<PredictionResponse> predict(
+            final PredictionParameters predictionParameters) {
 
         final PredictionVector predictionVector = predictorService.build(predictionParameters);
         final Mono<Booster> model = predictorService.getModel();
 
-        return model.flatMap(new Function<Booster, Mono<PredictionResponse>>() {
-            @Override
-            public Mono<PredictionResponse> apply(final Booster booster) {
-                final PredictionResponse result = new PredictionResponse();
-                try {
+        return model
+                .flatMap(
+                         booster -> {
+                            final PredictionResponse result = new PredictionResponse();
+                            try {
 
-                    final Long startTime = System.currentTimeMillis();
+                                final Long startTime = System.currentTimeMillis();
 
-                    final float prediction[][] = booster.predict(
-                            new DMatrix(predictionVector.getVector(), 1, predictionVector.vectorSize()));
+                                final float[][] prediction = booster.predict(
+                                        new DMatrix(predictionVector.getVector(), 1, predictionVector.vectorSize()));
 
-                    final Double score = new BigDecimal(prediction[0][0]).doubleValue();
+                                final Double score = BigDecimal.valueOf(prediction[0][0]).doubleValue();
 
-                    result.setScore(score);
+                                result.setScore(score);
 
-                    final List<ConstituencyResult> rankings = predictorService.getConstituencyResults(predictionParameters.getConstituencyId());
+                                final List<ConstituencyResult> rankings =
+                                        predictorService.getConstituencyResults(
+                                                predictionParameters.getConstituencyId());
 
-                    rankings.add(new ConstituencyResult(-1, predictionParameters.getCandidateName(), score, true));
+                                rankings.add(
+                                        new ConstituencyResult(-1,
+                                                predictionParameters.getCandidateName(), score, true));
 
-                    Collections.sort(rankings, (cr1,cr2) -> cr2.getVotingPercentage().compareTo(cr1.getVotingPercentage()));
+                                rankings.sort((cr1, cr2) ->
+                                        cr2.getVotingPercentage().compareTo(cr1.getVotingPercentage()));
 
-                    result.setRankings(rankings);
+                                result.setRankings(rankings);
 
-                    logger.info(String.format(
-                            "Constituency Result prediction for the Candidate : '%s' - completed in %d ms",
-                            predictionParameters.toString(), (System.currentTimeMillis() - startTime)));
+                                logger.info(String.format(
+                                        "Constituency Result prediction for the Candidate : '%s' - completed in %d ms",
+                                        predictionParameters.toString(), (System.currentTimeMillis() - startTime)));
 
-                } catch (final XGBoostError xgBoostError) {
-                    logger.error(xgBoostError.getMessage(), xgBoostError);
-                }
+                            } catch (final XGBoostError xgBoostError) {
+                                logger.error(xgBoostError.getMessage(), xgBoostError);
+                            }
 
-               return Mono.just(result);
-            }
-        });
+                           return Mono.just(result);
+                        });
     }
 
 

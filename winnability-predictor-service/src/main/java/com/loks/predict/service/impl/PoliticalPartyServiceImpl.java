@@ -26,38 +26,37 @@ public class PoliticalPartyServiceImpl implements PoliticalPartyService {
 
     @Override
     public Flux<PoliticalParty> getPoliticalPartiesInfo() {
-        return predictorDao.getDatasets().get("political-parties").flatMapMany(new Function<Table, Publisher<PoliticalParty>>() {
-            @Override
-            public Publisher<PoliticalParty> apply(final Table table) {
-                return Flux.fromStream(StreamSupport.stream(table.spliterator(), false).map(row -> getPoliticalParty(row)));
-            }
-        });
+        return predictorDao.getDatasets().get("political-parties")
+                .flatMapMany(
+                        (Function<Table, Publisher<PoliticalParty>>) table ->
+                                Flux.fromStream(StreamSupport.stream(table.spliterator(), false)
+                                        .map(PoliticalPartyServiceImpl::getPoliticalParty)));
     }
 
     @Override
     public Mono<PoliticalParty> getPoliticalParty(final Integer id) {
-        return predictorDao.getDatasets().get("political-parties").flatMap(new Function<Table, Mono<PoliticalParty>>() {
-            @Override
-            public Mono<PoliticalParty> apply(final Table table) {
-                return Mono.justOrEmpty(StreamSupport.stream(table.spliterator(), false)
-                        .filter(row -> row.getInt("INDEX") == id)
-                        .map(row -> getPoliticalParty(row)).findAny());
-
-            }
-        });
+        return predictorDao.getDatasets().get("political-parties")
+                .flatMap(
+                        (Function<Table, Mono<PoliticalParty>>) table ->
+                                Mono.justOrEmpty(StreamSupport.stream(table.spliterator(), false)
+                                        .filter(row -> row.getInt("INDEX") == id)
+                                        .map(PoliticalPartyServiceImpl::getPoliticalParty)
+                                        .findAny()
+                                )
+                );
     }
 
     @Override
     public Mono<PoliticalParty> getPoliticalParty(final String partyName) {
-        return predictorDao.getDatasets().get("political-parties").flatMap(new Function<Table, Mono<PoliticalParty>>() {
-            @Override
-            public Mono<PoliticalParty> apply(final Table table) {
-                return Mono.justOrEmpty(StreamSupport.stream(table.spliterator(), false)
-                        .filter(row -> row.getString("PARTY").equalsIgnoreCase(partyName))
-                        .map(row -> getPoliticalParty(row)).findAny());
-
-            }
-        });
+        return predictorDao.getDatasets().get("political-parties")
+                .flatMap(
+                        (Function<Table, Mono<PoliticalParty>>) table ->
+                                Mono.justOrEmpty(StreamSupport.stream(table.spliterator(), false)
+                                        .filter(row -> row.getString("PARTY").equalsIgnoreCase(partyName))
+                                        .map(PoliticalPartyServiceImpl::getPoliticalParty)
+                                        .findAny()
+                                )
+                );
     }
 
     private static PoliticalParty getPoliticalParty(final Row row){

@@ -8,7 +8,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
@@ -19,6 +18,7 @@ import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.stream.IntStream;
 import java.util.stream.StreamSupport;
 
@@ -47,9 +47,9 @@ public class PredictorDaoImpl implements PredictorDao {
 
     private Mono<Booster> booster;
 
-    private Map<Integer, Integer> ageGroupMappings = Maps.newHashMap();
+    private final Map<Integer, Integer> ageGroupMappings = Maps.newHashMap();
 
-    private Map<Integer, Double> ageGroupedEarningsMappings = Maps.newConcurrentMap();
+    private final Map<Integer, Double> ageGroupedEarningsMappings = Maps.newConcurrentMap();
 
     @PostConstruct
     @Scheduled(fixedDelayString = "${poll.job.schedule}")
@@ -60,14 +60,17 @@ public class PredictorDaoImpl implements PredictorDao {
 
         final Map<Integer, List<Double>> ageGroupedMap = Maps.newHashMap();
 
-        getDatasetResources().entrySet().parallelStream().forEach(entry -> buildDataset(entry));
+        getDatasetResources().entrySet().parallelStream().forEach(this::buildDataset);
 
         booster = resourceUtility.getData(getModelUrl(), resourceUtility.getBoosterFunction());
 
-        StreamSupport.stream(datasets.get("age").block().spliterator(), false)
+        StreamSupport.stream(
+                Objects.requireNonNull(datasets.get("age").block()).spliterator(), false)
                 .forEach(this::buildAgeGroupMap);
 
-        StreamSupport.stream(datasets.get("candidate-analysed").block().spliterator(), false)
+        StreamSupport.stream(
+                Objects.requireNonNull(datasets.get("candidate-analysed").block())
+                        .spliterator(), false)
                 .forEach(row -> collectRow(row, ageGroupedMap));
 
         ageGroupedMap.entrySet().parallelStream()
@@ -76,7 +79,10 @@ public class PredictorDaoImpl implements PredictorDao {
 
 
     protected Double getAverage(final List<Double> rows){
-       return rows.stream().mapToDouble(r -> (double)r).average().getAsDouble();
+       return rows.stream()
+               .mapToDouble(Objects::requireNonNull)
+               .average()
+               .orElse(0.0);
     }
 
     protected Map<String, String> getDatasetResources(){
@@ -97,8 +103,9 @@ public class PredictorDaoImpl implements PredictorDao {
     protected void collectRow(final Row row, final Map<Integer, List<Double>> ageGroupedMap){
         final Integer ageGroup = ageGroupMappings.get(row.getInt("AGE"));
         final Double earnings = row.getDouble("EARNINGS");
-        if(!ageGroupedMap.containsKey(ageGroup))
-            ageGroupedMap.put(ageGroup, new ArrayList<Double>());
+        if(!ageGroupedMap.containsKey(ageGroup)) {
+            ageGroupedMap.put(ageGroup, new ArrayList<>());
+        }
         ageGroupedMap.get(ageGroup).add(earnings);
     }
 
@@ -114,7 +121,7 @@ public class PredictorDaoImpl implements PredictorDao {
     }
 
     protected String getUrl(final String parentUrl, final String postFix){
-        return new StringBuilder().append(parentUrl).append(postFix).toString();
+        return parentUrl + postFix;
     }
 
     public Map<String, Mono<Table>> getDatasets(){
